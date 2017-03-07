@@ -13,6 +13,9 @@ var
 sdist
 develop-eggs
 .installed.cfg
+
+#my
+sesja.db
 constants.py
 
 # Installer logs

@@ -1,7 +1,17 @@
-class Lecture(object):
+from db import db
 
-	def __init__(self, _id, speaker_id, title, description, day, start_time, end_time):
-		self.id = _id
+class Lecture(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	title = db.Column(db.String(50))
+	description = db.Column(db.String(500))
+	day = db.Column(db.Integer)
+	start_time = db.Column(db.String(5))
+	end_time = db.Column(db.String(5))
+	speaker_id = db.Column(db.Integer, db.ForeignKey('speaker.id'))
+	speaker = db.relationship('Speaker', backref=db.backref('lecture'))
+
+	def __init__(self, id_, speaker_id, title, description, day, start_time, end_time):
+		self.id = id_
 		self.speaker_id = speaker_id
 		self.title = title
 		self.description = description
@@ -12,13 +22,13 @@ class Lecture(object):
 	def __str__(self):
 		return 'Lecture #{}: {}'.format(self.id, self.title)
 		
-	def to_dict(self,):
+	def to_dict(self):
 		return {'id': self.id, 'title': self.title, 'description': self.description, 'speaker_id': self.speaker_id, 
 				'day': self.day, 'start_time': self.start_time, 'end_time': self.end_time}
 
 	@staticmethod
-	def get_all():
-		return _lectures
+	def get(id_ = None):
+		return _lectures if id_ is None else Lecture.query.filter_by(id=id_).first()
 
 _lectures = [
 	Lecture(
