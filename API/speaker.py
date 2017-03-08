@@ -21,7 +21,6 @@ class Speaker(db.Model):
 
 	@staticmethod
 	def get(id_ = None):
-		print id_
 		return _speakers if id_ is None else Speaker.query.filter_by(id=id_).first()
 
 _speakers = [

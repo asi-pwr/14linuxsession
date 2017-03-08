@@ -16,16 +16,33 @@ class MyJSONEncoder(JSONEncoder):
             return obj.to_dict()
         return super(MyJSONEncoder, self).default(obj)
 
+def setup_database_contents():
+	if not Speaker.query.all():
+		print 'speakers db rebuilt'
+		for s in Speaker.get():
+			db.session.add(s)
+		db.session.commit()
+
+	if not Lecture.query.all():
+		print 'speakers db rebuilt'
+		for l in Lecture.get():
+			db.session.add(l)
+		db.session.commit()
+
 app = Flask(__name__)
 app.json_encoder = MyJSONEncoder
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sesja.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'False'
+auth = HTTPBasicAuth()
+
 db.app = app
 db.init_app(app)
-auth = HTTPBasicAuth()
 db.create_all()
+setup_database_contents()
 speakers = Speaker.query.all()
 lectures = Lecture.query.all()
+
+
 
 @auth.get_password
 def get_pw(username):
@@ -92,19 +109,6 @@ def get_lecture(lecture_id):
 def get_admin_dashboard():
 	return jsonify({'credentials':credentials})
 
-def setup_database():
-	if not speakers:
-		print 'speakers db rebuilt'
-		for s in Speaker.get():
-			db.session.add(s)
-		db.session.commit()
-
-	if not lectures:
-		print 'speakers db rebuilt'
-		for l in Lecture.get():
-			db.session.add(l)
-		db.session.commit()
 
 if __name__ == "__main__":
-	setup_database()
 	app.run(host="127.0.0.1",port=3007)
