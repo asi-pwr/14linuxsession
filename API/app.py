@@ -42,8 +42,6 @@ setup_database_contents()
 speakers = Speaker.query.all()
 lectures = Lecture.query.all()
 
-
-
 @auth.get_password
 def get_pw(username):
     if username in credentials:
