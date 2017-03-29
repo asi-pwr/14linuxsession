@@ -20,7 +20,8 @@ import tk.julianjurec.linuxsession14.R;
 
 public class AgendaFragment extends Fragment implements AgendaContract.View {
 
-    public AgendaContract.Presenter presenter;
+    @Inject
+    public AgendaPresenter presenter;
 
     public AgendaFragment() {
         //required empty public constructor
@@ -49,7 +50,7 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
     }
 
     @Override
-    public void setPresenter( AgendaContract.Presenter presenter) { this.presenter = presenter; }
+    public void setPresenter( AgendaPresenter presenter) { this.presenter = presenter; }
 
     @Override
     public void onResume() {
