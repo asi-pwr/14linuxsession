@@ -9,13 +9,14 @@ import dagger.Provides;
 
 @Module
 public class AgendaModule {
-    private final AgendaContract.View view;
+    private final AgendaFragment view;
 
-    public AgendaModule(AgendaContract.View view) {
+    public AgendaModule(AgendaFragment view) {
         this.view = view;
     }
 
-    @Provides AgendaContract.View provideAgendaView() {
+    @Provides
+    AgendaFragment provideAgendaView() {
         return view;
     }
 }

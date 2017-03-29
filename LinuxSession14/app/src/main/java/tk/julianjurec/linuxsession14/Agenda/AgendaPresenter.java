@@ -9,17 +9,17 @@ import tk.julianjurec.linuxsession14.Base.BasePresenter;
  */
 
 public class AgendaPresenter implements AgendaContract.Presenter {
-    private AgendaContract.View view;
+    private AgendaFragment view;
 
     @Inject
-    AgendaPresenter(AgendaContract.View view){
+    public AgendaPresenter(AgendaFragment view){
         this.view = view;
     }
-
-    @Inject
-    void setupListeners(){
-        view.setPresenter(this);
-    }
+//
+//    @Inject
+//    void setupListeners(){
+//        view.setPresenter(this);
+//    }
 
     @Override
     public void start() {

@@ -20,7 +20,11 @@ import tk.julianjurec.linuxsession14.R;
 
 public class AgendaFragment extends Fragment implements AgendaContract.View {
 
-    private AgendaContract.Presenter presenter;
+    public AgendaContract.Presenter presenter;
+
+    public AgendaFragment() {
+        //required empty public constructor
+    }
 
     public static AgendaFragment newInstance() {
 
@@ -31,16 +35,21 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        DaggerAgendaComponent.builder().agendaModule(new AgendaModule(this)).build().inject(this);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_agenda, container, false);
-        DaggerAgendaComponent.builder().agendaModule(new AgendaModule(this)).build().inject(this);
         return root;
     }
 
     @Override
-    public void setPresenter(AgendaContract.Presenter presenter) { this.presenter = presenter; }
+    public void setPresenter( AgendaContract.Presenter presenter) { this.presenter = presenter; }
 
     @Override
     public void onResume() {
