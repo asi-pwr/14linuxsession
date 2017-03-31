@@ -15,14 +15,9 @@ public class AgendaPresenter implements AgendaContract.Presenter {
     public AgendaPresenter(AgendaFragment view){
         this.view = view;
     }
-//
-//    @Inject
-//    void setupListeners(){
-//        view.setPresenter(this);
-//    }
 
     @Override
     public void start() {
-        view.showToast("I can into dagger");
+        view.showToast("Agenda");
     }
 }
