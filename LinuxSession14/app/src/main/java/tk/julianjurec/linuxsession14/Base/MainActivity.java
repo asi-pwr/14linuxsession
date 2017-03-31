@@ -132,7 +132,6 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
     }
 
     public void switchTo(Fragment destination, String title, int position) {
-
         replaceFragment(destination, R.id.container_layout);
         setToolbarText(title);
         selectedIndex = position;

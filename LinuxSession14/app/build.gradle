@@ -39,7 +39,10 @@ dependencies {
     compile 'com.yalantis:contextmenu:1.0.7'
 //      UTILITY
     compile 'com.jakewharton:butterknife:8.5.1'
+    compile 'com.google.dagger:dagger:2.5'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.5'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    provided 'javax.annotation:jsr250-api:1.0'
 //      JAVA
     testCompile 'junit:junit:4.12'
 }
