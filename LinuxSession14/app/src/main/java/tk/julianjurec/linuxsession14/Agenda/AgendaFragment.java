@@ -31,7 +31,7 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
     public AgendaPresenter presenter;
 
     @BindView(R.id.agenda_recycler_view)
-    public RecyclerView recyclerView;
+    RecyclerView recyclerView;
 
 
     private LinearLayoutManager linearLayoutManager;
