@@ -1,5 +1,6 @@
 package tk.julianjurec.linuxsession14.Base;
 
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,8 +21,11 @@ import com.yalantis.contextmenu.lib.MenuParams;
 import com.yalantis.contextmenu.lib.interfaces.OnMenuItemClickListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
+import butterknife.BindColor;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tk.julianjurec.linuxsession14.About.AboutFragment;
@@ -33,6 +37,10 @@ import tk.julianjurec.linuxsession14.Sponsors.SponsorsFragment;
 
 
 public class MainActivity extends AppCompatActivity implements OnMenuItemClickListener {
+
+    @BindColor(R.color.session_light) int sessionLight;
+    @BindColor(R.color.session_dark) int sessionDark;
+    @BindColor(R.color.session_gold) int sessionGold;
 
     @BindView(R.id.container_layout) FrameLayout container;
 
@@ -65,17 +73,17 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
 
     private void setupContextMenu() {
         MenuObject close = new MenuObject();
-        close.setResource(R.drawable.ic_menu_send);
+        close.setResource(R.drawable.close);
         MenuObject agenda = new MenuObject(getString(R.string.screen_agenda));
-        agenda.setResource(R.drawable.ic_menu_send);
+        agenda.setResource(R.drawable.agenda);
         MenuObject speakers = new MenuObject(getString(R.string.screen_speakers));
-        speakers.setResource(R.drawable.ic_menu_send);
+        speakers.setResource(R.drawable.speaker);
         MenuObject middleParty = new MenuObject(getString(R.string.screen_middle_party));
-        middleParty.setResource(R.drawable.ic_menu_send);
+        middleParty.setResource(R.drawable.middle_party);
         MenuObject about = new MenuObject(getString(R.string.screen_about));
-        about.setResource(R.drawable.ic_menu_send);
+        about.setResource(R.drawable.about);
         MenuObject sponsors = new MenuObject(getString(R.string.screen_sponsors));
-        sponsors.setResource(R.drawable.ic_menu_send);
+        sponsors.setResource(R.drawable.sponsors);
 
         List<MenuObject> menuObjects = new ArrayList<>();
         menuObjects.add(close);
@@ -84,6 +92,10 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         menuObjects.add(middleParty);
         menuObjects.add(about);
         menuObjects.add(sponsors);
+        for (MenuObject o : menuObjects){
+            o.setBgColor(sessionLight);
+            o.setDividerColor(R.color.session_dark);
+        }
 
         MenuParams menuParams = new MenuParams();
         menuParams.setActionBarSize((int) getResources().getDimension(R.dimen.toolbar_height));

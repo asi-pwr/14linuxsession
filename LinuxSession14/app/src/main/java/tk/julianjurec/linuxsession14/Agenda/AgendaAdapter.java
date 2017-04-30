@@ -75,11 +75,12 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
         }
 
         @OnClick(R.id.agenda_folding_cell)
-        void toggleFold(){
+        void toggleFold() {
+            if (!cell.isUnfolded())
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    recyclerView.smoothScrollToPosition(position);
+                }, 750);
             cell.toggle(false);
-            new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                recyclerView.smoothScrollToPosition(position);
-            }, 750);
         }
     }
 }

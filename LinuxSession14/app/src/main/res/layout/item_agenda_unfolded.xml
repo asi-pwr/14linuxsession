@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cell_content_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -191,7 +191,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginBottom="4dp"
                 android:fontFamily="sans-serif-thin"
                 android:text="Akcje"
                 android:textAllCaps="true"
@@ -205,26 +204,39 @@
                 android:orientation="horizontal"
                 android:weightSum="3">
 
-                <ImageButton
+                <com.varunest.sparkbutton.SparkButton
+                    android:id="@+id/agenda_item_btn_share"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/white"
-                    android:src="@drawable/ic_menu_share" />
+                    android:layout_height="wrap_content"
+                    app:sparkbutton_activeImage="@drawable/share"
+                    app:sparkbutton_inActiveImage="@drawable/share"
+                    app:sparkbutton_iconSize="24dp"
+                    app:sparkbutton_primaryColor="@color/session_gold"
+                    app:sparkbutton_secondaryColor="@color/session_light" />
 
-                <ImageButton
+                <com.varunest.sparkbutton.SparkButton
+                    android:id="@+id/agenda_item_btn_fav"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/white"
-                    android:src="@drawable/ic_menu_manage" />
+                    android:layout_height="wrap_content"
+                    app:sparkbutton_activeImage="@drawable/heart"
+                    app:sparkbutton_inActiveImage="@drawable/heart_outline"
+                    app:sparkbutton_iconSize="24dp"
+                    app:sparkbutton_primaryColor="@color/session_gold"
+                    app:sparkbutton_secondaryColor="@color/session_light" />
 
-                <ImageButton
+                <com.varunest.sparkbutton.SparkButton
+                    android:id="@+id/agenda_item_btn_alarm"
+                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/white"
-                    android:src="@drawable/ic_menu_camera" />
+                    app:sparkbutton_activeImage="@drawable/alarm_off"
+                    app:sparkbutton_inActiveImage="@drawable/alarm_plus"
+                    app:sparkbutton_iconSize="24dp"
+                    app:sparkbutton_primaryColor="@color/session_gold"
+                    app:sparkbutton_secondaryColor="@color/session_light" />
+
 
             </LinearLayout>
 

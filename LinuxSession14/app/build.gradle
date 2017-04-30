@@ -45,6 +45,7 @@ dependencies {
 //      UI
     compile 'com.yalantis:contextmenu:1.0.7'
     compile 'com.ramotion.foldingcell:folding-cell:1.1.0'
+    compile 'com.github.varunest:sparkbutton:1.0.5'
 //      UTILITY
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.google.dagger:dagger:2.5'

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">@color/session_light</color>
+    <color name="colorPrimaryDark">@color/session_dark</color>
+    <color name="colorAccent">@color/session_gold</color>
+
+
+
     <color name="session_light">#388E92</color>
     <color name="session_dark">#1d333f</color>
     <color name="session_grey">#e6e7e8</color>
@@ -14,20 +20,5 @@
     <color name="text_100">#64000000</color>
     <color name="text_50">#32000000</color>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <color name="colorPrimary">@color/session_light</color>
-    <color name="colorPrimaryDark">@color/session_dark</color>
-    <color name="colorAccent">@color/session_gold</color>
+    <color name="menu_object_color">@color/white</color>
 </resources>
