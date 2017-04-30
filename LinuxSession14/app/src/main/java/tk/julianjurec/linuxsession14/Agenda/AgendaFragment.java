@@ -9,8 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.ramotion.foldingcell.FoldingCell;
+
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import tk.julianjurec.linuxsession14.Base.BaseFragment;
 import tk.julianjurec.linuxsession14.R;
 
@@ -22,6 +27,13 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
 
     @Inject
     public AgendaPresenter presenter;
+    @BindView(R.id.folding_cell)
+    FoldingCell foldingCell;
+
+    @OnClick(R.id.folding_cell)
+    public void fold(){
+        foldingCell.toggle(false);
+    }
 
     public AgendaFragment() {
         //required empty public constructor
@@ -46,6 +58,7 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_agenda, container, false);
+        ButterKnife.bind(this, root);
         return root;
     }
 

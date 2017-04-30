@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/toolbar_height"
     android:minHeight="@dimen/toolbar_height"
-    android:background="@color/colorPrimary">
+    android:background="@color/session_light">
 
     <TextView
         android:id="@+id/text_view_toolbar_title"
