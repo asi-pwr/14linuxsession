@@ -18,6 +18,6 @@ public class AgendaPresenter implements AgendaContract.Presenter {
 
     @Override
     public void start() {
-        view.showToast("Agenda");
+
     }
 }

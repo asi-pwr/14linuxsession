@@ -60,21 +60,21 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-        mToolBarTextView.setText("Account");
+        mToolBarTextView.setText(getString(R.string.screen_agenda));
     }
 
     private void setupContextMenu() {
         MenuObject close = new MenuObject();
         close.setResource(R.drawable.ic_menu_send);
-        MenuObject agenda = new MenuObject("Agenda");
+        MenuObject agenda = new MenuObject(getString(R.string.screen_agenda));
         agenda.setResource(R.drawable.ic_menu_send);
-        MenuObject speakers = new MenuObject("Speakers");
+        MenuObject speakers = new MenuObject(getString(R.string.screen_speakers));
         speakers.setResource(R.drawable.ic_menu_send);
-        MenuObject middleParty = new MenuObject("Middle Party");
+        MenuObject middleParty = new MenuObject(getString(R.string.screen_middle_party));
         middleParty.setResource(R.drawable.ic_menu_send);
-        MenuObject about = new MenuObject("About");
+        MenuObject about = new MenuObject(getString(R.string.screen_about));
         about.setResource(R.drawable.ic_menu_send);
-        MenuObject sponsors = new MenuObject("Sponsors");
+        MenuObject sponsors = new MenuObject(getString(R.string.screen_sponsors));
         sponsors.setResource(R.drawable.ic_menu_send);
 
         List<MenuObject> menuObjects = new ArrayList<>();
@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         menuParams.setActionBarSize((int) getResources().getDimension(R.dimen.toolbar_height));
         menuParams.setMenuObjects(menuObjects);
         menuParams.setClosableOutside(true);
+        menuParams.setAnimationDuration(40);
 
         contextMenu = ContextMenuDialogFragment.newInstance(menuParams);
         contextMenu.setItemClickListener(this);
@@ -99,19 +100,19 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         if (position != selectedIndex)
             switch (position) {
                 case 1: //Agenda
-                    switchTo(AgendaFragment.newInstance(), "Agenda", 1);
+                    switchTo(AgendaFragment.newInstance(), getString(R.string.screen_agenda), 1);
                     break;
                 case 2: //Speakers
-                    switchTo(SpeakersFragment.newInstance(), "Speakers", 2);
+                    switchTo(SpeakersFragment.newInstance(), getString(R.string.screen_speakers), 2);
                     break;
                 case 3: //MiddleParty
-                    switchTo(MiddlePartyFragment.newInstance(), "Middle Party", 3);
+                    switchTo(MiddlePartyFragment.newInstance(), getString(R.string.screen_middle_party), 3);
                     break;
                 case 4: //About
-                    switchTo(AboutFragment.newInstance(), "About", 4);
+                    switchTo(AboutFragment.newInstance(), getString(R.string.screen_about), 4);
                     break;
                 case 5: //Sponsors
-                    switchTo(SponsorsFragment.newInstance(), "Sponsors", 5);
+                    switchTo(SponsorsFragment.newInstance(), getString(R.string.screen_sponsors), 5);
                     break;
             }
         selectedIndex = position;

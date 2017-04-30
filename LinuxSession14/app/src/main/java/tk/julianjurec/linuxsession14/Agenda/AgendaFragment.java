@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,13 +29,13 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
 
     @Inject
     public AgendaPresenter presenter;
-    @BindView(R.id.folding_cell)
-    FoldingCell foldingCell;
 
-    @OnClick(R.id.folding_cell)
-    public void fold(){
-        foldingCell.toggle(false);
-    }
+    @BindView(R.id.agenda_recycler_view)
+    public RecyclerView recyclerView;
+
+
+    private LinearLayoutManager linearLayoutManager;
+    private AgendaAdapter adapter;
 
     public AgendaFragment() {
         //required empty public constructor
@@ -59,6 +61,10 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_agenda, container, false);
         ButterKnife.bind(this, root);
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter = new AgendaAdapter(recyclerView);
+        recyclerView.setAdapter(adapter);
         return root;
     }
 
@@ -75,8 +81,4 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
         }
     }
 
-    @Override
-    public void showToast(String test) {
-        Toast.makeText(getContext(), test, Toast.LENGTH_SHORT).show();
-    }
 }

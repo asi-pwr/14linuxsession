@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cell_content_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/session_light"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:maxLines="3"
+        android:text="@string/placeholder_lecture_title"
+        android:textAlignment="center"
+        android:textColor="@color/session_gold"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/agenda_item_label_speaker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-thin"
+                android:text="Prelegent"
+                android:textAllCaps="true"
+                android:textColor="@color/text_100"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/agenda_item_speaker_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/agenda_item_label_speaker"
+                android:layout_centerVertical="true"
+                android:layout_margin="4dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/agenda_item_label_speaker"
+                android:layout_centerVertical="true"
+                android:layout_margin="4dp"
+                android:layout_toRightOf="@id/agenda_item_speaker_photo"
+                android:lines="2"
+                android:text="@string/placeholder_speaker_name"
+                android:textColor="@color/text_100"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <include layout="@layout/divider_full" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/agenda_item_label_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-thin"
+                android:text="Opis"
+                android:textAllCaps="true"
+                android:textColor="@color/text_100"
+                android:textSize="12sp" />
+
+            <ScrollView
+                android:id="@+id/agenda_item_description_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@+id/agenda_item_label_description">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="@string/placeholder_lecture_description"
+                    android:textColor="@color/text_150"
+                    android:textSize="14sp" />
+            </ScrollView>
+        </RelativeLayout>
+
+
+        <include layout="@layout/divider_full" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/agenda_item_label_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-thin"
+                android:text="Czas"
+                android:textAllCaps="true"
+                android:textColor="@color/text_100"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/agenda_item_label_time"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/agenda_item_label_start"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="Start:"
+                        android:textColor="@color/text_100"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="10:00"
+                        android:textColor="@color/text_200"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/agenda_item_label_end"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_margin="4dp"
+                        android:text="Koniec:"
+                        android:textColor="@color/text_100"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="11:00"
+                        android:textColor="@color/text_200"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <include layout="@layout/divider_full" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/agenda_item_label_actions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="sans-serif-thin"
+                android:text="Akcje"
+                android:textAllCaps="true"
+                android:textColor="@color/text_100"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/agenda_item_label_actions"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:src="@drawable/ic_menu_share" />
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:src="@drawable/ic_menu_manage" />
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:src="@drawable/ic_menu_camera" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
