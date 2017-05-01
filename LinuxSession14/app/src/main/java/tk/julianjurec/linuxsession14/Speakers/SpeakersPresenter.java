@@ -22,4 +22,9 @@ public class SpeakersPresenter implements SpeakersContract.Presenter {
     public void start() {
         view.showToast("Speakers");
     }
+
+    @Override
+    public void showSpeakerDialog() {
+        SpeakersDialogFragment.newInstance().show(view.getFragmentManager(), "SpeakerDialog");
+    }
 }

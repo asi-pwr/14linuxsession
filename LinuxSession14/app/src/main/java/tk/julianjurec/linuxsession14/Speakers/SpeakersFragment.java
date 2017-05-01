@@ -67,7 +67,7 @@ public class SpeakersFragment extends Fragment implements SpeakersContract.View 
         ButterKnife.bind(this, root);
         gridLayoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
-        adapter = new SpeakersAdapter(getContext());
+        adapter = new SpeakersAdapter(getContext(), presenter);
         recyclerView.setAdapter(adapter);
         ActivityCompat.requestPermissions(getActivity(),
                 new String[]{Manifest.permission.INTERNET},

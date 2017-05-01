@@ -87,7 +87,7 @@
             <ScrollView
                 android:id="@+id/agenda_item_description_scroll"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="@dimen/details_scroll_height"
                 android:layout_below="@+id/agenda_item_label_description">
                 <TextView
                     android:layout_width="match_parent"

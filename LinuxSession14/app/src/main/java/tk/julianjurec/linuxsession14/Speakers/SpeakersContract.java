@@ -14,6 +14,6 @@ public interface SpeakersContract {
     }
 
     interface Presenter extends BasePresenter {
-
+        void showSpeakerDialog();
     }
 }
