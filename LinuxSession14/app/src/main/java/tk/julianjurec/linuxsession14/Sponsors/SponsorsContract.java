@@ -10,7 +10,7 @@ import tk.julianjurec.linuxsession14.Base.BasePresenter;
 
 public interface SponsorsContract {
     interface View extends BaseFragment<SponsorsPresenter> {
-        void showToast(String test);
+
     }
 
     interface Presenter extends BasePresenter {

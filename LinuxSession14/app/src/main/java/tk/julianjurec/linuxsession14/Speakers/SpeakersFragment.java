@@ -87,9 +87,4 @@ public class SpeakersFragment extends Fragment implements SpeakersContract.View 
             e.printStackTrace();
         }
     }
-
-    @Override
-    public void showToast(String test) {
-        Toast.makeText(getContext(), test, Toast.LENGTH_SHORT).show();
-    }
 }

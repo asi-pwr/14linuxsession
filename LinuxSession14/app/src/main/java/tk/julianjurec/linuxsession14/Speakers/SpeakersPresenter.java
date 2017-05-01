@@ -20,7 +20,6 @@ public class SpeakersPresenter implements SpeakersContract.Presenter {
 
     @Override
     public void start() {
-        view.showToast("Speakers");
     }
 
     @Override

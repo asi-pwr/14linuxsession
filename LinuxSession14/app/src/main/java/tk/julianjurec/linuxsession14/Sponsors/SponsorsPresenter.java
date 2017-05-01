@@ -20,6 +20,5 @@ public class SponsorsPresenter implements SponsorsContract.Presenter {
 
     @Override
     public void start() {
-        view.showToast("Sponsors");
     }
 }
