@@ -4,8 +4,8 @@
 
     <item
         android:id="@+id/context_menu"
-        android:title="TEST"
-        android:icon="@android:drawable/ic_menu_add"
+        android:title="contextMenu"
+        android:icon="@drawable/menu"
         android:orderInCategory="100"
         app:showAsAction="always" />
 

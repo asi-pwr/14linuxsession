@@ -15,4 +15,6 @@
     <string name="screen_middle_party">Middle Party</string>
     <string name="screen_about">About</string>
     <string name="screen_sponsors">Sponsors</string>
+    <string name="placeholder_sponsor_name">Apple Inc.</string>
+    <string name="main_sponsor">Sponsor Główny</string>
 </resources>
