@@ -1,13 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<io.codetail.widget.RevealFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center" >
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="middle party"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="12dp">
 
-</LinearLayout>
+        <android.support.v7.widget.CardView
+            android:id="@+id/middle_party_card_what"
+            style="@style/MiddlePartyCard">
+
+            <ImageView
+                style="@style/MiddlePartyBackground"
+                android:background="@color/middle_party_what"
+                android:src="@drawable/mp_what" />
+
+            <TextView
+                style="@style/MiddlePartyTitle"
+                android:text="@string/middle_party_what" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/middle_party_card_why"
+            style="@style/MiddlePartyCard">
+
+            <ImageView
+                style="@style/MiddlePartyBackground"
+                android:background="@color/middle_party_why"
+                android:src="@drawable/mp_why" />
+
+            <TextView
+                style="@style/MiddlePartyTitle"
+                android:text="@string/middle_party_why" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/middle_party_card_where"
+            style="@style/MiddlePartyCard">
+
+            <ImageView
+                style="@style/MiddlePartyBackground"
+                android:background="@color/middle_party_where"
+                android:src="@drawable/mp_where" />
+
+            <TextView
+                style="@style/MiddlePartyTitle"
+                android:text="@string/middle_party_where" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/middle_party_card_when"
+            style="@style/MiddlePartyCard">
+
+            <ImageView
+                style="@style/MiddlePartyBackground"
+                android:background="@color/middle_party_when"
+                android:src="@drawable/mp_when" />
+
+            <TextView
+                style="@style/MiddlePartyTitle"
+                android:text="@string/middle_party_when" />
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/middle_party_what_fullscreen"
+        style="@style/MiddlePartyFullscreen">
+
+        <ImageView
+            style="@style/MiddlePartyBackground"
+            android:background="@color/middle_party_what"
+            android:src="@drawable/mp_what" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/MiddlePartyTitle"
+                android:layout_margin="16dp"
+                android:text="@string/middle_party_what"
+                android:textAlignment="center" />
+
+            <android.support.v7.widget.CardView style="@style/MiddlePartyFullscreenCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/MiddlePartyDetails"
+                        android:layout_margin="16dp"
+                        android:text="@string/middle_party_what_details" />
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/middle_party_what_close"
+                        style="@style/MiddlePartyCloseButton"
+                        android:layout_margin="16dp" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</io.codetail.widget.RevealFrameLayout>

@@ -27,4 +27,9 @@
     <string name="about_questions_details">Jeśli masz jakieś pytania, nie krępuj się i napisz nam maila. Do kogo chcesz napisać?</string>
     <string name="error_no_email_app">Nie znaleziono aplikacji do obsługi e-maili</string>
     <string name="about_email_subject">[14 Sesja Linuksowa] Pytanie/Feedback</string>
+    <string name="middle_party_what">Czym jest?</string>
+    <string name="middle_party_why">Dlaczego?</string>
+    <string name="middle_party_where">Gdzie?</string>
+    <string name="middle_party_when">Kiedy?</string>
+    <string name="middle_party_what_details">Middle Party to tradycyjne spotkanie wszystkich uczestników Sesji Linuksowej. Jest to świetna okazja żeby nawiązać nowe znajomości i porozmawiać z prelegentami, organizatorami i innymi uczestnikami. Specjalnie dla uczestników konferencji przygotowaliśmy również specjalne zniżki na barze!</string>
 </resources>

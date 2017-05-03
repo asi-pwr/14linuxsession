@@ -3,13 +3,20 @@ package tk.julianjurec.linuxsession14.MiddleParty;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
+
+import com.jaouan.revealator.Revealator;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import tk.julianjurec.linuxsession14.MiddleParty.MiddlePartyContract;
 import tk.julianjurec.linuxsession14.MiddleParty.MiddlePartyModule;
 import tk.julianjurec.linuxsession14.MiddleParty.MiddlePartyPresenter;
@@ -24,8 +31,11 @@ import tk.julianjurec.linuxsession14.R;
 
 public class MiddlePartyFragment extends Fragment implements MiddlePartyContract.View {
 
+
     @Inject
     public MiddlePartyPresenter presenter;
+    @BindView(R.id.middle_party_what_fullscreen) FrameLayout whatRevealed;
+    @BindView(R.id.middle_party_card_what) CardView what;
 
     public MiddlePartyFragment() {
         //required empty public constructor
@@ -50,6 +60,7 @@ public class MiddlePartyFragment extends Fragment implements MiddlePartyContract
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_middle_party, container, false);
+        ButterKnife.bind(this, root);
         return root;
     }
 
@@ -66,8 +77,20 @@ public class MiddlePartyFragment extends Fragment implements MiddlePartyContract
         }
     }
 
-    @Override
-    public void showToast(String test) {
-        Toast.makeText(getContext(), test, Toast.LENGTH_SHORT).show();
+    @OnClick(R.id.middle_party_card_what)
+    public void onCardClicked(CardView v){
+        Revealator.reveal(whatRevealed)
+                .from(v)
+                .withCurvedTranslation()
+                .start();
     }
+
+    @OnClick(R.id.middle_party_what_close)
+    public void onCardClosed(){
+        Revealator.unreveal(whatRevealed)
+                .to(what)
+                .withCurvedTranslation()
+                .start();
+    }
+
 }
