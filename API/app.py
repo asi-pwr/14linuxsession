@@ -26,7 +26,7 @@ def setup_database_contents():
 		db.session.commit()
 
 	if not Lecture.query.all():
-		print 'speakers db rebuilt'
+		print 'lectures db rebuilt'
 		for l in Lecture.get():
 			db.session.add(l)
 		db.session.commit()
