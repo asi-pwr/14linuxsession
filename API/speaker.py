@@ -1,3 +1,4 @@
+#coding=utf8
 from db import db
 
 class Speaker(db.Model):
@@ -25,24 +26,6 @@ class Speaker(db.Model):
 
 _speakers = [
 	Speaker(
-		1,
-		'Wojciech Czerpak',
-		'Quite a great chap frankly',
-		'http://68.media.tumblr.com/b08214bffa07f0a79938697589ed4fe2/tumblr_inline_odd2x9PvYg1raprkq_500.gif'
-		),
-	Speaker(
-		3,
-		'Linus Torvalds',
-		'Hates nvidia quite a bit',
-		'http://68.media.tumblr.com/9ba8fe087f2bc0eda23f424bffb20fb0/tumblr_inline_odd3dlLIY31raprkq_500.gif'
-		),
-	Speaker(
-		2,
-		'Jan Kowalski',
-		'A basic white dude',
-		'http://68.media.tumblr.com/8f0c4363da17d0e987af1bc02f9cc10b/tumblr_inline_odd3llOGu51raprkq_500.gif'
-		)
-]
 
 
 

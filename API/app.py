@@ -1,18 +1,20 @@
-#!flask/bin/python
+#!flask/bin/python2.7
+#coding=utf8
+
 from flask import Flask, jsonify, abort, make_response, request
-from flask_httpauth import HTTPBasicAuth
 from flask.json import JSONEncoder
 from flask_sqlalchemy import SQLAlchemy
 from constants import credentials
 from speaker import Speaker
 from lecture import Lecture
+from sponsor import Sponsor
 from db import db
 
 
 #API SETUP
 class MyJSONEncoder(JSONEncoder):
     def default(self, obj):
-        if isinstance(obj, Speaker) or isinstance(obj, Lecture):
+        if isinstance(obj, Speaker) or isinstance(obj, Lecture) or isinstance(obj, Sponsor):
             return obj.to_dict()
         return super(MyJSONEncoder, self).default(obj)
 
@@ -29,11 +31,16 @@ def setup_database_contents():
 			db.session.add(l)
 		db.session.commit()
 
+	if not Sponsor.query.all():
+		print 'sponsors db rebuilt'
+		for l in Sponsor.get():
+			db.session.add(l)
+		db.session.commit()
+
 app = Flask(__name__)
 app.json_encoder = MyJSONEncoder
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sesja.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'False'
-auth = HTTPBasicAuth()
 
 db.app = app
 db.init_app(app)
@@ -41,12 +48,7 @@ db.create_all()
 setup_database_contents()
 speakers = Speaker.query.all()
 lectures = Lecture.query.all()
-
-@auth.get_password
-def get_pw(username):
-    if username in credentials:
-        return credentials.get(username)
-    return None
+sponsors = Sponsor.query.all()
 
 @app.errorhandler(404)
 def not_found(error):
@@ -101,11 +103,10 @@ def get_lecture(lecture_id):
 	return jsonify({'lecture': lecture})
 
 
-#ADMIN PANEL
-@app.route('/admin', methods=['GET'])
-@auth.login_required
-def get_admin_dashboard():
-	return jsonify({'credentials':credentials})
+
+@app.route('/sponsors', methods=['GET'])
+def get_sponsors():
+	return jsonify({'sponsors':sponsors})
 
 
 if __name__ == "__main__":
