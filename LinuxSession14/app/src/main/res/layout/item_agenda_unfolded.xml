@@ -43,26 +43,25 @@
                 android:textSize="12sp" />
 
             <ImageView
-                android:id="@+id/agenda_item_speaker_photo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/agenda_item_label_speaker"
+                android:id="@+id/agenda_item_speaker_img"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_margin="4dp"
-                android:src="@mipmap/ic_launcher" />
+                android:scaleType="centerCrop"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/agenda_item_label_speaker"
-                android:layout_centerVertical="true"
-                android:layout_margin="4dp"
-                android:layout_toRightOf="@id/agenda_item_speaker_photo"
-                android:lines="2"
+                android:layout_marginTop="32dp"
+                android:layout_below="@id/agenda_item_label_speaker"
+                android:layout_alignParentLeft="true"
+                android:maxLines="2"
+                android:textStyle="bold"
                 android:text="@string/placeholder_speaker_name"
-                android:textColor="@color/text_100"
-                android:textSize="16sp" />
+                android:textColor="@color/text_150"
+                android:textSize="24sp" />
         </RelativeLayout>
 
         <include layout="@layout/divider_full" />

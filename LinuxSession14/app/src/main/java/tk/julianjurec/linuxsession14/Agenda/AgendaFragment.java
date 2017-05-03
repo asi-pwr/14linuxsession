@@ -63,7 +63,7 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
         ButterKnife.bind(this, root);
         linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new AgendaAdapter(recyclerView);
+        adapter = new AgendaAdapter(recyclerView, getContext());
         recyclerView.setAdapter(adapter);
         return root;
     }
