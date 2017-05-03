@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/dialog_background"
+    android:background="@drawable/DialogBackground"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="42dp">
@@ -44,7 +44,7 @@
                     android:text="@string/placeholder_speaker_name"
                     android:textColor="@color/session_gold"
                     android:textAlignment="center"
-                    android:background="@drawable/dialog_background"
+                    android:background="@drawable/DialogBackground"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </RelativeLayout>

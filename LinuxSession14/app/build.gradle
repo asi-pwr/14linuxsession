@@ -47,6 +47,7 @@ dependencies {
     compile 'com.yalantis:contextmenu:1.0.7'
     compile 'com.ramotion.foldingcell:folding-cell:1.1.0'
     compile 'com.github.varunest:sparkbutton:1.0.5'
+    compile 'com.yarolegovich:lovely-dialog:1.0.7'
 //      UTILITY
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton:butterknife:8.5.1'

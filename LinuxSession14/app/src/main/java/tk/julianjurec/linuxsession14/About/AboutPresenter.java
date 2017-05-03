@@ -20,7 +20,7 @@ public class AboutPresenter implements AboutContract.Presenter {
 
     @Override
     public void start() {
-        view.showToast("About");
+
     }
 }
 
