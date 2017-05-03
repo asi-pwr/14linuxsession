@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.jaouan.revealator.Revealator;
 
@@ -17,11 +16,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import tk.julianjurec.linuxsession14.MiddleParty.MiddlePartyContract;
-import tk.julianjurec.linuxsession14.MiddleParty.MiddlePartyModule;
-import tk.julianjurec.linuxsession14.MiddleParty.MiddlePartyPresenter;
-import tk.julianjurec.linuxsession14.MiddleParty.DaggerMiddlePartyComponent;
-import tk.julianjurec.linuxsession14.Base.BaseFragment;
 import tk.julianjurec.linuxsession14.R;
 
 /**
@@ -35,7 +29,13 @@ public class MiddlePartyFragment extends Fragment implements MiddlePartyContract
     @Inject
     public MiddlePartyPresenter presenter;
     @BindView(R.id.middle_party_what_fullscreen) FrameLayout whatRevealed;
-    @BindView(R.id.middle_party_card_what) CardView what;
+    @BindView(R.id.middle_party_where_fullscreen) FrameLayout whereRevealed;
+    @BindView(R.id.middle_party_why_fullscreen) FrameLayout whyRevealed;
+    @BindView(R.id.middle_party_when_fullscreen) FrameLayout whenRevealed;
+    @BindView(R.id.middle_party_card_what) CardView whatCard;
+    @BindView(R.id.middle_party_card_when) CardView whenCard;
+    @BindView(R.id.middle_party_card_where) CardView whereCard;
+    @BindView(R.id.middle_party_card_why) CardView whyCard;
 
     public MiddlePartyFragment() {
         //required empty public constructor
@@ -77,18 +77,58 @@ public class MiddlePartyFragment extends Fragment implements MiddlePartyContract
         }
     }
 
-    @OnClick(R.id.middle_party_card_what)
+    @OnClick({R.id.middle_party_card_what, R.id.middle_party_card_when, R.id.middle_party_card_where, R.id.middle_party_card_why})
     public void onCardClicked(CardView v){
-        Revealator.reveal(whatRevealed)
+        v.bringToFront();
+        View revealed;
+        switch (v.getId()){
+            case R.id.middle_party_card_what:
+                revealed = whatRevealed;
+                break;
+            case R.id.middle_party_card_when:
+                revealed = whenRevealed;
+                break;
+            case R.id.middle_party_card_where:
+                revealed = whereRevealed;
+                break;
+            case R.id.middle_party_card_why:
+            default:
+                revealed = whyRevealed;
+                break;
+
+        }
+        Revealator.reveal(revealed)
                 .from(v)
                 .withCurvedTranslation()
                 .start();
     }
 
-    @OnClick(R.id.middle_party_what_close)
-    public void onCardClosed(){
-        Revealator.unreveal(whatRevealed)
-                .to(what)
+    @OnClick({R.id.middle_party_what_close, R.id.middle_party_where_close, R.id.middle_party_when_close, R.id.middle_party_why_close})
+    public void onCardClosed(View v){
+        View unrevealed;
+        View card;
+        switch (v.getId()){
+            case R.id.middle_party_what_close:
+                unrevealed = whatRevealed;
+                card = whatCard;
+                break;
+            case R.id.middle_party_when_close:
+                unrevealed = whenRevealed;
+                card = whenCard;
+                break;
+            case R.id.middle_party_where_close:
+                unrevealed = whereRevealed;
+                card = whereCard;
+                break;
+            case R.id.middle_party_why_close:
+            default:
+                unrevealed = whyRevealed;
+                card = whyCard;
+                break;
+
+        }
+        Revealator.unreveal(unrevealed)
+                .to(card)
                 .withCurvedTranslation()
                 .start();
     }
