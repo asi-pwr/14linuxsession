@@ -10,7 +10,6 @@ import tk.julianjurec.linuxsession14.Base.BasePresenter;
 
 public interface MiddlePartyContract {
     interface View extends BaseFragment<MiddlePartyPresenter> {
-        void showToast(String test);
     }
 
     interface Presenter extends BasePresenter {

@@ -27,4 +27,19 @@
     <string name="about_questions_details">Jeśli masz jakieś pytania, nie krępuj się i napisz nam maila. Do kogo chcesz napisać?</string>
     <string name="error_no_email_app">Nie znaleziono aplikacji do obsługi e-maili</string>
     <string name="about_email_subject">[14 Sesja Linuksowa] Pytanie/Feedback</string>
+    <string name="middle_party_what">Czym jest?</string>
+    <string name="middle_party_why">Dlaczego?</string>
+    <string name="middle_party_where">Gdzie?</string>
+    <string name="middle_party_when">Kiedy?</string>
+    <string name="middle_party_what_details">Middle Party to tradycyjne spotkanie wszystkich uczestników Sesji Linuksowej. Specjalnie dla uczestników konferencji przygotowaliśmy również specjalne zniżki na barze! Sponsorem Middle Party jest Global Logic</string>
+    <string name="middle_party_why_details">Ideą Middle Party jest umożliwienie uczestnikom Sesji Linuksowej poszerzenie swojej sieci znajomości zawodowych i rozwianie ewentualnych wątpliwości, które wystąpiły w czasie konferencji. Oczywiście jest to też moment na dobrą zabawę, odetchnięcie i wyluzowanie się przed następnym dniem wykładów</string>
+    <string name="middle_party_where_name">Pub Kontynuacja</string>
+    <string name="middle_party_where_address">ul. Ofiar Oświęcimskich 14, Wrocław</string>
+    <string name="middle_party_where_directions">Prowadź!</string>
+    <string name="middle_party_when_details">wtedy</string>
+    <string name="middle_party_date">Sobota 06.05</string>
+    <string name="middle_party_start"> Start:</string>
+    <string name="middle_party_start_hour"> 21:00</string>
+    <string name="middle_party_end">Koniec:</string>
+    <string name="middle_party_end_hour"> 03:00</string>
 </resources>

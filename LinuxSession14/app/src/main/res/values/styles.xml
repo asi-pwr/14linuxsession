@@ -49,6 +49,74 @@
         <item name="android:textSize">22sp</item>
     </style>
 
+    <style name="MiddlePartyCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="cardCornerRadius">10dp</item>
+    </style>
+
+    <style name="MiddlePartyBackground">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:alpha">0.5</item>
+    </style>
+
+    <style name="MiddlePartyTitle">
+        <item name="android:layout_gravity">bottom|start</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">32dp</item>
+        <item name="android:textColor">@color/text_150</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MiddlePartyFullscreen">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:visibility">invisible</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="MiddlePartyDetails">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_200</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_margin">16dp</item>
+    </style>
+
+    <style name="MiddlePartyCloseButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:text">Zrozumiano !</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textColor">@color/session_gold</item>
+    </style>
+
+    <style name="MiddlePartyFullscreenCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="cardCornerRadius">10dp</item>
+        <item name="cardElevation">8dp</item>
+    </style>
+
     <drawable name="DialogBackground">#8000</drawable>
 
 </resources>
