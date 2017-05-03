@@ -202,7 +202,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/agenda_item_label_actions"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="2">
 
                 <com.varunest.sparkbutton.SparkButton
                     android:id="@+id/agenda_item_btn_share"
@@ -222,17 +222,6 @@
                     android:layout_height="wrap_content"
                     app:sparkbutton_activeImage="@drawable/heart"
                     app:sparkbutton_inActiveImage="@drawable/heart_outline"
-                    app:sparkbutton_iconSize="24dp"
-                    app:sparkbutton_primaryColor="@color/session_gold"
-                    app:sparkbutton_secondaryColor="@color/session_light" />
-
-                <com.varunest.sparkbutton.SparkButton
-                    android:id="@+id/agenda_item_btn_alarm"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:sparkbutton_activeImage="@drawable/alarm_off"
-                    app:sparkbutton_inActiveImage="@drawable/alarm_plus"
                     app:sparkbutton_iconSize="24dp"
                     app:sparkbutton_primaryColor="@color/session_gold"
                     app:sparkbutton_secondaryColor="@color/session_light" />

@@ -20,6 +20,6 @@ public class MiddlePartyPresenter implements MiddlePartyContract.Presenter {
 
     @Override
     public void start() {
-        view.showToast("MiddleParty");
+
     }
 }
