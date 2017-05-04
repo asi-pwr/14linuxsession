@@ -6,6 +6,9 @@
     android:layout_height="120dp">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/sponsors_item_card"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="4dp"
@@ -29,7 +32,7 @@
                     android:id="@+id/sponsors_item_logo_img"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/unknown"/>
 
             </android.support.v7.widget.CardView>

@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,13 +27,20 @@ import tk.julianjurec.linuxsession14.R;
  */
 
 class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.Holder> {
-
+    private static final Map<String, String> categories;
+    static {
+        categories = new HashMap<>(5);
+        categories.put("org", "Organizator");
+        categories.put("patron", "Patron");
+        categories.put("sponsor", "Sponsor");
+    }
     private RecyclerView recyclerView;
     private List<Sponsor> sponsors;
     private Context context;
 
     public SponsorsAdapter(Context context, List<Sponsor> sponsors) {
         this.sponsors = sponsors;
+        this.context = context;
     }
 
     @Override
@@ -45,7 +54,7 @@ class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.Holder> {
         Sponsor sponsor = sponsors.get(position);
         holder.sponsor = sponsor;
         holder.name.setText(sponsor.getName());
-        holder.category.setText(sponsor.getCategory());
+        holder.category.setText(categories.get(sponsor.getCategory()));
         Picasso.with(context)
                 .load(sponsor.getImgUrl())
                 .placeholder(R.drawable.unknown)
@@ -66,7 +75,7 @@ class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.Holder> {
         @BindView(R.id.sponsors_item_logo_img) ImageView logoImg;
         @BindView(R.id.sponsors_item_name) TextView name;
         @BindView(R.id.sponsors_item_category) TextView category;
-        @BindView(R.id.sponsors_item_logo_card) CardView card;
+        @BindView(R.id.sponsors_item_card) CardView card;
         private Sponsor sponsor;
 
         Holder(View itemView) {
