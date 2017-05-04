@@ -60,32 +60,31 @@ public class SplashActivity extends AppCompatActivity {
 
     private void fetchLastUpdate() {
         System.out.println("fetchlastupdate");
-        api.getLastUpdate().enqueue(new Callback<Long>() {
+        api.getLastUpdate().enqueue(new Callback<Float>() {
             @Override
-            public void onResponse(Call<Long> call, Response<Long> response) {
-                long server = response.body();
-                long local = prefs.getLong(LAST_UPDATE, -1);
+            public void onResponse(Call<Float> call, Response<Float> response) {
+                long server = (long)(response.body()*1000L);
+                long local = prefs.getLong(LAST_UPDATE, -1L);
                 if (server == local) {
                     continueToApplication();
                 } else {
-                    prefs.edit().putLong(LAST_UPDATE, server).apply();
-                    fetchAppData();
+                    fetchAppData(server);
                 }
             }
 
             @Override
-            public void onFailure(Call<Long> call, Throwable t) {
+            public void onFailure(Call<Float> call, Throwable t) {
                 t.printStackTrace();
             }
         });
     }
 
-    private void fetchAppData() {
+    private void fetchAppData(long updated) {
         System.out.println("fetchappdata");
         api.getAppData().enqueue(new Callback<AppDataResponse>() {
             @Override
             public void onResponse(Call<AppDataResponse> call, Response<AppDataResponse> response) {
-                saveAppData(response.body());
+                saveAppData(response.body(), updated);
             }
 
             @Override
@@ -95,7 +94,7 @@ public class SplashActivity extends AppCompatActivity {
         });
     }
 
-    private void saveAppData(AppDataResponse appDataResponse) {
+    private void saveAppData(AppDataResponse appDataResponse, long updated) {
         System.out.println("saveappdata");
         //drop db
         SugarContext.terminate();
@@ -113,6 +112,7 @@ public class SplashActivity extends AppCompatActivity {
         for (Speaker speaker : appDataResponse.getSpeakers()) {
             speaker.save();
         }
+        prefs.edit().putLong(LAST_UPDATE, updated).apply();
         continueToApplication();
     }
 

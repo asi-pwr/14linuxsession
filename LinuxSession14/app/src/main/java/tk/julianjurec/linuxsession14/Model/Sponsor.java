@@ -11,7 +11,7 @@ public class Sponsor extends SugarRecord implements Serializable {
     @SerializedName("category")
     @Expose
     private String category;
-    @SerializedName("id")
+    @SerializedName("uId")
     @Expose
     private Integer uId;
     @SerializedName("img_url")

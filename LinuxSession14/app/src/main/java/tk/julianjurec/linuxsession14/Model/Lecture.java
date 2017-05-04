@@ -17,7 +17,7 @@ public class Lecture extends SugarRecord implements Serializable
     @SerializedName("end_time")
     @Expose
     private String endTime;
-    @SerializedName("id")
+    @SerializedName("uId")
     @Expose
     private Integer uId;
     @SerializedName("speaker_id")

@@ -12,7 +12,7 @@ public class Speaker extends SugarRecord implements Serializable
     @SerializedName("description")
     @Expose
     private String description;
-    @SerializedName("id")
+    @SerializedName("uId")
     @Expose
     private Integer uId;
     @SerializedName("img_url")
