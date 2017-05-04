@@ -15,6 +15,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import tk.julianjurec.linuxsession14.Model.Lecture;
 import tk.julianjurec.linuxsession14.Model.Speaker;
 import tk.julianjurec.linuxsession14.R;
 
@@ -43,6 +44,7 @@ class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Holder> {
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         Speaker speaker = speakers.get(position);
+        Lecture lecture = Lecture.find(Lecture.class, "speaker_id = ?", String.valueOf(speaker.getId())).get(0);
         holder.name.setText(speaker.getName());
         if (speaker.getImgUrl() != null && !speaker.getImgUrl().isEmpty())
             Picasso.with(context)
@@ -50,7 +52,7 @@ class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Holder> {
                     .placeholder(R.drawable.unknown)
                     .into(holder.img);
         holder.card.setOnClickListener(v -> {
-            presenter.showSpeakerDialog(speaker);
+            presenter.showSpeakerDialog(speaker, lecture);
         });
     }
 

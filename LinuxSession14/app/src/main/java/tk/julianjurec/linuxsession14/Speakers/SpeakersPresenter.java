@@ -2,12 +2,9 @@ package tk.julianjurec.linuxsession14.Speakers;
 
 import javax.inject.Inject;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import tk.julianjurec.linuxsession14.Base.MainActivity;
+import tk.julianjurec.linuxsession14.Model.Lecture;
 import tk.julianjurec.linuxsession14.Model.Speaker;
-import tk.julianjurec.linuxsession14.Model.SpeakersResponse;
 import tk.julianjurec.linuxsession14.Network.Api;
 
 /**
@@ -34,8 +31,8 @@ public class SpeakersPresenter implements SpeakersContract.Presenter {
     }
 
     @Override
-    public void showSpeakerDialog(Speaker speaker) {
+    public void showSpeakerDialog(Speaker speaker, Lecture lecture) {
 
-        SpeakersDialogFragment.newInstance(speaker).show(view.getFragmentManager(), "SpeakerDialog");
+        SpeakersDialogFragment.newInstance(speaker, lecture).show(view.getFragmentManager(), "SpeakerDialog");
     }
 }

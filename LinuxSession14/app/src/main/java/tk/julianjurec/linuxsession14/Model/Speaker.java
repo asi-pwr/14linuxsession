@@ -30,6 +30,7 @@ public class Speaker extends SugarRecord implements Serializable
         this.description = description;
         this.uId = uId;
         this.imgUrl = imgUrl;
+        name.replace(", ", "\n");
         this.name = name;
     }
 

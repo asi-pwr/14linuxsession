@@ -34,11 +34,13 @@ import tk.julianjurec.linuxsession14.R;
 class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
 
     private static final Map<Integer, String> days;
+
     static {
         days = new HashMap<>(5);
         days.put(1, "Sobota");
         days.put(2, "Niedziela");
     }
+
     private RecyclerView recyclerView;
     private Context context;
     private List<Lecture> lectures;
@@ -63,17 +65,18 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         Lecture lecture = lectures.get(position);
-        Speaker speaker = Speaker.findById(Speaker.class,lecture.getSpeakerId());
+        Speaker speaker = Speaker.findById(Speaker.class, lecture.getSpeakerId());
 
         holder.foldedDay.setText(days.get(lecture.getDay()));
         holder.foldedStart.setText(lecture.getStartTime());
         holder.foldedEnd.setText(lecture.getEndTime());
         holder.foldedTitle.setText(lecture.getTitle());
         holder.foldedSpeakerName.setText(speaker.getName());
-        Picasso.with(context)
-                .load(speaker.getImgUrl())
-                .placeholder(R.drawable.unknown)
-                .into(holder.foldedImg);
+        if (speaker.getImgUrl() != null && !speaker.getImgUrl().isEmpty())
+            Picasso.with(context)
+                    .load(speaker.getImgUrl())
+                    .placeholder(R.drawable.unknown)
+                    .into(holder.foldedImg);
 
         holder.start.setText(lecture.getStartTime());
         holder.end.setText(lecture.getEndTime());
@@ -88,10 +91,11 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
         holder.recyclerView = recyclerView;
         holder.position = position;
         holder.speakerName.setText(speaker.getName());
-        Picasso.with(context)
-                .load(speaker.getImgUrl())
-                .placeholder(R.drawable.unknown)
-                .into(holder.img);
+        if (speaker.getImgUrl() != null && !speaker.getImgUrl().isEmpty())
+            Picasso.with(context)
+                    .load(speaker.getImgUrl())
+                    .placeholder(R.drawable.unknown)
+                    .into(holder.img);
 
         holder.descriptionScroll.setOnTouchListener((v, event) -> {
             int action = event.getAction();
@@ -115,25 +119,41 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
 
     static class Holder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.agenda_folding_cell) FoldingCell cell;
+        @BindView(R.id.agenda_folding_cell)
+        FoldingCell cell;
 
-        @BindView(R.id.agenda_item_btn_fav) SparkButton fav;
-        @BindView(R.id.agenda_item_btn_share) SparkButton share;
-        @BindView(R.id.agenda_item_description) TextView description;
-        @BindView(R.id.agenda_item_speaker_name) TextView speakerName;
-        @BindView(R.id.agenda_item_start) TextView start;
-        @BindView(R.id.agenda_item_end) TextView end;
-        @BindView(R.id.agenda_item_title) TextView title;
+        @BindView(R.id.agenda_item_btn_fav)
+        SparkButton fav;
+        @BindView(R.id.agenda_item_btn_share)
+        SparkButton share;
+        @BindView(R.id.agenda_item_description)
+        TextView description;
+        @BindView(R.id.agenda_item_speaker_name)
+        TextView speakerName;
+        @BindView(R.id.agenda_item_start)
+        TextView start;
+        @BindView(R.id.agenda_item_end)
+        TextView end;
+        @BindView(R.id.agenda_item_title)
+        TextView title;
 
-        @BindView(R.id.agenda_item_description_scroll) ScrollView descriptionScroll;
-        @BindView(R.id.agenda_item_speaker_img) ImageView img;
+        @BindView(R.id.agenda_item_description_scroll)
+        ScrollView descriptionScroll;
+        @BindView(R.id.agenda_item_speaker_img)
+        ImageView img;
 
-        @BindView(R.id.agenda_item_folded_day) TextView foldedDay;
-        @BindView(R.id.agenda_item_folded_start) TextView foldedStart;
-        @BindView(R.id.agenda_item_folded_end) TextView foldedEnd;
-        @BindView(R.id.agenda_item_folded_title) TextView foldedTitle;
-        @BindView(R.id.agenda_item_folded_speaker_name) TextView foldedSpeakerName;
-        @BindView(R.id.agenda_item_folded_img) ImageView foldedImg;
+        @BindView(R.id.agenda_item_folded_day)
+        TextView foldedDay;
+        @BindView(R.id.agenda_item_folded_start)
+        TextView foldedStart;
+        @BindView(R.id.agenda_item_folded_end)
+        TextView foldedEnd;
+        @BindView(R.id.agenda_item_folded_title)
+        TextView foldedTitle;
+        @BindView(R.id.agenda_item_folded_speaker_name)
+        TextView foldedSpeakerName;
+        @BindView(R.id.agenda_item_folded_img)
+        ImageView foldedImg;
         private RecyclerView recyclerView;
         private int position;
 

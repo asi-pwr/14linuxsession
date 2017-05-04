@@ -5,6 +5,7 @@ import java.util.List;
 import tk.julianjurec.linuxsession14.Agenda.AgendaPresenter;
 import tk.julianjurec.linuxsession14.Base.BaseFragment;
 import tk.julianjurec.linuxsession14.Base.BasePresenter;
+import tk.julianjurec.linuxsession14.Model.Lecture;
 import tk.julianjurec.linuxsession14.Model.Speaker;
 
 /**
@@ -19,6 +20,6 @@ public interface SpeakersContract {
     }
 
     interface Presenter extends BasePresenter {
-        void showSpeakerDialog(Speaker speaker);
+        void showSpeakerDialog(Speaker speaker, Lecture lecture);
     }
 }

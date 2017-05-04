@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import tk.julianjurec.linuxsession14.Model.Lecture;
 import tk.julianjurec.linuxsession14.Model.Speaker;
 import tk.julianjurec.linuxsession14.R;
 
@@ -23,6 +24,7 @@ import tk.julianjurec.linuxsession14.R;
 
 public class SpeakersDialogFragment extends DialogFragment {
     private Speaker speaker;
+    private Lecture lecture;
     @BindView(R.id.dialog_speaker_img)
     ImageView img;
     @BindView(R.id.dialog_speaker_name)
@@ -34,9 +36,10 @@ public class SpeakersDialogFragment extends DialogFragment {
     @BindView(R.id.dialog_speaker_lecture_time)
     TextView lectureTime;
 
-    public static SpeakersDialogFragment newInstance(Speaker speaker) {
+    public static SpeakersDialogFragment newInstance(Speaker speaker, Lecture lecture) {
         Bundle args = new Bundle();
         args.putSerializable("speaker", speaker);
+        args.putSerializable("lecture", lecture);
         SpeakersDialogFragment fragment = new SpeakersDialogFragment();
         fragment.setArguments(args);
         return fragment;
@@ -49,6 +52,7 @@ public class SpeakersDialogFragment extends DialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         speaker = (Speaker) getArguments().getSerializable("speaker");
+        lecture = (Lecture) getArguments().getSerializable("lecture");
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.SpeakerDialog);
     }
 
@@ -69,6 +73,8 @@ public class SpeakersDialogFragment extends DialogFragment {
                     .into(img);
         name.setText(speaker.getName());
         description.setText(speaker.getDescription());
+        lectureName.setText(lecture.getTitle());
+        lectureTime.setText((lecture.getDay()==1?"Sobota ":"Niedziela ")+lecture.getStartTime());
     }
 
     @OnClick(R.id.dialog_speaker_outside)
