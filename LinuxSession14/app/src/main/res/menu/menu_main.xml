@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:uID="@+uID/context_menu"
+        android:id="@+id/context_menu"
         android:title="contextMenu"
         android:icon="@drawable/menu"
         android:orderInCategory="100"

@@ -11,7 +11,7 @@
     <include layout="@layout/toolbar" />
 
     <FrameLayout
-        android:uID="@+uID/container_layout"
+        android:id="@+id/container_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/session_grey"/>

@@ -6,7 +6,7 @@ import com.orm.SugarRecord;
 
 import java.io.Serializable;
 
-public class Sponsor extends SugarRecord<Sponsor> implements Serializable {
+public class Sponsor extends SugarRecord implements Serializable {
 
     @SerializedName("category")
     @Expose
