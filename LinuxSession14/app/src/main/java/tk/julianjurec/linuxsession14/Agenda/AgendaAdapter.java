@@ -10,13 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.ramotion.foldingcell.FoldingCell;
 import com.squareup.picasso.Picasso;
+import com.varunest.sparkbutton.SparkButton;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import tk.julianjurec.linuxsession14.Model.Lecture;
 import tk.julianjurec.linuxsession14.R;
 
 /**
@@ -25,12 +32,22 @@ import tk.julianjurec.linuxsession14.R;
 
 class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
 
+    private static final Map<Integer, String> days;
+    static {
+        days = new HashMap<>(5);
+        days.put(1, "Sobota");
+        days.put(2, "Niedziela");
+    }
     private RecyclerView recyclerView;
     private Context context;
+    private List<Lecture> lectures;
+    private AgendaPresenter presenter;
 
-    AgendaAdapter(RecyclerView recyclerView, Context context) {
+    AgendaAdapter(RecyclerView recyclerView, Context context, List<Lecture> lectures, AgendaPresenter presenter) {
         this.recyclerView = recyclerView;
         this.context = context;
+        this.lectures = lectures;
+        this.presenter = presenter;
     }
 
     @Override
@@ -41,6 +58,23 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
+        Lecture lecture = lectures.get(position);
+
+        holder.foldedDay.setText(days.get(lecture.getDay()));
+        holder.foldedStart.setText(lecture.getStartTime());
+        holder.foldedEnd.setText(lecture.getEndTime());
+        holder.foldedTitle.setText(lecture.getTitle());
+
+        holder.start.setText(lecture.getStartTime());
+        holder.end.setText(lecture.getEndTime());
+        holder.title.setText(lecture.getTitle());
+        holder.description.setText(lecture.getDescription());
+        holder.fav.setOnTouchListener((v, e) -> presenter.toggleFavourite(lecture));
+        holder.share.setOnTouchListener((v, e) -> {
+            holder.share.setChecked(false);
+            return presenter.share(lecture);
+        });
+
         holder.recyclerView = recyclerView;
         holder.position = position;
         Picasso.with(context)
@@ -68,20 +102,31 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
 
     @Override
     public int getItemCount() {
-        return 30;
+        return lectures.size();
     }
 
 
     static class Holder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.agenda_folding_cell)
-        FoldingCell cell;
-        @BindView(R.id.agenda_item_description_scroll)
-        ScrollView descriptionScroll;
-        @BindView(R.id.agenda_item_speaker_img)
-        ImageView img;
-        @BindView(R.id.agenda_item_folded_img)
-        ImageView foldedImg;
+        @BindView(R.id.agenda_folding_cell) FoldingCell cell;
+
+        @BindView(R.id.agenda_item_btn_fav) SparkButton fav;
+        @BindView(R.id.agenda_item_btn_share) SparkButton share;
+        @BindView(R.id.agenda_item_description) TextView description;
+        @BindView(R.id.agenda_item_speaker_name) TextView speakerName;
+        @BindView(R.id.agenda_item_start) TextView start;
+        @BindView(R.id.agenda_item_end) TextView end;
+        @BindView(R.id.agenda_item_title) TextView title;
+
+        @BindView(R.id.agenda_item_description_scroll) ScrollView descriptionScroll;
+        @BindView(R.id.agenda_item_speaker_img) ImageView img;
+
+        @BindView(R.id.agenda_item_folded_day) TextView foldedDay;
+        @BindView(R.id.agenda_item_folded_start) TextView foldedStart;
+        @BindView(R.id.agenda_item_folded_end) TextView foldedEnd;
+        @BindView(R.id.agenda_item_folded_title) TextView foldedTitle;
+        @BindView(R.id.agenda_item_folded_speaker_name) TextView foldedSpeakerName;
+        @BindView(R.id.agenda_item_folded_img) ImageView foldedImg;
         private RecyclerView recyclerView;
         private int position;
 

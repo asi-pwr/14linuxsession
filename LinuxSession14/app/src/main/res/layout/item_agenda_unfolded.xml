@@ -9,6 +9,7 @@
     android:visibility="visible">
 
     <TextView
+        android:id="@+id/agenda_item_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -52,6 +53,7 @@
                 android:scaleType="centerCrop"/>
 
             <TextView
+                android:id="@+id/agenda_item_speaker_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -89,6 +91,7 @@
                 android:layout_height="@dimen/details_scroll_height"
                 android:layout_below="@+id/agenda_item_label_description">
                 <TextView
+                    android:id="@+id/agenda_item_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
@@ -141,6 +144,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/agenda_item_start"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
@@ -166,6 +170,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/agenda_item_end"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"

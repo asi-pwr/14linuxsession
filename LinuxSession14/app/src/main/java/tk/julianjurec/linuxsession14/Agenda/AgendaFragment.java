@@ -13,12 +13,15 @@ import android.widget.Toast;
 
 import com.ramotion.foldingcell.FoldingCell;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import tk.julianjurec.linuxsession14.Base.BaseFragment;
+import tk.julianjurec.linuxsession14.Model.Lecture;
 import tk.julianjurec.linuxsession14.R;
 
 /**
@@ -63,8 +66,6 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
         ButterKnife.bind(this, root);
         linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new AgendaAdapter(recyclerView, getContext());
-        recyclerView.setAdapter(adapter);
         return root;
     }
 
@@ -81,4 +82,14 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
         }
     }
 
+    @Override
+    public void onLectureFetchFailed(Throwable throwable) {
+        Toast.makeText(getContext(), throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onLecturesFetched(List<Lecture> lectures) {
+        adapter = new AgendaAdapter(recyclerView, getContext(), lectures, presenter);
+        recyclerView.setAdapter(adapter);
+    }
 }

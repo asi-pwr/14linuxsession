@@ -15,6 +15,7 @@
         android:padding="4dp">
 
         <TextView
+            android:id="@+id/agenda_item_folded_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -24,6 +25,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/agenda_item_folded_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -32,6 +34,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/agenda_item_folded_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -50,9 +53,10 @@
         android:padding="4dp">
 
         <TextView
+            android:id="@+id/agenda_item_folded_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:lines="3"
+            android:maxLines="3"
             android:text="@string/placeholder_lecture_title"
             android:textColor="@color/session_dark"
             android:textSize="16sp" />
@@ -69,6 +73,7 @@
             android:layout_margin="4dp"/>
 
         <TextView
+            android:id="@+id/agenda_item_folded_speaker_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/placeholder_speaker_name"
