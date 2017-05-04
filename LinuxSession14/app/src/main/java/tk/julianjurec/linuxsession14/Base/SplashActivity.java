@@ -8,6 +8,10 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.orm.SugarApp;
+import com.orm.SugarDb;
+import com.orm.Schema
+
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;

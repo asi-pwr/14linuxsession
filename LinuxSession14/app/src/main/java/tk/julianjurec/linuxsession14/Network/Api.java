@@ -22,7 +22,7 @@ public interface Api {
     @GET("speakers")
     Call<SpeakersResponse> getSpeakers();
 
-    @GET("last_update")
+    @GET("last_updated")
     Call<Long> getLastUpdate();
 
     @GET("app_data")
