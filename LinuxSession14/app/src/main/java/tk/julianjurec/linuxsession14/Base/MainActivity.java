@@ -25,9 +25,12 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindColor;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Retrofit;
 import tk.julianjurec.linuxsession14.About.AboutFragment;
 import tk.julianjurec.linuxsession14.Agenda.AgendaFragment;
 import tk.julianjurec.linuxsession14.MiddleParty.MiddlePartyFragment;
@@ -48,6 +51,9 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
     private FragmentManager fragmentManager;
     private int selectedIndex = 1;
 
+    @Inject
+    Retrofit retrofit;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         initToolbar();
         setupContextMenu();
         addFragment(AgendaFragment.newInstance(), false, R.id.container_layout);
+        ((MainApplication)getApplication()).getNetworkComponent().inject(this);
     }
 
     private void initToolbar() {
@@ -181,5 +188,9 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public Retrofit getRetrofit(){
+        return retrofit;
     }
 }

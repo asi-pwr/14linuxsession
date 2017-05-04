@@ -10,10 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import tk.julianjurec.linuxsession14.Model.Sponsor;
 import tk.julianjurec.linuxsession14.Sponsors.SponsorsContract;
 import tk.julianjurec.linuxsession14.Sponsors.SponsorsModule;
 import tk.julianjurec.linuxsession14.Sponsors.SponsorsPresenter;
@@ -61,7 +64,7 @@ public class SponsorsFragment extends Fragment implements SponsorsContract.View 
         View root = inflater.inflate(R.layout.fragment_sponsors, container, false);
         ButterKnife.bind(this, root);
         layoutManager = new LinearLayoutManager(getContext());
-        adapter = new SponsorsAdapter();
+//        adapter = new SponsorsAdapter();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
         return root;
@@ -80,5 +83,15 @@ public class SponsorsFragment extends Fragment implements SponsorsContract.View 
         }
     }
 
+    @Override
+    public void onSponsorsFetched(List<Sponsor> sponsors) {
+        adapter = new SponsorsAdapter(getContext(), sponsors);
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onSponsorsFetchFailure(Throwable throwable) {
+        Toast.makeText(getContext(), throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+    }
 }
 
