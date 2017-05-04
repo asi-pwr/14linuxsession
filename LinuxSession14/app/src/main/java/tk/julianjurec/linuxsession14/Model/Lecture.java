@@ -29,6 +29,7 @@ public class Lecture extends SugarRecord implements Serializable
     @SerializedName("title")
     @Expose
     private String title;
+
     public Lecture() {
     }
 

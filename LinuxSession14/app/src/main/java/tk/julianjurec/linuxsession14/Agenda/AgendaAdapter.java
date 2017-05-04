@@ -24,6 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import tk.julianjurec.linuxsession14.Model.Lecture;
+import tk.julianjurec.linuxsession14.Model.Speaker;
 import tk.julianjurec.linuxsession14.R;
 
 /**
@@ -48,6 +49,9 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
         this.context = context;
         this.lectures = lectures;
         this.presenter = presenter;
+        for (Speaker speaker : Speaker.listAll(Speaker.class)) {
+            System.out.println(speaker.getName() + " " + speaker.getId());
+        }
     }
 
     @Override
@@ -59,11 +63,17 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         Lecture lecture = lectures.get(position);
+        Speaker speaker = Speaker.findById(Speaker.class,lecture.getSpeakerId());
 
         holder.foldedDay.setText(days.get(lecture.getDay()));
         holder.foldedStart.setText(lecture.getStartTime());
         holder.foldedEnd.setText(lecture.getEndTime());
         holder.foldedTitle.setText(lecture.getTitle());
+        holder.foldedSpeakerName.setText(speaker.getName());
+        Picasso.with(context)
+                .load(speaker.getImgUrl())
+                .placeholder(R.drawable.unknown)
+                .into(holder.foldedImg);
 
         holder.start.setText(lecture.getStartTime());
         holder.end.setText(lecture.getEndTime());
@@ -77,14 +87,11 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
 
         holder.recyclerView = recyclerView;
         holder.position = position;
+        holder.speakerName.setText(speaker.getName());
         Picasso.with(context)
-                .load("https://julianjurec.interc.co.uk/wp-content/uploads/2017/02/rsz_1jurec.png")
+                .load(speaker.getImgUrl())
                 .placeholder(R.drawable.unknown)
                 .into(holder.img);
-        Picasso.with(context)
-                .load("https://julianjurec.interc.co.uk/wp-content/uploads/2017/02/rsz_1jurec.png")
-                .placeholder(R.drawable.unknown)
-                .into(holder.foldedImg);
 
         holder.descriptionScroll.setOnTouchListener((v, event) -> {
             int action = event.getAction();

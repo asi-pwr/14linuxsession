@@ -106,11 +106,11 @@ public class SplashActivity extends AppCompatActivity {
         for (Sponsor sponsor : appDataResponse.getSponsors()) {
             sponsor.save();
         }
-        for (Lecture lecture : appDataResponse.getLectures()) {
-            lecture.save();
-        }
         for (Speaker speaker : appDataResponse.getSpeakers()) {
             speaker.save();
+        }
+        for (Lecture lecture : appDataResponse.getLectures()) {
+            lecture.save();
         }
         prefs.edit().putLong(LAST_UPDATE, updated).apply();
         continueToApplication();

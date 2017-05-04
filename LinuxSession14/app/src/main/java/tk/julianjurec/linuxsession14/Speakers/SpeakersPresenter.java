@@ -30,17 +30,7 @@ public class SpeakersPresenter implements SpeakersContract.Presenter {
     }
 
     private void fetchSpeakers() {
-        api.getSpeakers().enqueue(new Callback<SpeakersResponse>() {
-            @Override
-            public void onResponse(Call<SpeakersResponse> call, Response<SpeakersResponse> response) {
-                view.onSpeakersFetched(response.body().getSpeakers());
-            }
-
-            @Override
-            public void onFailure(Call<SpeakersResponse> call, Throwable t) {
-                view.onSpeakersFetchFailed(t);
-            }
-        });
+        view.onSpeakersFetched(Speaker.listAll(Speaker.class));
     }
 
     @Override

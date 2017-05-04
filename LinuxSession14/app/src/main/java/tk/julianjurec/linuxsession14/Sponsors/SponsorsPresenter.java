@@ -37,17 +37,7 @@ public class SponsorsPresenter implements SponsorsContract.Presenter {
     }
 
     private void fetchSponsors() {
-        api.getSponsors().enqueue(new Callback<SponsorsResponse>() {
-            @Override
-            public void onResponse(Call<SponsorsResponse> call, Response<SponsorsResponse> response) {
-                view.onSponsorsFetched(response.body().getSponsors());
-            }
-
-            @Override
-            public void onFailure(Call<SponsorsResponse> call, Throwable t) {
-                view.onSponsorsFetchFailure(t);
-            }
-        });
+        view.onSponsorsFetched(Sponsor.listAll(Sponsor.class));
     }
 
 }

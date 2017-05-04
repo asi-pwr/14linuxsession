@@ -31,17 +31,7 @@ public class AgendaPresenter implements AgendaContract.Presenter {
     }
 
     private void fetchLectures() {
-        api.getLectures().enqueue(new Callback<LecturesResponse>() {
-            @Override
-            public void onResponse(Call<LecturesResponse> call, Response<LecturesResponse> response) {
-                view.onLecturesFetched(response.body().getLectures());
-            }
-
-            @Override
-            public void onFailure(Call<LecturesResponse> call, Throwable t) {
-                view.onLectureFetchFailed(t);
-            }
-        });
+        view.onLecturesFetched(Lecture.listAll(Lecture.class));
     }
 
     @Override
