@@ -46,6 +46,7 @@
                 android:layout_toRightOf="@id/sponsors_item_logo_card"
                 android:layout_centerVertical="true"/>
             <TextView
+                android:id="@+id/sponsors_item_category"
                 android:layout_below="@id/sponsors_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
