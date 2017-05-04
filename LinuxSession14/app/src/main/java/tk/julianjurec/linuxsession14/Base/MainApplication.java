@@ -2,6 +2,8 @@ package tk.julianjurec.linuxsession14.Base;
 
 import android.app.Application;
 
+import com.orm.SugarApp;
+
 import tk.julianjurec.linuxsession14.Network.ApplicationModule;
 import tk.julianjurec.linuxsession14.Network.DaggerNetworkComponent;
 import tk.julianjurec.linuxsession14.Network.NetworkComponent;
@@ -12,7 +14,7 @@ import tk.julianjurec.linuxsession14.Network.NetworkModule;
  * Created by sp0rk on 29.03.17.
  */
 
-public class MainApplication extends Application {
+public class MainApplication extends SugarApp {
 
     private NetworkComponent networkComponent;
 

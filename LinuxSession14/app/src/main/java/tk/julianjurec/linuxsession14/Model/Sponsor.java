@@ -2,15 +2,18 @@ package tk.julianjurec.linuxsession14.Model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.orm.SugarRecord;
 
-public class Sponsor {
+import java.io.Serializable;
+
+public class Sponsor extends SugarRecord<Sponsor> implements Serializable {
 
     @SerializedName("category")
     @Expose
     private String category;
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private Integer uId;
     @SerializedName("img_url")
     @Expose
     private String imgUrl;
@@ -25,10 +28,10 @@ public class Sponsor {
         //No args constructor for use in serialization
     }
 
-    public Sponsor(String category, Integer id, String imgUrl, String link, String name) {
+    public Sponsor(String category, Integer uId, String imgUrl, String link, String name) {
         super();
         this.category = category;
-        this.id = id;
+        this.uId = uId;
         this.imgUrl = imgUrl;
         this.link = link;
         this.name = name;
@@ -42,12 +45,12 @@ public class Sponsor {
         this.category = category;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getUId() {
+        return uId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setuId(Integer uId) {
+        this.uId = uId;
     }
 
     public String getImgUrl() {

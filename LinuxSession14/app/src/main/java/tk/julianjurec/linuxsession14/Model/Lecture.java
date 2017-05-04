@@ -3,8 +3,9 @@ package tk.julianjurec.linuxsession14.Model;
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.orm.SugarRecord;
 
-public class Lecture implements Serializable
+public class Lecture extends SugarRecord<Lecture> implements Serializable
 {
 
     @SerializedName("day")
@@ -18,7 +19,7 @@ public class Lecture implements Serializable
     private String endTime;
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private Integer uId;
     @SerializedName("speaker_id")
     @Expose
     private Integer speakerId;
@@ -31,12 +32,12 @@ public class Lecture implements Serializable
     public Lecture() {
     }
 
-    public Lecture(Integer day, String description, String endTime, Integer id, Integer speakerId, String startTime, String title) {
+    public Lecture(Integer day, String description, String endTime, Integer uId, Integer speakerId, String startTime, String title) {
         super();
         this.day = day;
         this.description = description;
         this.endTime = endTime;
-        this.id = id;
+        this.uId = uId;
         this.speakerId = speakerId;
         this.startTime = startTime;
         this.title = title;
@@ -66,12 +67,12 @@ public class Lecture implements Serializable
         this.endTime = endTime;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getUId() {
+        return uId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUId(Integer uId) {
+        this.uId = uId;
     }
 
     public Integer getSpeakerId() {

@@ -6,7 +6,7 @@
     android:layout_height="120dp">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/sponsors_item_card"
+        android:uID="@+uID/sponsors_item_card"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_height="match_parent">
 
             <android.support.v7.widget.CardView
-                android:id="@+id/sponsors_item_logo_card"
+                android:uID="@+uID/sponsors_item_logo_card"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_width="100dp"
@@ -29,7 +29,7 @@
                 android:layout_margin="10dp">
 
                 <ImageView
-                    android:id="@+id/sponsors_item_logo_img"
+                    android:uID="@+uID/sponsors_item_logo_img"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitCenter"
@@ -38,7 +38,7 @@
             </android.support.v7.widget.CardView>
 
             <TextView
-                android:id="@+id/sponsors_item_name"
+                android:uID="@+uID/sponsors_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/placeholder_sponsor_name"
@@ -46,18 +46,18 @@
                 android:maxLines="2"
                 android:textStyle="bold"
                 android:textColor="@color/session_light"
-                android:layout_toRightOf="@id/sponsors_item_logo_card"
+                android:layout_toRightOf="@uID/sponsors_item_logo_card"
                 android:layout_centerVertical="true"/>
             <TextView
-                android:id="@+id/sponsors_item_category"
-                android:layout_below="@id/sponsors_item_name"
+                android:uID="@+uID/sponsors_item_category"
+                android:layout_below="@uID/sponsors_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/main_sponsor"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:textColor="@color/session_gold"
-                android:layout_toRightOf="@id/sponsors_item_logo_card"/>
+                android:layout_toRightOf="@uID/sponsors_item_logo_card"/>
 
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/cell_title_view"
+    android:uID="@+uID/cell_title_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -15,7 +15,7 @@
         android:padding="4dp">
 
         <TextView
-            android:id="@+id/agenda_item_folded_start"
+            android:uID="@+uID/agenda_item_folded_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -25,7 +25,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/agenda_item_folded_day"
+            android:uID="@+uID/agenda_item_folded_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -34,7 +34,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/agenda_item_folded_end"
+            android:uID="@+uID/agenda_item_folded_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -53,7 +53,7 @@
         android:padding="4dp">
 
         <TextView
-            android:id="@+id/agenda_item_folded_title"
+            android:uID="@+uID/agenda_item_folded_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="3"
@@ -64,7 +64,7 @@
         <include layout="@layout/divider" />
 
         <ImageView
-            android:id="@+id/agenda_item_folded_img"
+            android:uID="@+uID/agenda_item_folded_img"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/unknown"
@@ -73,7 +73,7 @@
             android:layout_margin="4dp"/>
 
         <TextView
-            android:id="@+id/agenda_item_folded_speaker_name"
+            android:uID="@+uID/agenda_item_folded_speaker_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/placeholder_speaker_name"

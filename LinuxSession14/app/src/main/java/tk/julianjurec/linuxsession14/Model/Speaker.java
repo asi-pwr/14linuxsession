@@ -4,8 +4,9 @@ package tk.julianjurec.linuxsession14.Model;
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.orm.SugarRecord;
 
-public class Speaker implements Serializable
+public class Speaker extends SugarRecord<Speaker> implements Serializable
 {
 
     @SerializedName("description")
@@ -13,7 +14,7 @@ public class Speaker implements Serializable
     private String description;
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private Integer uId;
     @SerializedName("img_url")
     @Expose
     private String imgUrl;
@@ -24,10 +25,10 @@ public class Speaker implements Serializable
     public Speaker() {
     }
 
-    public Speaker(String description, Integer id, String imgUrl, String name) {
+    public Speaker(String description, Integer uId, String imgUrl, String name) {
         super();
         this.description = description;
-        this.id = id;
+        this.uId = uId;
         this.imgUrl = imgUrl;
         this.name = name;
     }
@@ -40,12 +41,12 @@ public class Speaker implements Serializable
         this.description = description;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getUId() {
+        return uId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUID(Integer uId) {
+        this.uId = uId;
     }
 
     public String getImgUrl() {
