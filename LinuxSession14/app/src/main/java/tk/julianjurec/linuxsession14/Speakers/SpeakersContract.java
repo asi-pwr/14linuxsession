@@ -1,8 +1,11 @@
 package tk.julianjurec.linuxsession14.Speakers;
 
+import java.util.List;
+
 import tk.julianjurec.linuxsession14.Agenda.AgendaPresenter;
 import tk.julianjurec.linuxsession14.Base.BaseFragment;
 import tk.julianjurec.linuxsession14.Base.BasePresenter;
+import tk.julianjurec.linuxsession14.Model.Speaker;
 
 /**
  * Created by sp0rk on 22.03.17.
@@ -10,9 +13,12 @@ import tk.julianjurec.linuxsession14.Base.BasePresenter;
 
 public interface SpeakersContract {
     interface View extends BaseFragment<SpeakersPresenter> {
+        void onSpeakersFetchFailed(Throwable throwable);
+
+        void onSpeakersFetched(List<Speaker> speakers);
     }
 
     interface Presenter extends BasePresenter {
-        void showSpeakerDialog();
+        void showSpeakerDialog(Speaker speaker);
     }
 }

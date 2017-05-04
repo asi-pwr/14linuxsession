@@ -28,18 +28,16 @@ public class SponsorsPresenter implements SponsorsContract.Presenter {
     @Inject
     public SponsorsPresenter(SponsorsFragment view){
         this.view = view;
+        api = ((MainActivity) view.getActivity()).getRetrofit().create(Api.class);
     }
 
     @Override
     public void start() {
-        final String BASE_URL = "http://tramwaj.asi.wroclaw.pl:6937/";
-        api = ((MainActivity) view.getActivity()).getRetrofit().create(Api.class);
         fetchSponsors();
     }
 
     private void fetchSponsors() {
-        Call<SponsorsResponse> call = api.getSponsors();
-        call.enqueue(new Callback<SponsorsResponse>() {
+        api.getSponsors().enqueue(new Callback<SponsorsResponse>() {
             @Override
             public void onResponse(Call<SponsorsResponse> call, Response<SponsorsResponse> response) {
                 view.onSponsorsFetched(response.body().getSponsors());

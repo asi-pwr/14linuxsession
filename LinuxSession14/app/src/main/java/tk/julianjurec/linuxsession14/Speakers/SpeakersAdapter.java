@@ -7,12 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+import tk.julianjurec.linuxsession14.Model.Speaker;
 import tk.julianjurec.linuxsession14.R;
 
 /**
@@ -20,12 +23,15 @@ import tk.julianjurec.linuxsession14.R;
  */
 
 class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Holder> {
+    private List<Speaker> speakers;
     private Context context;
     private SpeakersPresenter presenter;
 
-    SpeakersAdapter(Context context, SpeakersPresenter presenter) {
+
+    SpeakersAdapter(Context context, SpeakersPresenter presenter, List<Speaker> speakers) {
         this.context = context;
         this.presenter = presenter;
+        this.speakers = speakers;
     }
 
     @Override
@@ -36,22 +42,31 @@ class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        Picasso.with(context)
-                .load("https://julianjurec.interc.co.uk/wp-content/uploads/2017/02/rsz_1jurec.png")
-                .placeholder(R.drawable.unknown)
-                .into(holder.picture);
-        holder.card.setOnClickListener(v -> { presenter.showSpeakerDialog(); });
+        Speaker speaker = speakers.get(position);
+        holder.name.setText(speaker.getName());
+        if (speaker.getImgUrl() != null && !speaker.getImgUrl().isEmpty())
+            Picasso.with(context)
+                    .load(speaker.getImgUrl())
+                    .placeholder(R.drawable.unknown)
+                    .into(holder.img);
+        holder.card.setOnClickListener(v -> {
+            presenter.showSpeakerDialog(speaker);
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 30;
+        return speakers.size();
     }
 
     class Holder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.speaker_item_picture) ImageView picture;
-        @BindView(R.id.speaker_item_card) CardView card;
+        @BindView(R.id.speaker_item_img)
+        ImageView img;
+        @BindView(R.id.speaker_item_name)
+        TextView name;
+        @BindView(R.id.speaker_item_card)
+        CardView card;
 
         Holder(View itemView) {
             super(itemView);

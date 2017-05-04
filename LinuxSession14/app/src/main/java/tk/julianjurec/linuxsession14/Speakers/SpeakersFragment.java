@@ -13,11 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindColor;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import tk.julianjurec.linuxsession14.Model.Speaker;
 import tk.julianjurec.linuxsession14.Speakers.SpeakersContract;
 import tk.julianjurec.linuxsession14.Speakers.SpeakersModule;
 import tk.julianjurec.linuxsession14.Speakers.SpeakersPresenter;
@@ -67,11 +70,6 @@ public class SpeakersFragment extends Fragment implements SpeakersContract.View 
         ButterKnife.bind(this, root);
         gridLayoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
-        adapter = new SpeakersAdapter(getContext(), presenter);
-        recyclerView.setAdapter(adapter);
-        ActivityCompat.requestPermissions(getActivity(),
-                new String[]{Manifest.permission.INTERNET},
-                1);
         return root;
     }
 
@@ -86,5 +84,16 @@ public class SpeakersFragment extends Fragment implements SpeakersContract.View 
         }catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onSpeakersFetchFailed(Throwable throwable) {
+        Toast.makeText(getContext(), throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onSpeakersFetched(List<Speaker> speakers) {
+        adapter = new SpeakersAdapter(getContext(), presenter, speakers);
+        recyclerView.setAdapter(adapter);
     }
 }
