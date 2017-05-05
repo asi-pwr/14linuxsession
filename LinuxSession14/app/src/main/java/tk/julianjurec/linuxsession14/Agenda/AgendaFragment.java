@@ -10,12 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 import tk.julianjurec.linuxsession14.Model.Lecture;
 import tk.julianjurec.linuxsession14.R;
 
@@ -33,7 +35,7 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
 
 
     private LinearLayoutManager linearLayoutManager;
-    private AgendaAdapter adapter;
+    private SectionedRecyclerViewAdapter adapter;
 
 
     public AgendaFragment() {
@@ -85,7 +87,18 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
 
     @Override
     public void onLecturesFetched(List<Lecture> lectures) {
-        adapter = new AgendaAdapter(recyclerView, getContext(), lectures, presenter);
+        adapter = new SectionedRecyclerViewAdapter();
+        ArrayList<Lecture> day1 = new ArrayList<>();
+        ArrayList<Lecture> day2 = new ArrayList<>();
+
+        for (Lecture lecture : lectures) {
+            if (lecture.getDay()==1) {
+                day1.add(lecture);
+            } else
+                day2.add(lecture);
+        }
+        adapter.addSection(new AgendaSection(recyclerView, getContext(), day1, "Sobota", presenter));
+        adapter.addSection(new AgendaSection(recyclerView, getContext(), day2, "Niedziela", presenter));
         recyclerView.setAdapter(adapter);
     }
 }

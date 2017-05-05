@@ -23,6 +23,8 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
+import retrofit2.http.HEAD;
 import tk.julianjurec.linuxsession14.Model.Lecture;
 import tk.julianjurec.linuxsession14.Model.Speaker;
 import tk.julianjurec.linuxsession14.R;
@@ -31,7 +33,7 @@ import tk.julianjurec.linuxsession14.R;
  * Created by sp0rk on 30.04.17.
  */
 
-class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
+class AgendaSection extends StatelessSection {
 
     private static final Map<Integer, String> days;
 
@@ -41,27 +43,48 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
         days.put(2, "Niedziela");
     }
 
+    private String header;
+
     private RecyclerView recyclerView;
     private Context context;
     private List<Lecture> lectures;
     private AgendaPresenter presenter;
 
-    AgendaAdapter(RecyclerView recyclerView, Context context, List<Lecture> lectures, AgendaPresenter presenter) {
+    AgendaSection(RecyclerView recyclerView, Context context, List<Lecture> lectures, String header, AgendaPresenter presenter) {
+        super(R.layout.header_agenda, R.layout.item_agenda);
         this.recyclerView = recyclerView;
         this.context = context;
         this.lectures = lectures;
         this.presenter = presenter;
+        setHasHeader(true);
+        this.header=header;
     }
 
     @Override
-    public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View inflatedView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_agenda, parent, false);
-        return new Holder(inflatedView);
+    public RecyclerView.ViewHolder getHeaderViewHolder(View view) {
+        return new HeaderHolder(view);
+    }
+
+    @Override
+    public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder) {
+        ((HeaderHolder)holder).title.setText(header);
     }
 
 
     @Override
-    public void onBindViewHolder(Holder holder, int position) {
+    public int getContentItemsTotal() {
+        return lectures.size();
+    }
+
+    @Override
+    public RecyclerView.ViewHolder getItemViewHolder(View view) {
+        return new Holder(view);
+    }
+
+    @Override
+    public void onBindItemViewHolder(RecyclerView.ViewHolder h, int position) {
+        Holder holder = (Holder) h;
+
         final Lecture lecture = lectures.get(position);
         final Speaker speaker = Speaker.findById(Speaker.class, lecture.getSpeakerId());
 
@@ -113,15 +136,14 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
             return false;
         });
     }
+    static class HeaderHolder extends RecyclerView.ViewHolder {
 
-    @Override
-    public int getItemCount() {
-        return lectures.size();
-    }
+        @BindView(R.id.agenda_header_title) TextView title;
 
-    @Override
-    public int getItemViewType(int position) {
-        return 0;
+        public HeaderHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
     }
 
     static class Holder extends RecyclerView.ViewHolder {

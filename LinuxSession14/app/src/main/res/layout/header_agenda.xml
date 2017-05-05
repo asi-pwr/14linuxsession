@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:layout_marginTop="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/session_dark">
+
+    <TextView
+        android:id="@+id/agenda_header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Sobota"
+        android:textColor="@color/session_gold"
+        android:fontFamily="sans-serif-thin"
+        android:textSize="32sp"/>
+
+</FrameLayout>

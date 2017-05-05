@@ -49,10 +49,12 @@ dependencies {
     compile 'com.yarolegovich:lovely-dialog:1.0.7'
     compile 'com.github.jaouan:revealator:1.2.1'
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.mikhaellopez:circularfillableloaders:1.2.0'
 //      UTILITY
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.google.dagger:dagger:2.5'
+    compile 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:1.0.5'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
