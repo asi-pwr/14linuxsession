@@ -49,17 +49,56 @@ public class AgendaPresenter implements AgendaContract.Presenter {
 
     @Override
     public boolean share(Lecture lecture) {
-        Intent intent = new Intent(android.content.Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        String shareBody = "Jestem na Sesji Linuksowej!";
-        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, lecture.getTitle());
-        intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        String[] items = new String[]{"LinkedIn", "Twitter", "Inne"};
+        new LovelyChoiceDialog(view.getContext())
+                .setTopColorRes(session_light)
+                .setIcon(R.drawable.share)
+                .setIconTintColor(white)
+                .setTopTitle(R.string.lecture_share)
+                .setTopTitleColor(white)
+                .setItems(items, (position, item) -> {
+                    shareChosen(item, lecture.getTitle());
+                })
+                .setMessage(R.string.lecture_share_msg)
+                .setCancelable(true)
+                .show();
+        return false;
+    }
+
+    private void shareChosen(String item, String title){
+        Intent intent = prepareIntent(item, title);
         if (intent.resolveActivity(view.getContext().getPackageManager()) != null) {
             view.getContext().startActivity(intent);
         } else {
             Toast.makeText(view.getContext(), R.string.error_no_share_app, Toast.LENGTH_SHORT).show();
         }
-        return false;
+    }
+
+    private Intent prepareIntent(String choice, String title){
+        Intent intent;
+        switch (choice){
+            case "LinkedIn":
+                String url = "http://www.twitter.com/intent/tweet?url=http://14.sesja.linuksowa.pl/pl&text=" + title;
+                intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                break;
+            case "Twitter":
+                intent = new Intent(Intent.ACTION_SEND);
+                intent.setClassName("com.linkedin.android",
+                        "com.linkedin.android.home.UpdateStatusActivity");
+                intent.setType("text/*");
+                intent.putExtra(Intent.EXTRA_TEXT, "Jestem na Sesji Linuksowej!\nZapraszam na prelekcję: " + title);
+                break;
+            case "Inne":
+            default:
+                intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                String shareBody = "Jestem na Sesji Linuksowej!";
+                intent.putExtra(Intent.EXTRA_SUBJECT, shareBody);
+                intent.putExtra(Intent.EXTRA_TEXT, "Zapraszam na prelekcję: " + title);
+                break;
+        }
+        return intent;
     }
 
 }
