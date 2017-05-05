@@ -2,6 +2,7 @@ package tk.julianjurec.linuxsession14.Agenda;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ import tk.julianjurec.linuxsession14.Model.Lecture;
 import tk.julianjurec.linuxsession14.Network.Api;
 import tk.julianjurec.linuxsession14.R;
 
+import static android.R.id.text1;
 import static tk.julianjurec.linuxsession14.R.color.session_light;
 import static tk.julianjurec.linuxsession14.R.color.white;
 
@@ -50,6 +52,7 @@ public class AgendaPresenter implements AgendaContract.Presenter {
     @Override
     public boolean share(Lecture lecture) {
         String[] items = new String[]{"LinkedIn", "Twitter", "Inne"};
+        int white = view.getContext().getResources().getColor(R.color.white);
         new LovelyChoiceDialog(view.getContext())
                 .setTopColorRes(session_light)
                 .setIcon(R.drawable.share)
@@ -77,17 +80,28 @@ public class AgendaPresenter implements AgendaContract.Presenter {
     private Intent prepareIntent(String choice, String title){
         Intent intent;
         switch (choice){
-            case "LinkedIn":
+            case "Twitter":
                 String url = "http://www.twitter.com/intent/tweet?url=http://14.sesja.linuksowa.pl/pl&text=" + title;
                 intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 break;
-            case "Twitter":
+            case "LinkedIn":
                 intent = new Intent(Intent.ACTION_SEND);
-                intent.setClassName("com.linkedin.android",
-                        "com.linkedin.android.home.UpdateStatusActivity");
-                intent.setType("text/*");
+                intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_TEXT, "Jestem na Sesji Linuksowej!\nZapraszam na prelekcję: " + title);
+
+                boolean linkedinAppFound = false;
+                List<ResolveInfo> matches2 = view.getContext().getPackageManager()
+                        .queryIntentActivities(intent, 0);
+
+                for (ResolveInfo info : matches2) {
+                    if (info.activityInfo.packageName.toLowerCase().startsWith(
+                            "com.linkedin")) {
+                        intent.setPackage(info.activityInfo.packageName);
+                        linkedinAppFound = true;
+                        break;
+                    }
+                }
                 break;
             case "Inne":
             default:

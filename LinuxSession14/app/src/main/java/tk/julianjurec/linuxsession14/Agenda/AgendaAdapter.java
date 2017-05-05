@@ -84,8 +84,10 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
         holder.title.setText(lecture.getTitle());
         holder.description.setText(lecture.getDescription());
         holder.share.setOnTouchListener((v, e) -> {
-            holder.share.setChecked(false);
-            return presenter.share(lecture);
+            new Handler().postDelayed(()->{
+                holder.share.setChecked(false);
+                presenter.share(lecture);}, 750);
+            return false;
         });
 
         holder.recyclerView = recyclerView;
