@@ -150,11 +150,14 @@ public class SplashActivity extends AppCompatActivity {
 
         new Thread(() -> {
             //drop db
-            SugarContext.terminate();
-            SchemaGenerator schemaGenerator = new SchemaGenerator(getApplicationContext());
-            schemaGenerator.deleteTables(new SugarDb(getApplicationContext()).getDB());
-            SugarContext.init(getApplicationContext());
-            schemaGenerator.createDatabase(new SugarDb(getApplicationContext()).getDB());
+            try {
+                new Sponsor().save();
+                new Speaker().save();
+                new Lecture().save();
+                Sponsor.deleteAll(Sponsor.class);
+                Speaker.deleteAll(Speaker.class);
+                Lecture.deleteAll(Lecture.class);
+            } catch (Exception e) {e.printStackTrace();}
             //repopulate
             for (Sponsor sponsor : appDataResponse.getSponsors()) {
                 sponsor.save();
