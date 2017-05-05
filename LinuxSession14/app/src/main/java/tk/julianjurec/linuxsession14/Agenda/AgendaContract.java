@@ -20,10 +20,7 @@ public interface AgendaContract {
 
     interface Presenter extends BasePresenter {
 
-        boolean toggleFavourite(Lecture lecture);
-
         boolean share(Lecture lecture);
 
-        Presenter onlyFavourites();
     }
 }

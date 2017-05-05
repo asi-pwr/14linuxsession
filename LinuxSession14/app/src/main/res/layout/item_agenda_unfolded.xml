@@ -206,7 +206,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/agenda_item_label_actions"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="1">
 
                 <com.varunest.sparkbutton.SparkButton
                     android:id="@+id/agenda_item_btn_share"
@@ -218,18 +218,6 @@
                     app:sparkbutton_iconSize="24dp"
                     app:sparkbutton_primaryColor="@color/session_gold"
                     app:sparkbutton_secondaryColor="@color/session_light" />
-
-                <com.varunest.sparkbutton.SparkButton
-                    android:id="@+id/agenda_item_btn_fav"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    app:sparkbutton_activeImage="@drawable/heart"
-                    app:sparkbutton_inActiveImage="@drawable/heart_outline"
-                    app:sparkbutton_iconSize="24dp"
-                    app:sparkbutton_primaryColor="@color/session_gold"
-                    app:sparkbutton_secondaryColor="@color/session_light" />
-
 
             </LinearLayout>
 

@@ -3,6 +3,7 @@ package tk.julianjurec.linuxsession14.Agenda;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -17,6 +18,7 @@ import com.squareup.picasso.Picasso;
 import com.varunest.sparkbutton.SparkButton;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -79,8 +81,6 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
         holder.end.setText(lecture.getEndTime());
         holder.title.setText(lecture.getTitle());
         holder.description.setText(lecture.getDescription());
-        holder.fav.setChecked(lecture.getFav());
-        holder.fav.setOnTouchListener((v, e) -> presenter.toggleFavourite(lecture));
         holder.share.setOnTouchListener((v, e) -> {
             holder.share.setChecked(false);
             return presenter.share(lecture);
@@ -120,8 +120,6 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
         @BindView(R.id.agenda_folding_cell)
         FoldingCell cell;
 
-        @BindView(R.id.agenda_item_btn_fav)
-        SparkButton fav;
         @BindView(R.id.agenda_item_btn_share)
         SparkButton share;
         @BindView(R.id.agenda_item_description)
