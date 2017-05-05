@@ -2,23 +2,23 @@ package tk.julianjurec.linuxsession14.Base;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.mikhaellopez.circularfillableloaders.CircularFillableLoaders;
-import com.orm.SchemaGenerator;
-import com.orm.SugarContext;
-import com.orm.SugarDb;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 import javax.inject.Inject;
 
@@ -72,7 +72,12 @@ public class SplashActivity extends AppCompatActivity {
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.session_dark));
 
         startProgress();
-        fetchLastUpdate();
+        new Thread(()->{
+            if (isNetworkAvailable(this) && isInternetAvailable())
+                runOnUiThread(()->fetchLastUpdate());
+            else runOnUiThread(()->stopProgress());
+        }).start();
+
     }
 
     private void startProgress() {
@@ -127,6 +132,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Float> call, Throwable t) {
                 t.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Brak dostępu do internetu. Dane mogą być nieaktualne.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -142,6 +148,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<AppDataResponse> call, Throwable t) {
                 t.printStackTrace();
+                Toast.makeText(getApplicationContext(), "Brak dostępu do internetu. Dane mogą być nieaktualne.", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -157,21 +164,21 @@ public class SplashActivity extends AppCompatActivity {
                 Sponsor.deleteAll(Sponsor.class);
                 Speaker.deleteAll(Speaker.class);
                 Lecture.deleteAll(Lecture.class);
-            } catch (Exception e) {e.printStackTrace();}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             //repopulate
             for (Sponsor sponsor : appDataResponse.getSponsors()) {
                 sponsor.save();
             }
             for (Speaker speaker : appDataResponse.getSpeakers()) {
                 speaker.save();
-                System.out.println(speaker.getName() + " " + speaker.getId());
             }
             for (Lecture lecture : appDataResponse.getLectures()) {
                 lecture.save();
-                System.out.println(lecture.getTitle() + " " + lecture.getSpeakerId());
             }
             prefs.edit().putLong(LAST_UPDATE, updated).apply();
-            runOnUiThread(()->stopProgress());
+            runOnUiThread(() -> stopProgress());
         }).start();
     }
 
@@ -179,4 +186,20 @@ public class SplashActivity extends AppCompatActivity {
         startActivity(new Intent(this, MainActivity.class));
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
+
+    public boolean isNetworkAvailable(Context context) {
+        final ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
+    }
+
+    public boolean isInternetAvailable() {
+        try {
+            final InetAddress address = InetAddress.getByName("www.google.com");
+            return !address.equals("");
+        } catch (UnknownHostException e) {
+            // Log error
+        }
+        return false;
+    }
+
 }

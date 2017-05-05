@@ -193,7 +193,7 @@ class AgendaSection extends StatelessSection {
         void toggleFold() {
             if (!cell.isUnfolded())
                 new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                    recyclerView.smoothScrollToPosition(position);
+                    recyclerView.getLayoutManager().smoothScrollToPosition(recyclerView,null,getAdapterPosition());
                 }, 750);
             cell.toggle(false);
         }

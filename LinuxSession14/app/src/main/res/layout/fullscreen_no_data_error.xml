@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:textColor="@color/text_150"
+        android:text="Brak danych"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_margin="32dp"
+        android:textAlignment="center"
+        android:textColor="@color/text_100"
+        android:text="Niestety, nie ma żadnych informacji do wyświetlenia. Aby w pełni korzystać z aplikacji, włącz dostęp do internetu i zrestartuj aplikację.\n\nPobranie danych jest wymagane tylko jednorazowo. Potem będziesz już mógł korzystać z aplikacji w trybie offline."/>
+
+</LinearLayout>

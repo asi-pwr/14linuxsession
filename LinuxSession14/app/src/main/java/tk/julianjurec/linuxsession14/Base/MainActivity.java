@@ -34,6 +34,7 @@ import retrofit2.Retrofit;
 import tk.julianjurec.linuxsession14.About.AboutFragment;
 import tk.julianjurec.linuxsession14.Agenda.AgendaFragment;
 import tk.julianjurec.linuxsession14.MiddleParty.MiddlePartyFragment;
+import tk.julianjurec.linuxsession14.Model.Speaker;
 import tk.julianjurec.linuxsession14.R;
 import tk.julianjurec.linuxsession14.Speakers.SpeakersFragment;
 import tk.julianjurec.linuxsession14.Sponsors.SponsorsFragment;
@@ -57,6 +58,10 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Speaker.listAll(Speaker.class).isEmpty()) {
+            setContentView(R.layout.fullscreen_no_data_error);
+            return;
+        }
         setContentView(R.layout.activity_main);
         fragmentManager = getSupportFragmentManager();
         ButterKnife.bind(this);
