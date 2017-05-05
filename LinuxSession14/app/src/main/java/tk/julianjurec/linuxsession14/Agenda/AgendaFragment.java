@@ -40,14 +40,16 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
     private LinearLayoutManager linearLayoutManager;
     private AgendaAdapter adapter;
 
+    private boolean onlyFavourites;
+
     public AgendaFragment() {
         //required empty public constructor
     }
 
-    public static AgendaFragment newInstance() {
+    public static AgendaFragment newInstance(boolean onlyFavourites) {
 
         Bundle args = new Bundle();
-
+        args.putBoolean("favourites", onlyFavourites);
         AgendaFragment fragment = new AgendaFragment();
         fragment.setArguments(args);
         return fragment;
@@ -57,6 +59,7 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DaggerAgendaComponent.builder().agendaModule(new AgendaModule(this)).build().inject(this);
+        onlyFavourites = getArguments().getBoolean("favourites");
     }
 
     @Nullable
@@ -76,7 +79,10 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
     public void onResume() {
         super.onResume();
         try {
-            presenter.start();
+            if (onlyFavourites)
+                presenter.onlyFavourites().start();
+            else
+                presenter.start();
         }catch (Exception e) {
             e.printStackTrace();
         }

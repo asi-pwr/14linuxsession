@@ -23,5 +23,7 @@ public interface AgendaContract {
         boolean toggleFavourite(Lecture lecture);
 
         boolean share(Lecture lecture);
+
+        Presenter onlyFavourites();
     }
 }

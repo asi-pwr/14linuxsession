@@ -51,9 +51,6 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
         this.context = context;
         this.lectures = lectures;
         this.presenter = presenter;
-        for (Speaker speaker : Speaker.listAll(Speaker.class)) {
-            System.out.println(speaker.getName() + " " + speaker.getId());
-        }
     }
 
     @Override
@@ -64,8 +61,8 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        Lecture lecture = lectures.get(position);
-        Speaker speaker = Speaker.findById(Speaker.class, lecture.getSpeakerId());
+        final Lecture lecture = lectures.get(position);
+        final Speaker speaker = Speaker.findById(Speaker.class, lecture.getSpeakerId());
 
         holder.foldedDay.setText(days.get(lecture.getDay()));
         holder.foldedStart.setText(lecture.getStartTime());
@@ -82,6 +79,7 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
         holder.end.setText(lecture.getEndTime());
         holder.title.setText(lecture.getTitle());
         holder.description.setText(lecture.getDescription());
+        holder.fav.setChecked(lecture.getFav());
         holder.fav.setOnTouchListener((v, e) -> presenter.toggleFavourite(lecture));
         holder.share.setOnTouchListener((v, e) -> {
             holder.share.setChecked(false);

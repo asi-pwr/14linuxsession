@@ -1,14 +1,12 @@
 package tk.julianjurec.linuxsession14.Agenda;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import tk.julianjurec.linuxsession14.Base.BasePresenter;
 import tk.julianjurec.linuxsession14.Base.MainActivity;
 import tk.julianjurec.linuxsession14.Model.Lecture;
-import tk.julianjurec.linuxsession14.Model.LecturesResponse;
 import tk.julianjurec.linuxsession14.Network.Api;
 
 /**
@@ -18,9 +16,10 @@ import tk.julianjurec.linuxsession14.Network.Api;
 public class AgendaPresenter implements AgendaContract.Presenter {
     private Api api;
     private AgendaFragment view;
+    private boolean onlyFavourites = false;
 
     @Inject
-    public AgendaPresenter(AgendaFragment view){
+    public AgendaPresenter(AgendaFragment view) {
         this.view = view;
         api = ((MainActivity) view.getActivity()).getRetrofit().create(Api.class);
     }
@@ -31,16 +30,34 @@ public class AgendaPresenter implements AgendaContract.Presenter {
     }
 
     private void fetchLectures() {
-        view.onLecturesFetched(Lecture.listAll(Lecture.class));
+        List<Lecture> lectures = Lecture.listAll(Lecture.class);
+        List<Lecture> favs = new ArrayList<>();
+        if (onlyFavourites) {
+            for (Lecture lecture : lectures) {
+                if (lecture.getFav())
+                    favs.add(lecture);
+            }
+            view.onLecturesFetched(favs);
+        } else
+            view.onLecturesFetched(lectures);
+
     }
 
     @Override
     public boolean toggleFavourite(Lecture lecture) {
+        lecture.setFav(!lecture.getFav());
+        lecture.save();
         return false;
     }
 
     @Override
     public boolean share(Lecture lecture) {
         return false;
+    }
+
+    @Override
+    public AgendaContract.Presenter onlyFavourites() {
+        onlyFavourites = true;
+        return this;
     }
 }

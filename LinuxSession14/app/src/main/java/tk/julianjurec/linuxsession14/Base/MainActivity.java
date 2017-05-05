@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         ButterKnife.bind(this);
         initToolbar();
         setupContextMenu();
-        addFragment(AgendaFragment.newInstance(), false, R.id.container_layout);
+        addFragment(AgendaFragment.newInstance(false), false, R.id.container_layout);
         ((MainApplication)getApplication()).getNetworkComponent().inject(this);
     }
 
@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         close.setResource(R.drawable.close);
         MenuObject agenda = new MenuObject(getString(R.string.screen_agenda));
         agenda.setResource(R.drawable.agenda);
+        MenuObject favs = new MenuObject(getString(R.string.favourites));
+        favs.setResource(R.drawable.heart_white);
         MenuObject speakers = new MenuObject(getString(R.string.screen_speakers));
         speakers.setResource(R.drawable.speaker);
         MenuObject middleParty = new MenuObject(getString(R.string.screen_middle_party));
@@ -95,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         List<MenuObject> menuObjects = new ArrayList<>();
         menuObjects.add(close);
         menuObjects.add(agenda);
+        menuObjects.add(favs);
         menuObjects.add(speakers);
         menuObjects.add(middleParty);
         menuObjects.add(about);
@@ -119,19 +122,22 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         if (position != selectedIndex)
             switch (position) {
                 case 1: //Agenda
-                    switchTo(AgendaFragment.newInstance(), getString(R.string.screen_agenda), 1);
+                    switchTo(AgendaFragment.newInstance(false), getString(R.string.screen_agenda), 1);
                     break;
-                case 2: //Speakers
-                    switchTo(SpeakersFragment.newInstance(), getString(R.string.screen_speakers), 2);
+                case 2: //Favourites
+                    switchTo(AgendaFragment.newInstance(true), getString(R.string.favourites), 2);
                     break;
-                case 3: //MiddleParty
-                    switchTo(MiddlePartyFragment.newInstance(), getString(R.string.screen_middle_party), 3);
+                case 3: //Speakers
+                    switchTo(SpeakersFragment.newInstance(), getString(R.string.screen_speakers), 3);
                     break;
-                case 4: //About
-                    switchTo(AboutFragment.newInstance(), getString(R.string.screen_about), 4);
+                case 4: //MiddleParty
+                    switchTo(MiddlePartyFragment.newInstance(), getString(R.string.screen_middle_party), 4);
                     break;
-                case 5: //Sponsors
-                    switchTo(SponsorsFragment.newInstance(), getString(R.string.screen_sponsors), 5);
+                case 5: //About
+                    switchTo(AboutFragment.newInstance(), getString(R.string.screen_about), 5);
+                    break;
+                case 6: //Sponsors
+                    switchTo(SponsorsFragment.newInstance(), getString(R.string.screen_sponsors), 6);
                     break;
             }
         selectedIndex = position;
