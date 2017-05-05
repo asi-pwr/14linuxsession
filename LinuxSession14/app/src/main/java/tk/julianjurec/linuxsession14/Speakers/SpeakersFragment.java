@@ -70,6 +70,7 @@ public class SpeakersFragment extends Fragment implements SpeakersContract.View 
         ButterKnife.bind(this, root);
         gridLayoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(0, 0);
         return root;
     }
 

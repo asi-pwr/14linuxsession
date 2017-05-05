@@ -66,6 +66,11 @@ class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.Holder> {
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return 0;
+    }
+
+    @Override
     public int getItemCount() {
         return sponsors.size();
     }

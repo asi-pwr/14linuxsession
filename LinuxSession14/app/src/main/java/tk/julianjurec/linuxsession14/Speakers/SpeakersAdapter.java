@@ -45,18 +45,26 @@ class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Holder> {
     public void onBindViewHolder(Holder holder, int position) {
         Speaker speaker = speakers.get(position);
         List<Lecture> lectures = Lecture.find(Lecture.class, "speaker_id = ?", String.valueOf(speaker.getId()));
+        Lecture lecture = null;
         if (!lectures.isEmpty()) {
-            Lecture lecture = lectures.get(0);
-            holder.name.setText(speaker.getName());
-            if (speaker.getImgUrl() != null && !speaker.getImgUrl().isEmpty())
-                Picasso.with(context)
-                        .load(speaker.getImgUrl())
-                        .placeholder(R.drawable.unknown)
-                        .into(holder.img);
-            holder.card.setOnClickListener(v -> {
-                presenter.showSpeakerDialog(speaker, lecture);
-            });
+            lecture = lectures.get(0);
         }
+        holder.name.setText(speaker.getName());
+        if (speaker.getImgUrl() != null && !speaker.getImgUrl().isEmpty())
+            Picasso.with(context)
+                    .load(speaker.getImgUrl())
+                    .placeholder(R.drawable.unknown)
+                    .into(holder.img);
+        final Lecture speakersLecture = lecture;
+        holder.card.setOnClickListener(v -> {
+            presenter.showSpeakerDialog(speaker, speakersLecture);
+        });
+
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return 0;
     }
 
     @Override

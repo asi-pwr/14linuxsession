@@ -65,7 +65,8 @@ public class SponsorsFragment extends Fragment implements SponsorsContract.View 
         ButterKnife.bind(this, root);
         layoutManager = new LinearLayoutManager(getContext());
 //        adapter = new SponsorsAdapter();
-        recyclerView.setAdapter(adapter);
+//        recyclerView.setAdapter(adapter);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(0, 0);
         recyclerView.setLayoutManager(layoutManager);
         return root;
     }

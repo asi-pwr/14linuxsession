@@ -3,6 +3,7 @@ package tk.julianjurec.linuxsession14.Speakers;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import butterknife.OnClick;
 import tk.julianjurec.linuxsession14.Model.Lecture;
 import tk.julianjurec.linuxsession14.Model.Speaker;
 import tk.julianjurec.linuxsession14.R;
+
+import static android.view.View.GONE;
 
 /**
  * Created by sp0rk on 01.05.17.
@@ -35,6 +38,8 @@ public class SpeakersDialogFragment extends DialogFragment {
     TextView lectureName;
     @BindView(R.id.dialog_speaker_lecture_time)
     TextView lectureTime;
+    @BindView(R.id.dialog_speaker_lecture_card)
+    CardView lectureCard;
 
     public static SpeakersDialogFragment newInstance(Speaker speaker, Lecture lecture) {
         Bundle args = new Bundle();
@@ -73,8 +78,13 @@ public class SpeakersDialogFragment extends DialogFragment {
                     .into(img);
         name.setText(speaker.getName());
         description.setText(speaker.getDescription());
-        lectureName.setText(lecture.getTitle());
-        lectureTime.setText((lecture.getDay()==1?"Sobota ":"Niedziela ")+lecture.getStartTime());
+
+        if (lecture != null) {
+            lectureName.setText(lecture.getTitle());
+            lectureTime.setText((lecture.getDay() == 1 ? "Sobota " : "Niedziela ") + lecture.getStartTime());
+        } else
+            lectureCard.setVisibility(GONE);
+
     }
 
     @OnClick(R.id.dialog_speaker_outside)

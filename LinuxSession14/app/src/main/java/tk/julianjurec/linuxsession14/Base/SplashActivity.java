@@ -101,7 +101,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void saveAppData(AppDataResponse appDataResponse, long updated) {
-        System.out.println("saveappdata");
+
         //drop db
         SugarContext.terminate();
         SchemaGenerator schemaGenerator = new SchemaGenerator(getApplicationContext());
@@ -114,9 +114,11 @@ public class SplashActivity extends AppCompatActivity {
         }
         for (Speaker speaker : appDataResponse.getSpeakers()) {
             speaker.save();
+            System.out.println(speaker.getName() + " " + speaker.getId());
         }
         for (Lecture lecture : appDataResponse.getLectures()) {
             lecture.save();
+            System.out.println(lecture.getTitle() + " " + lecture.getSpeakerId());
         }
         prefs.edit().putLong(LAST_UPDATE, updated).apply();
         continueToApplication();
