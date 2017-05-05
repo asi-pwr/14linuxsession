@@ -61,6 +61,7 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
         return new Holder(inflatedView);
     }
 
+
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         final Lecture lecture = lectures.get(position);
@@ -114,6 +115,10 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
         return lectures.size();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return 0;
+    }
 
     static class Holder extends RecyclerView.ViewHolder {
 
