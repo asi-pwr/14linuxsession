@@ -48,6 +48,7 @@ dependencies {
     compile 'com.github.varunest:sparkbutton:1.0.5'
     compile 'com.yarolegovich:lovely-dialog:1.0.7'
     compile 'com.github.jaouan:revealator:1.2.1'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 //      UTILITY
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton:butterknife:8.5.1'

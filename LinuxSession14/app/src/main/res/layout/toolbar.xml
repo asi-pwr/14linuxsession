@@ -6,7 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/toolbar_height"
     android:minHeight="@dimen/toolbar_height"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/session_light">
+
+    <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@mipmap/ic_launcher"/>
 
     <TextView
         android:id="@+id/text_view_toolbar_title"
@@ -14,10 +20,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textColor="#fff"
+        android:textAlignment="center"
         android:textSize="24sp"
         android:gravity="left|bottom"
-        android:textAllCaps="true"
-        android:fontFamily="sans-serif-thin"
+        tools:text="Agenda"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-smallcaps"
         android:layout_marginLeft="6dp"
         android:layout_marginBottom="6dp"/>
 

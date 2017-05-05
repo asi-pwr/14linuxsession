@@ -75,6 +75,7 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
         if (speaker.getImgUrl() != null && !speaker.getImgUrl().isEmpty())
             Picasso.with(context)
                     .load(speaker.getImgUrl())
+                    .noFade()
                     .placeholder(R.drawable.unknown)
                     .into(holder.foldedImg);
 
@@ -93,6 +94,7 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
         if (speaker.getImgUrl() != null && !speaker.getImgUrl().isEmpty())
             Picasso.with(context)
                     .load(speaker.getImgUrl())
+                    .noFade()
                     .placeholder(R.drawable.unknown)
                     .into(holder.img);
 

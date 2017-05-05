@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Sobota"
-            android:textColor="@color/session_gold_128"
+            android:textColor="@color/session_gold"
             android:textSize="12sp" />
 
         <TextView
@@ -63,23 +63,37 @@
 
         <include layout="@layout/divider" />
 
-        <ImageView
-            android:id="@+id/agenda_item_folded_img"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/unknown"
-            android:scaleType="centerCrop"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"/>
-
-        <TextView
-            android:id="@+id/agenda_item_folded_speaker_name"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder_speaker_name"
-            android:textColor="@color/text_150"
-            android:layout_gravity="center"
-            android:textSize="16sp" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/agenda_item_folded_speaker_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/placeholder_speaker_name"
+                android:textColor="@color/text_150"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/agenda_item_folded_img"
+                android:maxLines="2"
+                android:textSize="16sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/agenda_item_folded_img"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/unknown"
+                android:scaleType="centerCrop"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"/>
+
+        </RelativeLayout>
+
 
     </LinearLayout>
 
