@@ -2,7 +2,6 @@ package tk.julianjurec.linuxsession14.Speakers;
 
 import dagger.Module;
 import dagger.Provides;
-import tk.julianjurec.linuxsession14.MiddleParty.MiddlePartyFragment;
 
 /**
  * Created by sp0rk on 31.03.17.

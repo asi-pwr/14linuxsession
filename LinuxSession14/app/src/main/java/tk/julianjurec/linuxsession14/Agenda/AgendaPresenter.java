@@ -1,19 +1,13 @@
 package tk.julianjurec.linuxsession14.Agenda;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 import javax.inject.Inject;
 
@@ -22,22 +16,18 @@ import tk.julianjurec.linuxsession14.Model.Lecture;
 import tk.julianjurec.linuxsession14.Network.Api;
 import tk.julianjurec.linuxsession14.R;
 
-import static android.R.id.text1;
 import static tk.julianjurec.linuxsession14.R.color.session_light;
-import static tk.julianjurec.linuxsession14.R.color.white;
 
 /**
  * Created by sp0rk on 22.03.17.
  */
 
 public class AgendaPresenter implements AgendaContract.Presenter {
-    private Api api;
     private AgendaFragment view;
 
     @Inject
     public AgendaPresenter(AgendaFragment view) {
         this.view = view;
-        api = ((MainActivity) view.getActivity()).getRetrofit().create(Api.class);
     }
 
     @Override
@@ -90,7 +80,6 @@ public class AgendaPresenter implements AgendaContract.Presenter {
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_TEXT, "Jestem na Sesji Linuksowej!\nZapraszam na prelekcję: " + title);
 
-                boolean linkedinAppFound = false;
                 List<ResolveInfo> matches2 = view.getContext().getPackageManager()
                         .queryIntentActivities(intent, 0);
 
@@ -98,7 +87,6 @@ public class AgendaPresenter implements AgendaContract.Presenter {
                     if (info.activityInfo.packageName.toLowerCase().startsWith(
                             "com.linkedin")) {
                         intent.setPackage(info.activityInfo.packageName);
-                        linkedinAppFound = true;
                         break;
                     }
                 }

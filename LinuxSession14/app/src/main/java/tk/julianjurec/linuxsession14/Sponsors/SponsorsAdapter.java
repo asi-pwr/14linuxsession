@@ -34,7 +34,7 @@ class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.Holder> {
         categories.put("patron", "Patron");
         categories.put("sponsor", "Sponsor");
     }
-    private RecyclerView recyclerView;
+
     private List<Sponsor> sponsors;
     private Context context;
 
@@ -52,7 +52,6 @@ class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.Holder> {
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         Sponsor sponsor = sponsors.get(position);
-        holder.sponsor = sponsor;
         holder.name.setText(sponsor.getName());
         holder.category.setText(categories.get(sponsor.getCategory()));
         Picasso.with(context)
@@ -81,7 +80,6 @@ class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.Holder> {
         @BindView(R.id.sponsors_item_name) TextView name;
         @BindView(R.id.sponsors_item_category) TextView category;
         @BindView(R.id.sponsors_item_card) CardView card;
-        private Sponsor sponsor;
 
         Holder(View itemView) {
             super(itemView);

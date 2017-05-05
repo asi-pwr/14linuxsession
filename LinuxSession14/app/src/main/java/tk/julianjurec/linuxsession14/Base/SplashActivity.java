@@ -1,6 +1,5 @@
 package tk.julianjurec.linuxsession14.Base;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.orm.SchemaGenerator;
-import com.orm.SugarApp;
 import com.orm.SugarContext;
 import com.orm.SugarDb;
 
@@ -23,7 +21,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import tk.julianjurec.linuxsession14.Agenda.AgendaFragment;
 import tk.julianjurec.linuxsession14.Model.AppDataResponse;
 import tk.julianjurec.linuxsession14.Model.Lecture;
 import tk.julianjurec.linuxsession14.Model.Speaker;

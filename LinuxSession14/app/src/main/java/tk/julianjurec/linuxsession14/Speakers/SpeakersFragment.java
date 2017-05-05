@@ -1,9 +1,7 @@
 package tk.julianjurec.linuxsession14.Speakers;
 
-import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,15 +15,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.BindColor;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tk.julianjurec.linuxsession14.Model.Speaker;
-import tk.julianjurec.linuxsession14.Speakers.SpeakersContract;
-import tk.julianjurec.linuxsession14.Speakers.SpeakersModule;
-import tk.julianjurec.linuxsession14.Speakers.SpeakersPresenter;
-import tk.julianjurec.linuxsession14.Speakers.DaggerSpeakersComponent;
-import tk.julianjurec.linuxsession14.Base.BaseFragment;
 import tk.julianjurec.linuxsession14.R;
 
 /**

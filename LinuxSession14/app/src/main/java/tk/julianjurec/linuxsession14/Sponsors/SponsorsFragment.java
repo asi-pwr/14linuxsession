@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -17,11 +16,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import tk.julianjurec.linuxsession14.Model.Sponsor;
-import tk.julianjurec.linuxsession14.Sponsors.SponsorsContract;
-import tk.julianjurec.linuxsession14.Sponsors.SponsorsModule;
-import tk.julianjurec.linuxsession14.Sponsors.SponsorsPresenter;
-import tk.julianjurec.linuxsession14.Sponsors.DaggerSponsorsComponent;
-import tk.julianjurec.linuxsession14.Base.BaseFragment;
 import tk.julianjurec.linuxsession14.R;
 
 /**
@@ -88,9 +82,5 @@ public class SponsorsFragment extends Fragment implements SponsorsContract.View 
         recyclerView.setAdapter(adapter);
     }
 
-    @Override
-    public void onSponsorsFetchFailure(Throwable throwable) {
-        Toast.makeText(getContext(), throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-    }
 }
 

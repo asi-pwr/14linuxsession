@@ -1,7 +1,6 @@
 package tk.julianjurec.linuxsession14.Agenda;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,16 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.ramotion.foldingcell.FoldingCell;
-
 import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import tk.julianjurec.linuxsession14.Base.BaseFragment;
 import tk.julianjurec.linuxsession14.Model.Lecture;
 import tk.julianjurec.linuxsession14.R;
 

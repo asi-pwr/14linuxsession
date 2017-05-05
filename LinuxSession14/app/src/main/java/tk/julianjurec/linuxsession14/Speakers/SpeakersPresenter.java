@@ -12,13 +12,11 @@ import tk.julianjurec.linuxsession14.Network.Api;
  */
 
 public class SpeakersPresenter implements SpeakersContract.Presenter {
-    private Api api;
     private SpeakersFragment view;
 
     @Inject
     public SpeakersPresenter(SpeakersFragment view){
         this.view = view;
-        api = ((MainActivity) view.getActivity()).getRetrofit().create(Api.class);
     }
 
     @Override

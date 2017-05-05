@@ -1,6 +1,5 @@
 package tk.julianjurec.linuxsession14.About;
 
-import tk.julianjurec.linuxsession14.Agenda.AgendaPresenter;
 import tk.julianjurec.linuxsession14.Base.BaseFragment;
 import tk.julianjurec.linuxsession14.Base.BasePresenter;
 

@@ -3,7 +3,6 @@ package tk.julianjurec.linuxsession14.Agenda;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -18,7 +17,6 @@ import com.squareup.picasso.Picasso;
 import com.varunest.sparkbutton.SparkButton;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -84,9 +82,11 @@ class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.Holder> {
         holder.title.setText(lecture.getTitle());
         holder.description.setText(lecture.getDescription());
         holder.share.setOnTouchListener((v, e) -> {
-            new Handler().postDelayed(()->{
-                holder.share.setChecked(false);
-                presenter.share(lecture);}, 750);
+            if (e.getAction() == MotionEvent.ACTION_UP)
+                new Handler().postDelayed(() -> {
+                    holder.share.setChecked(false);
+                    presenter.share(lecture);
+                }, 500);
             return false;
         });
 
