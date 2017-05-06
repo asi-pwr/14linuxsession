@@ -18,7 +18,7 @@
             <ImageView
                 style="@style/MiddlePartyBackground"
                 android:background="@color/middle_party_what"
-                android:src="@drawable/mp_what" />
+                android:id="@+id/middle_party_card_img_what"/>
 
             <TextView
                 style="@style/MiddlePartyTitle"
@@ -34,7 +34,7 @@
             <ImageView
                 style="@style/MiddlePartyBackground"
                 android:background="@color/middle_party_why"
-                android:src="@drawable/mp_why" />
+                android:id="@+id/middle_party_card_img_why"/>
 
             <TextView
                 style="@style/MiddlePartyTitle"
@@ -50,7 +50,7 @@
             <ImageView
                 style="@style/MiddlePartyBackground"
                 android:background="@color/middle_party_where"
-                android:src="@drawable/mp_where" />
+                android:id="@+id/middle_party_card_img_where"/>
 
             <TextView
                 style="@style/MiddlePartyTitle"
@@ -66,7 +66,7 @@
             <ImageView
                 style="@style/MiddlePartyBackground"
                 android:background="@color/middle_party_when"
-                android:src="@drawable/mp_when" />
+                android:id="@+id/middle_party_card_img_when"/>
 
             <TextView
                 style="@style/MiddlePartyTitle"
@@ -84,7 +84,7 @@
         <ImageView
             style="@style/MiddlePartyBackground"
             android:background="@color/middle_party_where"
-            android:src="@drawable/mp_where" />
+            android:id="@+id/middle_party_fullscreen_img_where"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -168,7 +168,7 @@
         <ImageView
             style="@style/MiddlePartyBackground"
             android:background="@color/middle_party_when"
-            android:src="@drawable/mp_when" />
+            android:id="@+id/middle_party_fullscreen_img_when"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -274,7 +274,7 @@
         <ImageView
             style="@style/MiddlePartyBackground"
             android:background="@color/middle_party_why"
-            android:src="@drawable/mp_why" />
+            android:id="@+id/middle_party_fullscreen_img_why"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -318,7 +318,7 @@
         <ImageView
             style="@style/MiddlePartyBackground"
             android:background="@color/middle_party_what"
-            android:src="@drawable/mp_what" />
+            android:id="@+id/middle_party_fullscreen_img_what"/>
 
         <LinearLayout
             android:layout_width="match_parent"

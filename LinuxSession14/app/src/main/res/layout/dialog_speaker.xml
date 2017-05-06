@@ -83,6 +83,8 @@
                     android:id="@+id/dialog_speaker_lecture_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
                     android:layout_margin="6dp"
                     app:cardElevation="4dp">
 

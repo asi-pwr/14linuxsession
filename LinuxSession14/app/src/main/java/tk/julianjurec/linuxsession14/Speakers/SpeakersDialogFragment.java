@@ -3,12 +3,14 @@ package tk.julianjurec.linuxsession14.Speakers;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -40,6 +42,7 @@ public class SpeakersDialogFragment extends DialogFragment {
     TextView lectureTime;
     @BindView(R.id.dialog_speaker_lecture_card)
     CardView lectureCard;
+    private SpeakersPresenter presenter;
 
     public static SpeakersDialogFragment newInstance(Speaker speaker, Lecture lecture) {
         Bundle args = new Bundle();
@@ -58,13 +61,14 @@ public class SpeakersDialogFragment extends DialogFragment {
         super.onCreate(savedInstanceState);
         speaker = (Speaker) getArguments().getSerializable("speaker");
         lecture = (Lecture) getArguments().getSerializable("lecture");
+        presenter = ((SpeakersFragment)getParentFragment()).getPresenter();
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.SpeakerDialog);
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.speaker_dialog, container, false);
+        View v = inflater.inflate(R.layout.dialog_speaker, container, false);
         ButterKnife.bind(this, v);
         onBindView();
         return v;
@@ -90,5 +94,12 @@ public class SpeakersDialogFragment extends DialogFragment {
     @OnClick(R.id.dialog_speaker_outside)
     public void dismissOnClickOutside() {
         dismiss();
+    }
+
+    @OnClick(R.id.dialog_speaker_lecture_card)
+    public void launchLecture(){
+        if (presenter != null) {
+            presenter.showLecture(lecture);
+        }
     }
 }

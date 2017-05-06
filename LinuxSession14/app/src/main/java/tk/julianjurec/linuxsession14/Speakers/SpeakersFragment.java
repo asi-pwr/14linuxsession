@@ -89,4 +89,8 @@ public class SpeakersFragment extends Fragment implements SpeakersContract.View 
         adapter = new SpeakersAdapter(getContext(), presenter, speakers);
         recyclerView.setAdapter(adapter);
     }
+
+    SpeakersPresenter getPresenter(){
+        return presenter;
+    }
 }

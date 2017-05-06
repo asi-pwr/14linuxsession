@@ -31,6 +31,13 @@ public class SpeakersPresenter implements SpeakersContract.Presenter {
     @Override
     public void showSpeakerDialog(Speaker speaker, Lecture lecture) {
 
-        SpeakersDialogFragment.newInstance(speaker, lecture).show(view.getFragmentManager(), "SpeakerDialog");
+        SpeakersDialogFragment.newInstance(speaker, lecture).show(view.getChildFragmentManager(), "SpeakerDialog");
+    }
+
+    @Override
+    public void showLecture(Lecture lecture) {
+        if (lecture != null){
+            AgendaFrag
+        }
     }
 }
