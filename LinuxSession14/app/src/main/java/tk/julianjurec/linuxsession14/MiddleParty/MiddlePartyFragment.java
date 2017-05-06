@@ -1,8 +1,11 @@
 package tk.julianjurec.linuxsession14.MiddleParty;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -10,8 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.jaouan.revealator.Revealator;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -40,6 +45,16 @@ public class MiddlePartyFragment extends Fragment implements MiddlePartyContract
     @BindView(R.id.middle_party_card_where) CardView whereCard;
     @BindView(R.id.middle_party_card_why) CardView whyCard;
 
+    @BindView(R.id.middle_party_card_img_why) ImageView whyImg;
+    @BindView(R.id.middle_party_card_img_what) ImageView whatImg;
+    @BindView(R.id.middle_party_card_img_where) ImageView whereImg;
+    @BindView(R.id.middle_party_card_img_when) ImageView whenImg;
+
+    @BindView(R.id.middle_party_fullscreen_img_why) ImageView whyImgFull;
+    @BindView(R.id.middle_party_fullscreen_img_what) ImageView whatImgFull;
+    @BindView(R.id.middle_party_fullscreen_img_where) ImageView whereImgFull;
+    @BindView(R.id.middle_party_fullscreen_img_when) ImageView whenImgFull;
+
 
     public MiddlePartyFragment() {
         //required empty public constructor
@@ -65,7 +80,30 @@ public class MiddlePartyFragment extends Fragment implements MiddlePartyContract
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_middle_party, container, false);
         ButterKnife.bind(this, root);
+        setupBackgrounds();
         return root;
+    }
+
+    private void setupBackgrounds() {
+        setupBackground(R.drawable.mp_what, whatImg);
+        setupBackground(R.drawable.mp_why, whyImg);
+        setupBackground(R.drawable.mp_where, whereImg);
+        setupBackground(R.drawable.mp_when, whenImg);
+
+        new Handler().postDelayed(()-> {
+            setupBackground(R.drawable.mp_what, whatImgFull);
+            setupBackground(R.drawable.mp_why, whyImgFull);
+            setupBackground(R.drawable.mp_where, whereImgFull);
+            setupBackground(R.drawable.mp_when, whenImgFull);
+        },250);
+    }
+
+    private void setupBackground(int drawableRes, ImageView imageView){
+        Picasso.with(getContext())
+                .load(drawableRes)
+                .fit()
+                .centerCrop()
+                .into(imageView);
     }
 
     @Override

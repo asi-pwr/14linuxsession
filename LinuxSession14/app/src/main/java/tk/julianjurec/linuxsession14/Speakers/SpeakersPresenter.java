@@ -37,7 +37,7 @@ public class SpeakersPresenter implements SpeakersContract.Presenter {
     @Override
     public void showLecture(Lecture lecture) {
         if (lecture != null){
-            AgendaFrag
+
         }
     }
 }
