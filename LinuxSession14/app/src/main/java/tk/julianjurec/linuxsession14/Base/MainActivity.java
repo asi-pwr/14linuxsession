@@ -35,6 +35,7 @@ import tk.julianjurec.linuxsession14.About.AboutFragment;
 import tk.julianjurec.linuxsession14.Agenda.AgendaFragment;
 import tk.julianjurec.linuxsession14.MiddleParty.MiddlePartyFragment;
 import tk.julianjurec.linuxsession14.Model.Speaker;
+import tk.julianjurec.linuxsession14.Photo.PhotoBoothFragment;
 import tk.julianjurec.linuxsession14.R;
 import tk.julianjurec.linuxsession14.Speakers.SpeakersFragment;
 import tk.julianjurec.linuxsession14.Sponsors.SponsorsFragment;
@@ -100,6 +101,8 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         about.setResource(R.drawable.about);
         MenuObject sponsors = new MenuObject(getString(R.string.screen_sponsors));
         sponsors.setResource(R.drawable.sponsors);
+        MenuObject photoBooth = new MenuObject("Galeria");
+        photoBooth.setResource(R.drawable.ic_menu_camera);
 
         List<MenuObject> menuObjects = new ArrayList<>();
         menuObjects.add(close);
@@ -108,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         menuObjects.add(middleParty);
         menuObjects.add(about);
         menuObjects.add(sponsors);
+        menuObjects.add(photoBooth);
         for (MenuObject o : menuObjects){
             o.setBgColor(sessionLight);
             o.setDividerColor(R.color.session_dark);
@@ -141,6 +145,9 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
                     break;
                 case 5: //Sponsors
                     switchTo(SponsorsFragment.newInstance(), getString(R.string.screen_sponsors), 5);
+                    break;
+                case 6: //PhotoBooth
+                    switchTo(PhotoBoothFragment.Companion.newInstance(), "Galeria", 6);
                     break;
             }
         selectedIndex = position;
