@@ -26,9 +26,8 @@ android {
 }
 
 repositories {
-    maven {
-        url "https://jitpack.io"
-    }
+    maven { url "https://jitpack.io" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
     mavenCentral()
 }
 
@@ -56,7 +55,7 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.mikhaellopez:circularfillableloaders:1.2.0'
 //      UTILITY
-
+//    compile 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
     kapt 'com.google.dagger:dagger-compiler:2.5'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton:butterknife:8.5.1'

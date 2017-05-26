@@ -35,7 +35,7 @@ import tk.julianjurec.linuxsession14.About.AboutFragment;
 import tk.julianjurec.linuxsession14.Agenda.AgendaFragment;
 import tk.julianjurec.linuxsession14.MiddleParty.MiddlePartyFragment;
 import tk.julianjurec.linuxsession14.Model.Speaker;
-import tk.julianjurec.linuxsession14.Photo.PhotoBoothFragment;
+import tk.julianjurec.linuxsession14.PhotoBooth.PhotoBoothFragment;
 import tk.julianjurec.linuxsession14.R;
 import tk.julianjurec.linuxsession14.Speakers.SpeakersFragment;
 import tk.julianjurec.linuxsession14.Sponsors.SponsorsFragment;

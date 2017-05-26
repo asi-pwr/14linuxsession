@@ -1,4 +1,4 @@
-package tk.julianjurec.linuxsession14.Photo
+package tk.julianjurec.linuxsession14.PhotoBooth
 
 import dagger.Component
 

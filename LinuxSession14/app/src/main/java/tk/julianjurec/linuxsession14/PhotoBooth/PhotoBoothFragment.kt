@@ -1,6 +1,13 @@
-package tk.julianjurec.linuxsession14.Photo
+package tk.julianjurec.linuxsession14.PhotoBooth
 
+import android.app.Activity.RESULT_OK
+import android.app.AlertDialog
+import android.content.DialogInterface
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
+import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +16,7 @@ import android.view.ViewGroup
 import javax.inject.Inject
 
 import butterknife.ButterKnife
+import butterknife.OnClick
 import tk.julianjurec.linuxsession14.R
 
 /**
@@ -26,8 +34,8 @@ class PhotoBoothFragment : Fragment(), PhotoBoothContract.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater!!.inflate(R.layout.fragment_photo_booth, container, false)
-        ButterKnife.bind(this, root)
+        val root = inflater?.inflate(R.layout.fragment_photo_booth, container, false)
+        root?.let{ButterKnife.bind(this, root)}
         return root
     }
 
@@ -42,11 +50,29 @@ class PhotoBoothFragment : Fragment(), PhotoBoothContract.View {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
 
+    @OnClick(R.id.pb_fab)
+    fun addPhoto(){
+        mPresenter.addPhoto(this)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        mPresenter.onActivityResult(requestCode, resultCode, data)
+    }
+
+    fun showPhotoDialog(title: String, message: String? = null, photo: Bitmap? = null, completion: (()->Unit)? = null){
+        val dialog = AlertDialog.Builder(context)
+                .setTitle(title)
+                .setMessage(message?:"")
+                .setPositiveButton("Tak", { _,_ -> completion?.invoke()})
+                .setNegativeButton("Nie", null)
+                .show()
     }
 
     companion object {
-
+        val REQUEST_IMAGE_CAPTURE = 1
         fun newInstance(): PhotoBoothFragment {
 
             val args = Bundle()

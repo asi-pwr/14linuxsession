@@ -1,8 +1,7 @@
-package tk.julianjurec.linuxsession14.Photo
+package tk.julianjurec.linuxsession14.PhotoBooth
 
 import dagger.Module
 import dagger.Provides
-import tk.julianjurec.linuxsession14.Photo.PhotoBoothFragment
 
 /**
  * Created by sp0rk on 21.05.17.
