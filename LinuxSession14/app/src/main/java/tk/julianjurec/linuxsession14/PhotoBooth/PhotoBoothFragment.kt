@@ -19,12 +19,9 @@ import javax.inject.Inject
 
 import butterknife.ButterKnife
 import butterknife.OnClick
-import org.jetbrains.anko.button
-import org.jetbrains.anko.customView
-import org.jetbrains.anko.imageView
+import org.jetbrains.anko.*
 import org.jetbrains.anko.support.v4.alert
 import org.jetbrains.anko.support.v4.toast
-import org.jetbrains.anko.yesButton
 import tk.julianjurec.linuxsession14.R
 
 /**
@@ -71,21 +68,15 @@ class PhotoBoothFragment : Fragment(), PhotoBoothContract.View {
     }
 
     fun showPhotoDialog(title: String, message: String? = null, photo: Bitmap? = null, completion: (() -> Unit)? = null) {
-//        val dialog = AlertDialog.Builder(context)
-//                .setTitle(title)
-//                .setMessage(message?:"")
-//                .setPositiveButton("Tak", { _,_ -> completion?.invoke()})
-//                .setNegativeButton("Nie", null)
-//                .setView()
-//                .show()
-        alert(message ?: "", title) {
-//            customView {
-//                if (photo != null) imageView(BitmapDrawable(resources, photo))
-//            }
+        with(alert(message ?: "", title) {
+            if (photo != null) customView { frameLayout { imageView(BitmapDrawable(resources, photo));lparams { topPadding = 16 } } }
+            else customView { frameLayout { lparams { width = 0;height = 0 } } }
             positiveButton("Tak") { completion?.invoke() }
             negativeButton("Nie") {}
-        }.show()
-
+        }.build()) {
+            setCancelable(false)
+            show()
+        }
     }
 
     companion object {
