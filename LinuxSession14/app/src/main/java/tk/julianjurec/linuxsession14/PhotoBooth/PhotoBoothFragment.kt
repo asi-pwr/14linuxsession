@@ -5,6 +5,8 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.design.widget.FloatingActionButton
@@ -17,6 +19,12 @@ import javax.inject.Inject
 
 import butterknife.ButterKnife
 import butterknife.OnClick
+import org.jetbrains.anko.button
+import org.jetbrains.anko.customView
+import org.jetbrains.anko.imageView
+import org.jetbrains.anko.support.v4.alert
+import org.jetbrains.anko.support.v4.toast
+import org.jetbrains.anko.yesButton
 import tk.julianjurec.linuxsession14.R
 
 /**
@@ -35,7 +43,7 @@ class PhotoBoothFragment : Fragment(), PhotoBoothContract.View {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater?.inflate(R.layout.fragment_photo_booth, container, false)
-        root?.let{ButterKnife.bind(this, root)}
+        root?.let { ButterKnife.bind(this, root) }
         return root
     }
 
@@ -53,7 +61,7 @@ class PhotoBoothFragment : Fragment(), PhotoBoothContract.View {
     }
 
     @OnClick(R.id.pb_fab)
-    fun addPhoto(){
+    fun addPhoto() {
         mPresenter.addPhoto(this)
     }
 
@@ -62,13 +70,22 @@ class PhotoBoothFragment : Fragment(), PhotoBoothContract.View {
         mPresenter.onActivityResult(requestCode, resultCode, data)
     }
 
-    fun showPhotoDialog(title: String, message: String? = null, photo: Bitmap? = null, completion: (()->Unit)? = null){
-        val dialog = AlertDialog.Builder(context)
-                .setTitle(title)
-                .setMessage(message?:"")
-                .setPositiveButton("Tak", { _,_ -> completion?.invoke()})
-                .setNegativeButton("Nie", null)
-                .show()
+    fun showPhotoDialog(title: String, message: String? = null, photo: Bitmap? = null, completion: (() -> Unit)? = null) {
+//        val dialog = AlertDialog.Builder(context)
+//                .setTitle(title)
+//                .setMessage(message?:"")
+//                .setPositiveButton("Tak", { _,_ -> completion?.invoke()})
+//                .setNegativeButton("Nie", null)
+//                .setView()
+//                .show()
+        alert(message ?: "", title) {
+//            customView {
+//                if (photo != null) imageView(BitmapDrawable(resources, photo))
+//            }
+            positiveButton("Tak") { completion?.invoke() }
+            negativeButton("Nie") {}
+        }.show()
+
     }
 
     companion object {
