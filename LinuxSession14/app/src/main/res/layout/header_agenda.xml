@@ -13,6 +13,7 @@
         android:layout_gravity="center"
         android:text="Sobota"
         android:textColor="@color/session_gold"
+        android:textStyle="bold"
         android:fontFamily="sans-serif-thin"
         android:textSize="32sp"/>
 

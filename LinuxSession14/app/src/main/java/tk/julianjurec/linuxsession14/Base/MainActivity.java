@@ -1,5 +1,7 @@
 package tk.julianjurec.linuxsession14.Base;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -99,6 +101,8 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         about.setResource(R.drawable.ic_menu_camera2);
         MenuObject sponsors = new MenuObject(getString(R.string.screen_sponsors));
         sponsors.setResource(R.drawable.sponsors);
+        MenuObject www = new MenuObject(getString(R.string.screen_www));
+        www.setResource(R.drawable.web2);
 
         List<MenuObject> menuObjects = new ArrayList<>();
         menuObjects.add(close);
@@ -106,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         menuObjects.add(speakers);
         menuObjects.add(about);
         menuObjects.add(sponsors);
+        menuObjects.add(www);
         for (MenuObject o : menuObjects){
             o.setBgColor(sessionLight);
             o.setDividerColor(R.color.session_dark);
@@ -136,6 +141,9 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
                     break;
                 case 4: //Sponsors
                     switchTo(SponsorsFragment.newInstance(), getString(R.string.screen_sponsors), 5);
+                    break;
+                case 5: //niucon
+                    this.startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("http://niucon.pl")));
                     break;
             }
         selectedIndex = position;

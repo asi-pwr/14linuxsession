@@ -85,7 +85,16 @@ public class SpeakersDialogFragment extends DialogFragment {
 
         if (lecture != null) {
             lectureName.setText(lecture.getTitle());
-            lectureTime.setText((lecture.getDay() == 1 ? "Sobota " : "Niedziela ") + lecture.getStartTime());
+            if(lecture.getDay() == 1){
+                lectureTime.setText("Piątek " + lecture.getStartTime());
+            }
+            else if(lecture.getDay() == 2){
+                lectureTime.setText("Sobota " + lecture.getStartTime());
+            }
+            else{
+                lectureTime.setText("Niedziela " + lecture.getStartTime());
+            }
+
         } else
             lectureCard.setVisibility(GONE);
 

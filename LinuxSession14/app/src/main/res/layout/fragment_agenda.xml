@@ -12,16 +12,22 @@
         android:background="@color/colorPrimaryDark"
         android:layout_marginBottom="7dp">
 
-        <Spinner
-            android:id="@+id/agenda_spinner"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:layout_marginBottom="2dp"
-            android:layout_marginStart="13dp"
-            android:layout_marginEnd="13dp"
-            android:spinnerMode="dialog"
-            style="@android:style/Widget.Spinner"/>
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_spinner">
+            <Spinner
+                android:id="@+id/agenda_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginStart="-2dp"
+                android:spinnerMode="dialog"
+                style="@style/Widget.AppCompat.DropDownItem.Spinner"/>
+        </RelativeLayout>
 
     </LinearLayout>
 
