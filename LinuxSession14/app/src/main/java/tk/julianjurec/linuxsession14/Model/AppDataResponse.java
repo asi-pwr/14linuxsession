@@ -15,6 +15,9 @@ public class AppDataResponse {
     @SerializedName("sponsors")
     @Expose
     private List<Sponsor> sponsors = null;
+    @SerializedName("medias")
+    @Expose
+    private List<Media> medias = null;
 
     public List<Lecture> getLectures() {
         return lectures;
@@ -38,6 +41,14 @@ public class AppDataResponse {
 
     public void setSponsors(List<Sponsor> sponsors) {
         this.sponsors = sponsors;
+    }
+
+    public List<Media> getMedias() {
+        return medias;
+    }
+
+    public void setMedias(List<Media> medias) {
+        this.medias = medias;
     }
 }
 

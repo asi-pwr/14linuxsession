@@ -71,14 +71,14 @@ public class AgendaPresenter implements AgendaContract.Presenter {
         Intent intent;
         switch (choice){
             case "Twitter":
-                String url = "http://www.twitter.com/intent/tweet?url=http://14.sesja.linuksowa.pl/pl&text=" + title;
+                String url = "http://www.twitter.com/intent/tweet?url=http://niucon.pl//pl&text=" + title;
                 intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 break;
             case "LinkedIn":
                 intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, "Jestem na Sesji Linuksowej!\nZapraszam na prelekcję: " + title);
+                intent.putExtra(Intent.EXTRA_TEXT, "Jestem na Niuconie!\nZapraszam na prelekcję: " + title);
 
                 List<ResolveInfo> matches2 = view.getContext().getPackageManager()
                         .queryIntentActivities(intent, 0);
@@ -95,7 +95,7 @@ public class AgendaPresenter implements AgendaContract.Presenter {
             default:
                 intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                String shareBody = "Jestem na Sesji Linuksowej!";
+                String shareBody = "Jestem na Niuconie!";
                 intent.putExtra(Intent.EXTRA_SUBJECT, shareBody);
                 intent.putExtra(Intent.EXTRA_TEXT, "Zapraszam na prelekcję: " + title);
                 break;

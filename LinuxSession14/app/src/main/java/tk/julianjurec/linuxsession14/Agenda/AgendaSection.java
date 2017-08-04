@@ -39,8 +39,9 @@ class AgendaSection extends StatelessSection {
 
     static {
         days = new HashMap<>(5);
-        days.put(1, "Sobota");
-        days.put(2, "Niedziela");
+        days.put(1, "Piątek");
+        days.put(2, "Sobota");
+        days.put(3, "Niedziela");
     }
 
     private String header;

@@ -58,8 +58,9 @@
             android:layout_height="wrap_content"
             android:maxLines="3"
             android:text="@string/placeholder_lecture_title"
-            android:textColor="@color/session_dark"
-            android:textSize="16sp" />
+            android:textColor="@color/session_text_dark"
+            android:textSize="16sp"
+            android:layout_marginStart="5dp"/>
 
         <include layout="@layout/divider" />
 

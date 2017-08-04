@@ -33,6 +33,7 @@ import butterknife.ButterKnife;
 import retrofit2.Retrofit;
 import tk.julianjurec.linuxsession14.About.AboutFragment;
 import tk.julianjurec.linuxsession14.Agenda.AgendaFragment;
+import tk.julianjurec.linuxsession14.Media.MediaFragment;
 import tk.julianjurec.linuxsession14.MiddleParty.MiddlePartyFragment;
 import tk.julianjurec.linuxsession14.Model.Speaker;
 import tk.julianjurec.linuxsession14.R;
@@ -94,10 +95,8 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         agenda.setResource(R.drawable.agenda);
         MenuObject speakers = new MenuObject(getString(R.string.screen_speakers));
         speakers.setResource(R.drawable.speaker);
-        MenuObject middleParty = new MenuObject(getString(R.string.screen_middle_party));
-        middleParty.setResource(R.drawable.middle_party);
         MenuObject about = new MenuObject(getString(R.string.screen_about));
-        about.setResource(R.drawable.about);
+        about.setResource(R.drawable.ic_menu_camera2);
         MenuObject sponsors = new MenuObject(getString(R.string.screen_sponsors));
         sponsors.setResource(R.drawable.sponsors);
 
@@ -105,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         menuObjects.add(close);
         menuObjects.add(agenda);
         menuObjects.add(speakers);
-        menuObjects.add(middleParty);
         menuObjects.add(about);
         menuObjects.add(sponsors);
         for (MenuObject o : menuObjects){
@@ -133,13 +131,10 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
                 case 2: //Speakers
                     switchTo(SpeakersFragment.newInstance(), getString(R.string.screen_speakers), 2);
                     break;
-                case 3: //MiddleParty
-                    switchTo(MiddlePartyFragment.newInstance(), getString(R.string.screen_middle_party), 3);
+                case 3: //About
+                    switchTo(MediaFragment.newInstance(), getString(R.string.screen_about), 4);
                     break;
-                case 4: //About
-                    switchTo(AboutFragment.newInstance(), getString(R.string.screen_about), 4);
-                    break;
-                case 5: //Sponsors
+                case 4: //Sponsors
                     switchTo(SponsorsFragment.newInstance(), getString(R.string.screen_sponsors), 5);
                     break;
             }

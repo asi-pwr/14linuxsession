@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sesja Linuksowa</string>
+    <string name="app_name">Niucon</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -11,10 +11,10 @@
     <string name="placeholder_lecture_description">Mechanizmy zwiazane z oszczędzaniem energii, a ściślej mówiąc z zapobieganiem traceniu energii bez potrzeby, są ważną częścią Linuksa od ponad 10 lat. Ogólnie można podzielić je na dwie grupy, te działające jednocześnie na cały system (system-wide PM) oraz te operujące pojedynczymi składnikami systemu, takimi jak procesory i urządzenia wejścia-wyjścia, w stanie aktywności (working-state PM). Do pierwszej grupy należą usypianie systemu (system suspend) i hibernacja, natomiast druga grupa obejmuje między innymi skalowanie wydajności procesorów (CPU performance scaling) oraz wykrywanie nieaktywności i wprowadzanie nieaktywnych (idle) składników systemu do stanów o ograniczonym poborze mocy (low-power states). Mechanizmy z drugiej grupy, poza swoim głównym zastosowaniem, mogą także służyć do zapobiegania przegrzewaniu się urządzeń, bądź zapobiegania przekraczaniu budżetów energetycznych lub limitów poboru mocy przy jednoczesnym zapewnieniu wykonania określonych operacji w zadanym czasie.  W prezentacji przedstawię przegląd mechanizmów z dziedziny power management znajdujących się w jądrze Linuksa oraz omówię ich działanie i sposoby wykorzystania, a także wyzwania, z jakimi ta dziedzina musi się mierzyć w związku z obecnymi trendami w rozwoju technologii.</string>
 
     <string name="screen_agenda">Agenda</string>
-    <string name="screen_speakers">Prelegenci</string>
+    <string name="screen_speakers">Autorzy</string>
     <string name="screen_middle_party">Middle Party</string>
-    <string name="screen_about">O Sesji</string>
-    <string name="screen_sponsors">Partnerzy</string>
+    <string name="screen_about">Media i promocja</string>
+    <string name="screen_sponsors">Wystawcy i sponsorzy</string>
     <string name="placeholder_sponsor_name">Apple Inc.</string>
     <string name="main_sponsor">Sponsor Główny</string>
     <string name="about_what">Czym jest Sesja?</string>
@@ -46,4 +46,5 @@
     <string name="error_no_share_app">Brak Odpowiedniej Aplikacji</string>
     <string name="lecture_share_msg">Gdzie chcesz się podzielić informacją o tej prelekcji?</string>
     <string name="lecture_share">Zaproś znajomych!</string>
+    <string name="agenda_spinner_label">Sala:</string>
 </resources>

@@ -30,6 +30,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import tk.julianjurec.linuxsession14.Model.AppDataResponse;
 import tk.julianjurec.linuxsession14.Model.Lecture;
+import tk.julianjurec.linuxsession14.Model.Media;
 import tk.julianjurec.linuxsession14.Model.Speaker;
 import tk.julianjurec.linuxsession14.Model.Sponsor;
 import tk.julianjurec.linuxsession14.Network.Api;
@@ -161,12 +162,15 @@ public class SplashActivity extends AppCompatActivity {
                 new Sponsor().save();
                 new Speaker().save();
                 new Lecture().save();
+                new Media().save();
                 Sponsor.deleteAll(Sponsor.class);
                 Speaker.deleteAll(Speaker.class);
                 Lecture.deleteAll(Lecture.class);
+                Media.deleteAll(Media.class);
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
             //repopulate
             for (Sponsor sponsor : appDataResponse.getSponsors()) {
                 sponsor.save();
@@ -177,6 +181,12 @@ public class SplashActivity extends AppCompatActivity {
             for (Lecture lecture : appDataResponse.getLectures()) {
                 lecture.save();
             }
+            /*
+            for(Media media : appDataResponse.getMedias()){
+                medaia.save();
+            }
+            */
+
             prefs.edit().putLong(LAST_UPDATE, updated).apply();
             runOnUiThread(() -> stopProgress());
         }).start();
