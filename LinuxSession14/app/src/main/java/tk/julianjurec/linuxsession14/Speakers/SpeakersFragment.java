@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -86,7 +87,15 @@ public class SpeakersFragment extends Fragment implements SpeakersContract.View 
 
     @Override
     public void onSpeakersFetched(List<Speaker> speakers) {
-        adapter = new SpeakersAdapter(getContext(), presenter, speakers);
+        List<Speaker> filteredList = new ArrayList<>();
+
+        for(Speaker speaker : speakers){
+            if(speaker.getIsGuest() == 1){
+                filteredList.add(speaker);
+            }
+        }
+
+        adapter = new SpeakersAdapter(getContext(), presenter, filteredList);
         recyclerView.setAdapter(adapter);
     }
 

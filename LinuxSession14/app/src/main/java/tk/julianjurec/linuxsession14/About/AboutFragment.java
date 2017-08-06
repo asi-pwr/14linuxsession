@@ -42,8 +42,13 @@ public class AboutFragment extends Fragment implements AboutContract.View {
     private static final TreeMap<String, String> contact_emails;
     static {
         contact_emails = new TreeMap<>();
-        contact_emails.put("Organizator", "kontakt@asi.pwr.wroc.pl");
-        contact_emails.put("Twórca Aplikacji", "julian.jurec@gmail.com");
+        contact_emails.put("Cosplay", "cosplay@niucon.pl");
+        contact_emails.put("Media, patronaty", "media@niucon.pl");
+        contact_emails.put("Program", "program@niucon.pl");
+        contact_emails.put("Sponsorzy", "sponsor@niucon.pl");
+        contact_emails.put("Wystawcy", "wystawcy@niucon.pl");
+        contact_emails.put("Inne sprawy", "info@niucon.pl");
+        contact_emails.put("Twórca Aplikacji", "jak_dor@wp.pl");
     }
 
     public AboutFragment() {
@@ -86,21 +91,9 @@ public class AboutFragment extends Fragment implements AboutContract.View {
         }
     }
 
-    @OnClick({R.id.about_card_looks, R.id.about_card_target, R.id.about_card_what, R.id.about_card_questions})
+    @OnClick({R.id.about_card_what, R.id.about_card_questions})
     public void onCardClicked(CardView v){
         switch (v.getId()){
-            case R.id.about_card_looks:
-                new LovelyInfoDialog(getContext())
-                        .setTopColor(sessionLight)
-                        .setConfirmButtonColor(sessionGold)
-                        .setIcon(R.drawable.how_it_looks)
-                        .setTopTitle(R.string.about_looks)
-                        .setTopTitleColor(white)
-                        .setMessage(R.string.about_looks_details)
-                        .setConfirmButtonText("Ok")
-                        .setCancelable(true)
-                        .show();
-                break;
             case R.id.about_card_what:
                 new LovelyInfoDialog(getContext())
                         .setTopColor(sessionLight)
@@ -114,19 +107,7 @@ public class AboutFragment extends Fragment implements AboutContract.View {
                         .setCancelable(true)
                         .show();
                 break;
-            case R.id.about_card_target:
-                new LovelyInfoDialog(getContext())
-                        .setTopColor(sessionLight)
-                        .setConfirmButtonColor(sessionGold)
-                        .setIcon(R.drawable.target)
-                        .setTopTitle(R.string.about_target)
-                        .setIconTintColor(white)
-                        .setTopTitleColor(white)
-                        .setMessage(R.string.about_target_details)
-                        .setConfirmButtonText("Ok")
-                        .setCancelable(true)
-                        .show();
-                break;
+
             case R.id.about_card_questions:
                 List<String> items = new ArrayList<>(contact_emails.keySet());
                 new LovelyChoiceDialog(getContext())

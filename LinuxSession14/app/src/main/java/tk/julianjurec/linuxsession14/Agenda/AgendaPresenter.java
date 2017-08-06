@@ -41,7 +41,7 @@ public class AgendaPresenter implements AgendaContract.Presenter {
 
     @Override
     public boolean share(Lecture lecture) {
-        String[] items = new String[]{"LinkedIn", "Twitter", "Inne"};
+        String[] items = new String[]{"Facebook", "Google+", "Twitter", "LinkedIn", "Inne"};
         int white = view.getContext().getResources().getColor(R.color.white);
         new LovelyChoiceDialog(view.getContext())
                 .setTopColorRes(session_light)
@@ -69,9 +69,20 @@ public class AgendaPresenter implements AgendaContract.Presenter {
 
     private Intent prepareIntent(String choice, String title){
         Intent intent;
+        String url;
         switch (choice){
+            case "Facebook":
+                url = "https://www.facebook.com/sharer/sharer.php?u=niucon.pl";
+                intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                break;
+            case "Google+":
+                url = "https://plus.google.com/share?url=niucon.pl";
+                intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                break;
             case "Twitter":
-                String url = "http://www.twitter.com/intent/tweet?url=http://niucon.pl//pl&text=" + title;
+                url = "http://www.twitter.com/intent/tweet?url=http://niucon.pl/&text=" + title;
                 intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 break;

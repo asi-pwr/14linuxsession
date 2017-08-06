@@ -5,6 +5,7 @@ import retrofit2.http.GET;
 import tk.julianjurec.linuxsession14.Model.AppDataResponse;
 import tk.julianjurec.linuxsession14.Model.LecturesResponse;
 import tk.julianjurec.linuxsession14.Model.MediaResponse;
+import tk.julianjurec.linuxsession14.Model.RoomResponse;
 import tk.julianjurec.linuxsession14.Model.SpeakersResponse;
 import tk.julianjurec.linuxsession14.Model.SponsorsResponse;
 
@@ -13,6 +14,9 @@ import tk.julianjurec.linuxsession14.Model.SponsorsResponse;
  */
 
 public interface Api {
+
+    @GET("rooms")
+    Call<RoomResponse> getRooms();
 
     @GET("medias")
     Call<MediaResponse> getMedias();

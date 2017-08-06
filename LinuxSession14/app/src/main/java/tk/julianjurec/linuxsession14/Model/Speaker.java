@@ -21,17 +21,21 @@ public class Speaker extends SugarRecord implements Serializable
     @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("is_guest")
+    @Expose
+    private Integer isGuest;
 
     public Speaker() {
     }
 
-    public Speaker(String description, Integer uId, String imgUrl, String name) {
+    public Speaker(String description, Integer uId, String imgUrl, String name, Integer isGuest) {
         super();
         this.description = description;
         this.uId = uId;
         this.imgUrl = imgUrl;
         name = name.replace(", ", "\n");
         this.name = name;
+        this.isGuest = isGuest;
     }
 
     public String getDescription() {
@@ -67,4 +71,11 @@ public class Speaker extends SugarRecord implements Serializable
         this.name = name;
     }
 
+    public Integer getIsGuest() {
+        return isGuest;
+    }
+
+    public void setIsGuest(Integer isGuest) {
+        this.isGuest = isGuest;
+    }
 }

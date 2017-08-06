@@ -24,7 +24,7 @@ public class MainApplication extends SugarApp {
 
         networkComponent = DaggerNetworkComponent.builder()
                 .applicationModule(new ApplicationModule(this))
-                .networkModule(new NetworkModule("http://tramwaj.asi.wroclaw.pl:6937/"))
+                .networkModule(new NetworkModule("http://138.197.25.138:6937/"))
                 .build();
     }
 

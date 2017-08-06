@@ -35,8 +35,6 @@ import butterknife.ButterKnife;
 import retrofit2.Retrofit;
 import tk.julianjurec.linuxsession14.About.AboutFragment;
 import tk.julianjurec.linuxsession14.Agenda.AgendaFragment;
-import tk.julianjurec.linuxsession14.Media.MediaFragment;
-import tk.julianjurec.linuxsession14.MiddleParty.MiddlePartyFragment;
 import tk.julianjurec.linuxsession14.Model.Speaker;
 import tk.julianjurec.linuxsession14.R;
 import tk.julianjurec.linuxsession14.Speakers.SpeakersFragment;
@@ -97,20 +95,23 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         agenda.setResource(R.drawable.agenda);
         MenuObject speakers = new MenuObject(getString(R.string.screen_speakers));
         speakers.setResource(R.drawable.speaker);
-        MenuObject about = new MenuObject(getString(R.string.screen_about));
-        about.setResource(R.drawable.ic_menu_camera2);
+        MenuObject patrons = new MenuObject(getString(R.string.screen_patrons));
+        patrons.setResource(R.drawable.heart_white);
         MenuObject sponsors = new MenuObject(getString(R.string.screen_sponsors));
         sponsors.setResource(R.drawable.sponsors);
         MenuObject www = new MenuObject(getString(R.string.screen_www));
         www.setResource(R.drawable.web2);
+        MenuObject about = new MenuObject(getString(R.string.screen_about));
+        about.setResource(R.drawable.about);
 
         List<MenuObject> menuObjects = new ArrayList<>();
         menuObjects.add(close);
         menuObjects.add(agenda);
         menuObjects.add(speakers);
-        menuObjects.add(about);
+        menuObjects.add(patrons);
         menuObjects.add(sponsors);
         menuObjects.add(www);
+        menuObjects.add(about);
         for (MenuObject o : menuObjects){
             o.setBgColor(sessionLight);
             o.setDividerColor(R.color.session_dark);
@@ -136,14 +137,17 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
                 case 2: //Speakers
                     switchTo(SpeakersFragment.newInstance(), getString(R.string.screen_speakers), 2);
                     break;
-                case 3: //About
-                    switchTo(MediaFragment.newInstance(), getString(R.string.screen_about), 4);
+                case 3: //Patrons
+                    switchTo(SponsorsFragment.newInstance(0), getString(R.string.screen_patrons), 3);
                     break;
                 case 4: //Sponsors
-                    switchTo(SponsorsFragment.newInstance(), getString(R.string.screen_sponsors), 5);
+                    switchTo(SponsorsFragment.newInstance(1), getString(R.string.screen_sponsors), 4);
                     break;
                 case 5: //niucon
                     this.startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("http://niucon.pl")));
+                    break;
+                case 6: //about
+                    switchTo(AboutFragment.newInstance(), getString(R.string.screen_about), 6);
                     break;
             }
         selectedIndex = position;

@@ -18,6 +18,9 @@ public class AppDataResponse {
     @SerializedName("medias")
     @Expose
     private List<Media> medias = null;
+    @SerializedName("rooms")
+    @Expose
+    private List<Room> rooms = null;
 
     public List<Lecture> getLectures() {
         return lectures;
@@ -49,6 +52,14 @@ public class AppDataResponse {
 
     public void setMedias(List<Media> medias) {
         this.medias = medias;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
     }
 }
 

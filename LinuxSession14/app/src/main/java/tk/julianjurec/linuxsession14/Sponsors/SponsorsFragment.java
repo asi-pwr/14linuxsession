@@ -9,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.inject.Inject;
 
@@ -31,13 +34,15 @@ public class SponsorsFragment extends Fragment implements SponsorsContract.View 
     @BindView(R.id.sponsors_recycler_view) RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
     private SponsorsAdapter adapter;
+    private static int type = -1;
 
 
     public SponsorsFragment() {
         //required empty public constructor
     }
 
-    public static tk.julianjurec.linuxsession14.Sponsors.SponsorsFragment newInstance() {
+    public static tk.julianjurec.linuxsession14.Sponsors.SponsorsFragment newInstance(int type) {
+        SponsorsFragment.type = type;
 
         Bundle args = new Bundle();
 
@@ -78,7 +83,18 @@ public class SponsorsFragment extends Fragment implements SponsorsContract.View 
 
     @Override
     public void onSponsorsFetched(List<Sponsor> sponsors) {
-        adapter = new SponsorsAdapter(getContext(), sponsors);
+        List<Sponsor> filteredList = new ArrayList<>();
+
+        for(Sponsor sponsor : sponsors){
+            if(type == 0 && sponsor.getCategory().equals("sponsor")){
+                filteredList.add(sponsor);
+            }
+            else if(type == 1 && sponsor.getCategory().equals("patron")){
+                filteredList.add(sponsor);
+            }
+        }
+
+        adapter = new SponsorsAdapter(getContext(), filteredList);
         recyclerView.setAdapter(adapter);
     }
 

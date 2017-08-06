@@ -25,6 +25,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 import tk.julianjurec.linuxsession14.Model.Lecture;
+import tk.julianjurec.linuxsession14.Model.Room;
+import tk.julianjurec.linuxsession14.Model.RoomResponse;
 import tk.julianjurec.linuxsession14.Model.Speaker;
 import tk.julianjurec.linuxsession14.R;
 
@@ -46,6 +48,7 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
     private SectionedRecyclerViewAdapter adapter;
     private List<Lecture> lectures;
     private ArrayAdapter<String> agendaRoomsAdapter;
+    private static int chosenIndex = 20;
 
 
     public AgendaFragment() {
@@ -104,28 +107,39 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
         adapter = new SectionedRecyclerViewAdapter();
         recyclerView.setAdapter(adapter);
         this.lectures = lectures;
-        loadContent(0);
+        loadContent(chosenIndex);
     }
 
-    private void loadContent(int room){ //todo filter by room
+    private void loadContent(int room){
         ArrayList<Lecture> day1 = new ArrayList<>();
         ArrayList<Lecture> day2 = new ArrayList<>();
         ArrayList<Lecture> day3 = new ArrayList<>();
 
         for (Lecture lecture : lectures) {
-            if (lecture.getDay()==1) {
-                day1.add(lecture);
+            if(lecture.getRoomId() == null) {
+                break;
             }
-            else if(lecture.getDay()==2) {
-                day2.add(lecture);
-            }
-            else {
-                day3.add(lecture);
+
+            if(lecture.getRoomId() == room){
+                if (lecture.getDay() == 1) {
+                    day1.add(lecture);
+                } else if (lecture.getDay() == 2) {
+                    day2.add(lecture);
+                } else {
+                    day3.add(lecture);
+                }
             }
         }
-        adapter.addSection(new AgendaSection(recyclerView, getContext(), day1, "Piątek", presenter));
-        adapter.addSection(new AgendaSection(recyclerView, getContext(), day2, "Sobota", presenter));
-        adapter.addSection(new AgendaSection(recyclerView, getContext(), day3, "Niedziela", presenter));
+
+        if(!day1.isEmpty()) {
+            adapter.addSection(new AgendaSection(recyclerView, getContext(), day1, "Piątek", presenter));
+        }
+        if(!day2.isEmpty()) {
+            adapter.addSection(new AgendaSection(recyclerView, getContext(), day2, "Sobota", presenter));
+        }
+        if(!day3.isEmpty()) {
+            adapter.addSection(new AgendaSection(recyclerView, getContext(), day3, "Niedziela", presenter));
+        }
 
     }
 
@@ -136,12 +150,19 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
     }
 
     private void loadSpinnerItems(){
-        final String[] spinnerItems = {"sala1", "sala2", "sala3", "sala4", "sala5", "sala6",
-                "sala7", "sala8", "sala9", "sala10", "sala11", "sala12", "wyróżnione" };
+        List<Room> rooms = Room.listAll(Room.class);
 
-        List<String> list = Arrays.asList(spinnerItems);
         ArrayList<String> spinnerList = new ArrayList<>();
-        spinnerList.addAll(list);
+        spinnerList.add("Wyróżnione");
+
+        for(Room room : rooms){
+            if(!room.getDescription().isEmpty()) {
+                spinnerList.add(room.getName() + " (" + room.getDescription() + ")");
+            }
+            else{
+                spinnerList.add(room.getName());
+            }
+        }
 
         agendaRoomsAdapter = new ArrayAdapter<>(getContext(), R.layout.spinner, spinnerList);
         agendaRoomsAdapter.setDropDownViewResource(R.layout.spinner_item);
@@ -149,7 +170,12 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
 
     private void initSpinner(){
         agendaSpinner.setAdapter(agendaRoomsAdapter);
-        agendaSpinner.setSelection(0);
+        if(chosenIndex == 20) {
+            agendaSpinner.setSelection(0);
+        }
+        else {
+            agendaSpinner.setSelection(chosenIndex);
+        }
 
         agendaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             private int init = 0;
@@ -158,7 +184,14 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(++init > 1) {
                     discardContent();
-                    loadContent(position);
+                    if(position == 0){
+                        loadContent(20);
+                        chosenIndex = 20;
+                    }
+                    else {
+                        loadContent(position);
+                        chosenIndex = position;
+                    }
                 }
             }
 

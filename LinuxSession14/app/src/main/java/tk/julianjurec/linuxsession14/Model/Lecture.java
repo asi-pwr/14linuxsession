@@ -29,6 +29,9 @@ public class Lecture extends SugarRecord implements Serializable
     @SerializedName("title")
     @Expose
     private String title;
+    @SerializedName("room_id")
+    @Expose
+    private Integer roomId;
 
     @SerializedName("fav")
     @Expose
@@ -37,7 +40,7 @@ public class Lecture extends SugarRecord implements Serializable
     public Lecture() {
     }
 
-    public Lecture(Integer day, String description, String endTime, Integer uId, Integer speakerId, String startTime, String title, Boolean fav) {
+    public Lecture(Integer day, String description, String endTime, Integer uId, Integer speakerId, String startTime, String title, Integer roomId, Boolean fav) {
         super();
         this.day = day;
         this.description = description;
@@ -46,6 +49,7 @@ public class Lecture extends SugarRecord implements Serializable
         this.speakerId = speakerId;
         this.startTime = startTime;
         this.title = title;
+        this.roomId = roomId;
         this.fav = fav;
     }
 
@@ -108,4 +112,11 @@ public class Lecture extends SugarRecord implements Serializable
         this.title = title;
     }
 
+    public Integer getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
+    }
 }

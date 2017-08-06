@@ -30,9 +30,8 @@ class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.Holder> {
     private static final Map<String, String> categories;
     static {
         categories = new HashMap<>(5);
-        categories.put("org", "Organizator");
         categories.put("patron", "Patron");
-        categories.put("sponsor", "Sponsor");
+        categories.put("sponsor", "Współpraca");
     }
 
     private List<Sponsor> sponsors;
