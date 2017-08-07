@@ -1,5 +1,7 @@
 package tk.julianjurec.linuxsession14.Speakers;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import tk.julianjurec.linuxsession14.Base.MainActivity;
@@ -29,7 +31,7 @@ public class SpeakersPresenter implements SpeakersContract.Presenter {
     }
 
     @Override
-    public void showSpeakerDialog(Speaker speaker, Lecture lecture) {
+    public void showSpeakerDialog(Speaker speaker, List<Lecture> lecture) {
 
         SpeakersDialogFragment.newInstance(speaker, lecture).show(view.getChildFragmentManager(), "SpeakerDialog");
     }

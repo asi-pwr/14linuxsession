@@ -1,14 +1,18 @@
 package tk.julianjurec.linuxsession14.About;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
@@ -35,7 +39,7 @@ public class AboutFragment extends Fragment implements AboutContract.View {
     public AboutPresenter presenter;
 
     @BindColor(R.color.session_gold) int sessionGold;
-    @BindColor(R.color.session_light) int sessionLight;
+    @BindColor(R.color.session_text_dark) int sessionLight;
     @BindColor(R.color.session_dark) int sessionDark;
     @BindColor(R.color.white) int white;
 
@@ -95,17 +99,13 @@ public class AboutFragment extends Fragment implements AboutContract.View {
     public void onCardClicked(CardView v){
         switch (v.getId()){
             case R.id.about_card_what:
-                new LovelyInfoDialog(getContext())
-                        .setTopColor(sessionLight)
-                        .setConfirmButtonColor(sessionGold)
-                        .setIcon(R.drawable.what_is_it)
-                        .setIconTintColor(white)
-                        .setTopTitle(R.string.about_what)
-                        .setTopTitleColor(white)
-                        .setMessage(R.string.about_what_details)
-                        .setConfirmButtonText("Ok")
-                        .setCancelable(true)
-                        .show();
+                Dialog dialog = new Dialog(getContext());
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.about_dialog);
+                dialog.show();
+
+                TextView info = (TextView) dialog.findViewById(R.id.about_dialog_content);
+                info.setMovementMethod(LinkMovementMethod.getInstance());
                 break;
 
             case R.id.about_card_questions:

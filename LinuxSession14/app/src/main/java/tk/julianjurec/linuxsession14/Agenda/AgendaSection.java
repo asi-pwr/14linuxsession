@@ -4,11 +4,14 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -16,6 +19,7 @@ import com.ramotion.foldingcell.FoldingCell;
 import com.squareup.picasso.Picasso;
 import com.varunest.sparkbutton.SparkButton;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -116,7 +120,17 @@ class AgendaSection extends StatelessSection {
 
         holder.recyclerView = recyclerView;
         holder.position = position;
+
+        if(speaker.getName().length() > 21){
+            float dp = context.getResources().getDisplayMetrics().density;
+            int margin = (int)(100 * dp);
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                    RecyclerView.LayoutParams.WRAP_CONTENT, RecyclerView.LayoutParams.WRAP_CONTENT);
+            params.setMargins(0,margin,0,0);
+            holder.speakerName.setLayoutParams(params);
+        }
         holder.speakerName.setText(speaker.getName());
+
         if (speaker.getImgUrl() != null && !speaker.getImgUrl().isEmpty())
             Picasso.with(context)
                     .load(speaker.getImgUrl())
@@ -136,6 +150,27 @@ class AgendaSection extends StatelessSection {
             }
             return false;
         });
+
+        holder.nowView.setVisibility(View.GONE);
+
+        Calendar calendar = Calendar.getInstance();
+        int hourStart = Integer.parseInt(lecture.getStartTime().substring(0,2));
+        int minutesStart = Integer.parseInt(lecture.getStartTime().substring(3,5));
+        int hourEnd = Integer.parseInt(lecture.getEndTime().substring(0,2));
+        int minutesEnd = Integer.parseInt(lecture.getEndTime().substring(3,5));
+
+        int monthCal = calendar.get(Calendar.MONTH);
+        int dayCal = calendar.get(Calendar.DAY_OF_MONTH);
+        int hourCal = calendar.get(Calendar.HOUR_OF_DAY);
+        int minutesCal = calendar.get(Calendar.MINUTE);
+
+        if(dayCal == lecture.getDay() + 10 && monthCal == 7){
+            if(hourStart *100 + minutesStart <= hourCal *100 + minutesCal){
+                if (hourEnd *100 + minutesEnd > hourCal *100 + minutesCal){
+                    holder.nowView.setVisibility(View.VISIBLE);
+                }
+            }
+        }
     }
     static class HeaderHolder extends RecyclerView.ViewHolder {
 
@@ -148,6 +183,9 @@ class AgendaSection extends StatelessSection {
     }
 
     static class Holder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.cell_now)
+        TextView nowView;
 
         @BindView(R.id.agenda_folding_cell)
         FoldingCell cell;

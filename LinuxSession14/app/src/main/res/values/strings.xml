@@ -15,6 +15,7 @@
     <string name="screen_middle_party">Middle Party</string>
     <string name="screen_patrons">Patroni</string>
     <string name="screen_sponsors">Sponsorzy</string>
+    <string name="screen_coop">Współpraca</string>
     <string name="screen_www">niucon.pl</string>
     <string name="screen_about">informacje</string>
     <string name="placeholder_sponsor_name">Apple Inc.</string>
@@ -23,7 +24,11 @@
     <string name="about_looks">Jak to wygląda?</string>
     <string name="about_target">Nasz cel</string>
     <string name="about_looks_details">Udział w Sesji jest darmowy. Co roku na konferencji spotykają się pasjonaci informatyki z całej Polski, aby pogłębić swoją wiedzę i podjąć dyskusję w interesujących ich dziedzinach.</string>
-    <string name="about_what_details">dupa1</string>
+    <string name="about_what_details">Aplikacja powstała w <a href="http://asi.wroclaw.pl">Akademickim Stowarzyszeniu Informatycznym</a>\n\n
+        Autor silnika: <a href="https://github.com/sp0rk/">Julian Jurec</a>\n
+        Część mobilna: <a href="https://github.com/jakdor/">Jakub Dorda</a>\n
+        Część serwerowa: <a href="https://github.com/Azkel">Michał Smyk</a>
+    </string>
     <string name="about_target_details">Naszym celem jest promowanie idei wolnego oprogramowania. Wiemy, że Open Source jest coraz bardziej popularny w rozwiązaniach komercyjnych, jak i domowych. I zależy nam na jego popularyzacji.</string>
     <string name="about_questions">Masz pytania?</string>
     <string name="about_questions_details">Jeśli masz jakieś pytania, nie krępuj się i napisz nam maila. Do kogo chcesz napisać?</string>
@@ -49,4 +54,5 @@
     <string name="lecture_share_msg">Gdzie chcesz się podzielić informacją o wydarzeniu?</string>
     <string name="lecture_share">Zaproś znajomych!</string>
     <string name="agenda_spinner_label">Sala:</string>
+    <string name="agenda_now">Teraz trwa</string>
 </resources>

@@ -95,8 +95,10 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         agenda.setResource(R.drawable.agenda);
         MenuObject speakers = new MenuObject(getString(R.string.screen_speakers));
         speakers.setResource(R.drawable.speaker);
+        MenuObject coop = new MenuObject(getString(R.string.screen_coop));
+        coop.setResource(R.drawable.heart_white);
         MenuObject patrons = new MenuObject(getString(R.string.screen_patrons));
-        patrons.setResource(R.drawable.heart_white);
+        patrons.setResource(R.drawable.ic_menu_camera2);
         MenuObject sponsors = new MenuObject(getString(R.string.screen_sponsors));
         sponsors.setResource(R.drawable.sponsors);
         MenuObject www = new MenuObject(getString(R.string.screen_www));
@@ -108,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         menuObjects.add(close);
         menuObjects.add(agenda);
         menuObjects.add(speakers);
+        menuObjects.add(coop);
         menuObjects.add(patrons);
         menuObjects.add(sponsors);
         menuObjects.add(www);
@@ -121,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         menuParams.setActionBarSize((int) getResources().getDimension(R.dimen.toolbar_height));
         menuParams.setMenuObjects(menuObjects);
         menuParams.setClosableOutside(true);
-        menuParams.setAnimationDuration(40);
+        menuParams.setAnimationDuration(30);
 
         contextMenu = ContextMenuDialogFragment.newInstance(menuParams);
         contextMenu.setItemClickListener(this);
@@ -137,17 +140,20 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
                 case 2: //Speakers
                     switchTo(SpeakersFragment.newInstance(), getString(R.string.screen_speakers), 2);
                     break;
-                case 3: //Patrons
-                    switchTo(SponsorsFragment.newInstance(0), getString(R.string.screen_patrons), 3);
+                case 3: //co-op
+                    switchTo(SponsorsFragment.newInstance(1), getString(R.string.screen_coop), 3);
                     break;
-                case 4: //Sponsors
-                    switchTo(SponsorsFragment.newInstance(1), getString(R.string.screen_sponsors), 4);
+                case 4: //Patrons
+                    switchTo(SponsorsFragment.newInstance(0), getString(R.string.screen_patrons), 4);
                     break;
-                case 5: //niucon
+                case 5: //Sponsors
+                    switchTo(SponsorsFragment.newInstance(2), getString(R.string.screen_sponsors), 5);
+                    break;
+                case 6: //niucon
                     this.startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("http://niucon.pl")));
                     break;
-                case 6: //about
-                    switchTo(AboutFragment.newInstance(), getString(R.string.screen_about), 6);
+                case 7: //about
+                    switchTo(AboutFragment.newInstance(), getString(R.string.screen_about), 7);
                     break;
             }
         selectedIndex = position;

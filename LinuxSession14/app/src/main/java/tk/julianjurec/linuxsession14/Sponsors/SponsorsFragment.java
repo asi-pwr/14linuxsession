@@ -86,10 +86,13 @@ public class SponsorsFragment extends Fragment implements SponsorsContract.View 
         List<Sponsor> filteredList = new ArrayList<>();
 
         for(Sponsor sponsor : sponsors){
-            if(type == 0 && sponsor.getCategory().equals("sponsor")){
+            if(type == 0 && sponsor.getCategory().equals("patron")){
                 filteredList.add(sponsor);
             }
-            else if(type == 1 && sponsor.getCategory().equals("patron")){
+            else if(type == 1 && sponsor.getCategory().equals("sponsor")){
+                filteredList.add(sponsor);
+            }
+            else if(type == 2 && sponsor.getCategory().equals("mecenat")){ //todo correct category
                 filteredList.add(sponsor);
             }
         }
