@@ -1,18 +1,12 @@
 <resources>
     <string name="app_name">Niucon</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_settings">Settings</string>
-
     <string name="placeholder_lecture_title">Windows 10 uruchamia natywne programy z Linuksa. Bash on Ubuntu on Windows</string>
     <string name="placeholder_speaker_name">Julian Jurec</string>
     <string name="placeholder_lecture_description">Mechanizmy zwiazane z oszczędzaniem energii, a ściślej mówiąc z zapobieganiem traceniu energii bez potrzeby, są ważną częścią Linuksa od ponad 10 lat. Ogólnie można podzielić je na dwie grupy, te działające jednocześnie na cały system (system-wide PM) oraz te operujące pojedynczymi składnikami systemu, takimi jak procesory i urządzenia wejścia-wyjścia, w stanie aktywności (working-state PM). Do pierwszej grupy należą usypianie systemu (system suspend) i hibernacja, natomiast druga grupa obejmuje między innymi skalowanie wydajności procesorów (CPU performance scaling) oraz wykrywanie nieaktywności i wprowadzanie nieaktywnych (idle) składników systemu do stanów o ograniczonym poborze mocy (low-power states). Mechanizmy z drugiej grupy, poza swoim głównym zastosowaniem, mogą także służyć do zapobiegania przegrzewaniu się urządzeń, bądź zapobiegania przekraczaniu budżetów energetycznych lub limitów poboru mocy przy jednoczesnym zapewnieniu wykonania określonych operacji w zadanym czasie.  W prezentacji przedstawię przegląd mechanizmów z dziedziny power management znajdujących się w jądrze Linuksa oraz omówię ich działanie i sposoby wykorzystania, a także wyzwania, z jakimi ta dziedzina musi się mierzyć w związku z obecnymi trendami w rozwoju technologii.</string>
 
     <string name="screen_agenda">Agenda</string>
     <string name="screen_speakers">Goście</string>
-    <string name="screen_middle_party">Middle Party</string>
     <string name="screen_patrons">Patroni</string>
     <string name="screen_sponsors">Sponsorzy</string>
     <string name="screen_coop">Współpraca</string>
@@ -21,15 +15,11 @@
     <string name="placeholder_sponsor_name">Apple Inc.</string>
     <string name="main_sponsor">Sponsor Główny</string>
     <string name="about_what">O aplikacji</string>
-    <string name="about_looks">Jak to wygląda?</string>
-    <string name="about_target">Nasz cel</string>
-    <string name="about_looks_details">Udział w Sesji jest darmowy. Co roku na konferencji spotykają się pasjonaci informatyki z całej Polski, aby pogłębić swoją wiedzę i podjąć dyskusję w interesujących ich dziedzinach.</string>
     <string name="about_what_details">Aplikacja powstała w <a href="http://asi.wroclaw.pl">Akademickim Stowarzyszeniu Informatycznym</a>\n\n
         Autor silnika: <a href="https://github.com/sp0rk/">Julian Jurec</a>\n
         Część mobilna: <a href="https://github.com/jakdor/">Jakub Dorda</a>\n
         Część serwerowa: <a href="https://github.com/Azkel">Michał Smyk</a>
     </string>
-    <string name="about_target_details">Naszym celem jest promowanie idei wolnego oprogramowania. Wiemy, że Open Source jest coraz bardziej popularny w rozwiązaniach komercyjnych, jak i domowych. I zależy nam na jego popularyzacji.</string>
     <string name="about_questions">Masz pytania?</string>
     <string name="about_questions_details">Jeśli masz jakieś pytania, nie krępuj się i napisz nam maila. Do kogo chcesz napisać?</string>
     <string name="error_no_email_app">Nie znaleziono aplikacji do obsługi e-maili</string>
@@ -42,17 +32,13 @@
     <string name="middle_party_why_details">Ideą Middle Party jest umożliwienie uczestnikom Sesji Linuksowej poszerzenie swojej sieci znajomości zawodowych i rozwianie ewentualnych wątpliwości, które wystąpiły w czasie konferencji. Oczywiście jest to też moment na dobrą zabawę, odetchnięcie i wyluzowanie się przed następnym dniem wykładów</string>
     <string name="middle_party_where_name">Pub Kontynuacja</string>
     <string name="middle_party_where_address">ul. Ofiar Oświęcimskich 14, Wrocław</string>
-    <string name="middle_party_where_directions">Prowadź!</string>
-    <string name="middle_party_when_details">wtedy</string>
     <string name="middle_party_date">Sobota 06.05</string>
     <string name="middle_party_start"> Start:</string>
     <string name="middle_party_start_hour"> 21:00</string>
     <string name="middle_party_end">Koniec:</string>
     <string name="middle_party_end_hour"> 03:00</string>
-    <string name="favourites">Ulubione</string>
     <string name="error_no_share_app">Brak Odpowiedniej Aplikacji</string>
     <string name="lecture_share_msg">Gdzie chcesz się podzielić informacją o wydarzeniu?</string>
     <string name="lecture_share">Zaproś znajomych!</string>
-    <string name="agenda_spinner_label">Sala:</string>
     <string name="agenda_now">Teraz trwa</string>
 </resources>
