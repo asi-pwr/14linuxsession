@@ -123,7 +123,7 @@ class AgendaSection extends StatelessSection {
 
         if(speaker.getName().length() > 21){
             float dp = context.getResources().getDisplayMetrics().density;
-            int margin = (int)(100 * dp);
+            int margin = (int)(115 * dp);
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                     RecyclerView.LayoutParams.WRAP_CONTENT, RecyclerView.LayoutParams.WRAP_CONTENT);
             params.setMargins(0,margin,0,0);
@@ -150,6 +150,8 @@ class AgendaSection extends StatelessSection {
             }
             return false;
         });
+
+        holder.shareLayout.setVisibility(View.GONE);
 
         holder.nowView.setVisibility(View.GONE);
 
@@ -220,6 +222,10 @@ class AgendaSection extends StatelessSection {
         TextView foldedSpeakerName;
         @BindView(R.id.agenda_item_folded_img)
         ImageView foldedImg;
+
+        @BindView(R.id.agenda_share_layout)
+        RelativeLayout shareLayout;
+
         private RecyclerView recyclerView;
         private int position;
 

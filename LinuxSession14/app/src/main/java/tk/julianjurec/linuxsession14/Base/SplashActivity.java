@@ -11,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -122,12 +123,19 @@ public class SplashActivity extends AppCompatActivity {
         api.getLastUpdate().enqueue(new Callback<Float>() {
             @Override
             public void onResponse(Call<Float> call, Response<Float> response) {
-                long server = (long) (response.body() * 1000L);
-                long local = prefs.getLong(LAST_UPDATE, -1L);
-                if (server == local) {
-                    stopProgress();
-                } else {
-                    fetchAppData(server);
+                try {
+                    long server = (long) (response.body() * 1000L);
+                    long local = prefs.getLong(LAST_UPDATE, -1L);
+                    if (server == local) {
+                        stopProgress();
+                    } else {
+                        fetchAppData(server);
+                    }
+                }
+                catch (Exception e){
+                    Log.e("", e.getMessage());
+                    Toast.makeText(getApplicationContext(), "Coś nie działa po stronie serwera :(", Toast.LENGTH_LONG).show();
+                    startProgress();
                 }
             }
 

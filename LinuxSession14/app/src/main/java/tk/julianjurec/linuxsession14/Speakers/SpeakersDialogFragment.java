@@ -111,7 +111,10 @@ public class SpeakersDialogFragment extends DialogFragment {
                 String roomStr;
 
                 if(roomNum == 19) {
-                    roomStr = "wyróżnione";
+                    roomStr = "Wyróżnione";
+                }
+                else if (roomNum == 20){
+                    roomStr = "nie działa :<";
                 }
                 else {
                     roomStr = rooms.get(roomNum).getDescription();

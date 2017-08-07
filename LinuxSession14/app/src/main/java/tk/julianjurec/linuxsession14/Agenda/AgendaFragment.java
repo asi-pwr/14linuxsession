@@ -160,7 +160,9 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
                 spinnerList.add(room.getName() + " (" + room.getDescription() + ")");
             }
             else{
-                spinnerList.add(room.getName());
+                if (room.getId() != 21) {
+                    spinnerList.add(room.getName());
+                }
             }
         }
 
