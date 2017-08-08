@@ -102,6 +102,9 @@ class AgendaSection extends StatelessSection {
             Picasso.with(context)
                     .load(speaker.getImgUrl())
                     .noFade()
+                    .resize(200, 200)
+                    .onlyScaleDown()
+                    .centerInside()
                     .placeholder(R.drawable.unknown)
                     .into(holder.foldedImg);
 

@@ -19,6 +19,9 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.LruCache;
+import com.squareup.picasso.OkHttpDownloader;
+import com.squareup.picasso.Picasso;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
 import com.yalantis.contextmenu.lib.MenuParams;
@@ -74,6 +77,12 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.session_dark));
+
+        Picasso p = new Picasso.Builder(getApplicationContext())
+                .memoryCache(new LruCache(200 * 1024 * 1024))
+                .build();
+        Picasso.setSingletonInstance(p);
+
     }
 
     private void initToolbar() {

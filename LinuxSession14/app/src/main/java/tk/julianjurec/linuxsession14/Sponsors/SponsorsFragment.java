@@ -92,7 +92,7 @@ public class SponsorsFragment extends Fragment implements SponsorsContract.View 
             else if(type == 1 && sponsor.getCategory().equals("sponsor")){
                 filteredList.add(sponsor);
             }
-            else if(type == 2 && sponsor.getCategory().equals("mecenat")){ //todo correct category
+            else if(type == 2 && sponsor.getCategory().equals("mecenat")){
                 filteredList.add(sponsor);
             }
         }

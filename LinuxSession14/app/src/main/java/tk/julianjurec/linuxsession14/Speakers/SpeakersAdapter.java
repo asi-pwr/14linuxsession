@@ -50,6 +50,9 @@ class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Holder> {
         if (speaker.getImgUrl() != null && !speaker.getImgUrl().isEmpty())
             Picasso.with(context)
                     .load(speaker.getImgUrl())
+                    .resize(400, 400)
+                    .onlyScaleDown()
+                    .centerInside()
                     .placeholder(R.drawable.unknown)
                     .into(holder.img);
 

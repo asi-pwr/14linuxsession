@@ -57,6 +57,9 @@ class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.Holder> {
         Picasso.with(context)
                 .load(sponsor.getImgUrl())
                 .placeholder(R.drawable.unknown)
+                .resize(250, 250)
+                .onlyScaleDown()
+                .centerInside()
                 .into(holder.logoImg);
         holder.card.setOnClickListener(v -> {
             context.startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(sponsor.getLink())));

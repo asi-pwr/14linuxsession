@@ -83,11 +83,6 @@ public class SpeakersDialogFragment extends DialogFragment {
     }
 
     private void onBindView(View dialogView) {
-        if (speaker.getImgUrl() != null && !speaker.getImgUrl().isEmpty())
-            Picasso.with(getContext())
-                    .load(speaker.getImgUrl())
-                    .placeholder(R.drawable.unknown)
-                    .into(img);
         name.setText(speaker.getName());
         description.setText(speaker.getDescription());
 
@@ -148,6 +143,16 @@ public class SpeakersDialogFragment extends DialogFragment {
             ScrollView scrollView =
                     (ScrollView) dialogView.findViewById(R.id.dialog_speaker_lecture_inflater_scroll);
             scrollView.setVisibility(GONE);
+        }
+
+        if (speaker.getImgUrl() != null && !speaker.getImgUrl().isEmpty()) {
+            Picasso.with(getContext())
+                    .load(speaker.getImgUrl())
+                    .resize(600, 600)
+                    .onlyScaleDown()
+                    .centerInside()
+                    .placeholder(R.drawable.unknown)
+                    .into(img);
         }
 
     }
