@@ -7,6 +7,7 @@
 
     <string name="screen_agenda">Agenda</string>
     <string name="screen_speakers">Goście</string>
+    <string name="screen_cosplay">Gala cosplay</string>
     <string name="screen_patrons">Patroni</string>
     <string name="screen_sponsors">Sponsorzy</string>
     <string name="screen_coop">Współpraca</string>
@@ -24,21 +25,14 @@
     <string name="about_questions_details">Jeśli masz jakieś pytania, nie krępuj się i napisz nam maila. Do kogo chcesz napisać?</string>
     <string name="error_no_email_app">Nie znaleziono aplikacji do obsługi e-maili</string>
     <string name="about_email_subject">[Niucon app] Pytanie/Feedback</string>
-    <string name="middle_party_what">Czym jest?</string>
-    <string name="middle_party_why">Dlaczego?</string>
-    <string name="middle_party_where">Gdzie?</string>
-    <string name="middle_party_when">Kiedy?</string>
-    <string name="middle_party_what_details">Middle Party to tradycyjne spotkanie wszystkich uczestników Sesji Linuksowej. Specjalnie dla uczestników konferencji przygotowaliśmy również specjalne zniżki na barze! Sponsorem Middle Party jest Global Logic</string>
-    <string name="middle_party_why_details">Ideą Middle Party jest umożliwienie uczestnikom Sesji Linuksowej poszerzenie swojej sieci znajomości zawodowych i rozwianie ewentualnych wątpliwości, które wystąpiły w czasie konferencji. Oczywiście jest to też moment na dobrą zabawę, odetchnięcie i wyluzowanie się przed następnym dniem wykładów</string>
-    <string name="middle_party_where_name">Pub Kontynuacja</string>
-    <string name="middle_party_where_address">ul. Ofiar Oświęcimskich 14, Wrocław</string>
-    <string name="middle_party_date">Sobota 06.05</string>
-    <string name="middle_party_start"> Start:</string>
-    <string name="middle_party_start_hour"> 21:00</string>
-    <string name="middle_party_end">Koniec:</string>
-    <string name="middle_party_end_hour"> 03:00</string>
     <string name="error_no_share_app">Brak Odpowiedniej Aplikacji</string>
     <string name="lecture_share_msg">Gdzie chcesz się podzielić informacją o wydarzeniu?</string>
     <string name="lecture_share">Zaproś znajomych!</string>
     <string name="agenda_now">Teraz trwa</string>
+    <string name="cosplay_where">Gdzie?</string>
+    <string name="cosplay_where_ans">Centrum Impart</string>
+    <string name="cosplay_when">Kiedy?</string>
+    <string name="cosplay_when_ans">Piątek start o 18:00</string>
+    <string name="cosplay_map_info">zobacz na mapie:</string>
+    <string name="cosplay_sponsor_info">Projekt jest współfinansowany\nze środków budżetu\nWojewództwa Dolnośląskiego</string>
 </resources>

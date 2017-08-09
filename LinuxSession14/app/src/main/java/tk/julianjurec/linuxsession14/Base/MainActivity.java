@@ -38,6 +38,7 @@ import butterknife.ButterKnife;
 import retrofit2.Retrofit;
 import tk.julianjurec.linuxsession14.About.AboutFragment;
 import tk.julianjurec.linuxsession14.Agenda.AgendaFragment;
+import tk.julianjurec.linuxsession14.Cosplay.CosplayFragment;
 import tk.julianjurec.linuxsession14.Model.Speaker;
 import tk.julianjurec.linuxsession14.R;
 import tk.julianjurec.linuxsession14.Speakers.SpeakersFragment;
@@ -104,6 +105,8 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         agenda.setResource(R.drawable.agenda);
         MenuObject speakers = new MenuObject(getString(R.string.screen_speakers));
         speakers.setResource(R.drawable.speaker);
+        MenuObject cosplay = new MenuObject(getString(R.string.screen_cosplay));
+        cosplay.setResource(R.drawable.cosplay);
         MenuObject coop = new MenuObject(getString(R.string.screen_coop));
         coop.setResource(R.drawable.heart_white);
         MenuObject patrons = new MenuObject(getString(R.string.screen_patrons));
@@ -119,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         menuObjects.add(close);
         menuObjects.add(agenda);
         menuObjects.add(speakers);
+        menuObjects.add(cosplay);
         menuObjects.add(coop);
         menuObjects.add(patrons);
         menuObjects.add(sponsors);
@@ -149,19 +153,22 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
                 case 2: //Speakers
                     switchTo(SpeakersFragment.newInstance(), getString(R.string.screen_speakers), 2);
                     break;
-                case 3: //co-op
-                    switchTo(SponsorsFragment.newInstance(1), getString(R.string.screen_coop), 3);
+                case 3: //cosplay
+                    switchTo(CosplayFragment.newInstance(), getString(R.string.screen_cosplay), 3);
                     break;
-                case 4: //Patrons
-                    switchTo(SponsorsFragment.newInstance(0), getString(R.string.screen_patrons), 4);
+                case 4: //co-op
+                    switchTo(SponsorsFragment.newInstance(1), getString(R.string.screen_coop), 4);
                     break;
-                case 5: //Sponsors
-                    switchTo(SponsorsFragment.newInstance(2), getString(R.string.screen_sponsors), 5);
+                case 5: //Patrons
+                    switchTo(SponsorsFragment.newInstance(0), getString(R.string.screen_patrons), 5);
                     break;
-                case 6: //niucon
+                case 6: //Sponsors
+                    switchTo(SponsorsFragment.newInstance(2), getString(R.string.screen_sponsors), 6);
+                    break;
+                case 7: //niucon
                     this.startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse("http://niucon.pl")));
                     break;
-                case 7: //about
+                case 8: //about
                     switchTo(AboutFragment.newInstance(), getString(R.string.screen_about), 7);
                     break;
             }
