@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -243,7 +244,13 @@ class AgendaSection extends StatelessSection {
                 new Handler(Looper.getMainLooper()).postDelayed(() -> {
                     recyclerView.getLayoutManager().smoothScrollToPosition(recyclerView,null,getAdapterPosition());
                 }, 750);
-            cell.toggle(false);
+            try {
+                cell.toggle(false);
+            }
+            catch (Exception e){
+                Log.e("agenda", e.getMessage());
+            }
+
         }
     }
 }

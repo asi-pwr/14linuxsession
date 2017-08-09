@@ -88,7 +88,7 @@
             <ScrollView
                 android:id="@+id/agenda_item_description_scroll"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/details_scroll_height"
+                android:layout_height="145dp"
                 android:layout_below="@+id/agenda_item_label_description">
                 <TextView
                     android:id="@+id/agenda_item_description"
@@ -107,7 +107,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp">
 
             <TextView
                 android:id="@+id/agenda_item_label_time"
@@ -125,6 +126,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_below="@id/agenda_item_label_time"
                 android:orientation="horizontal"
                 android:weightSum="2">
