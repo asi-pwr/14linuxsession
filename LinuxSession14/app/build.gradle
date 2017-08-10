@@ -1,7 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.2'
@@ -29,11 +26,6 @@ repositories {
     maven {
         url "https://jitpack.io"
     }
-    mavenCentral()
-}
-
-kapt {
-    generateStubs = true
 }
 
 dependencies {
@@ -56,8 +48,6 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.mikhaellopez:circularfillableloaders:1.2.0'
 //      UTILITY
-
-    kapt 'com.google.dagger:dagger-compiler:2.5'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.google.dagger:dagger:2.5'
@@ -71,5 +61,4 @@ dependencies {
     provided 'javax.annotation:jsr250-api:1.0'
 //      JAVA
     testCompile 'junit:junit:4.12'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
