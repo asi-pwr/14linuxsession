@@ -23,7 +23,6 @@ import java.net.URI
 
 class PhotoBoothPresenter @Inject
 constructor(private val view: PhotoBoothFragment) : PhotoBoothContract.Presenter {
-    val TAG = "PhotoBooth"
     var latestPhotoUri: Uri? = null
 
     override fun addPhoto(fragment: Fragment) {
@@ -65,31 +64,31 @@ constructor(private val view: PhotoBoothFragment) : PhotoBoothContract.Presenter
     }
 
     fun onPhotoAdded(){
-        Log.d(TAG, latestPhotoUri.toString())
+        println(latestPhotoUri.toString())
         val deletee = File(latestPhotoUri?.path)
-        if (deletee.exists()) {
+        if (deletee.exists())
             if (deletee.delete())
-                Log.d(TAG,"deleted")
+                print("deleted")
             else
-                Log.d(TAG,"notdeleted")
-        }
+                print("notdeleted")
         else
-            Log.d(TAG,latestPhotoUri?.path + "doesnt exist")
+            print(latestPhotoUri?.path + "doesnt exist")
         latestPhotoUri = null
     }
 
     fun onPhotoFailed(){
-        Log.d(TAG, "Faild")
+        println("Faild")
     }
 
+
     override fun start() {
-        Log.d(TAG, "photoboothpres")
+        System.out.println("photoboothpres")
     }
 
     @Throws(IOException::class)
     private fun createImageFile(context: Context): File? {
-        val timeStamp = System.currentTimeMillis().toString()
-        val imageFileName = "LS" + timeStamp + ""
+        val timeStamp = System.currentTimeMillis()
+        val imageFileName = "LS[$timeStamp]@temp"
         val storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         val image = File.createTempFile(imageFileName, ".jpg", storageDir)
         return image
