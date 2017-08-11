@@ -156,11 +156,11 @@ public class AgendaFragment extends Fragment implements AgendaContract.View {
         spinnerList.add("Wyróżnione");
 
         for(Room room : rooms){
-            if(!room.getDescription().isEmpty()) {
+            if(!room.getDescription().isEmpty() && room.getId() != 20) {
                 spinnerList.add(room.getName() + " (" + room.getDescription() + ")");
             }
             else{
-                if (room.getId() != 21) {
+                if (room.getId() != 21 && room.getId() != 20) {
                     spinnerList.add(room.getName());
                 }
             }
