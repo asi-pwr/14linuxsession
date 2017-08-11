@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -79,10 +80,15 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.session_dark));
 
-        Picasso p = new Picasso.Builder(getApplicationContext())
-                .memoryCache(new LruCache(200 * 1024 * 1024))
-                .build();
-        Picasso.setSingletonInstance(p);
+        try {
+            Picasso p = new Picasso.Builder(getApplicationContext())
+                    .memoryCache(new LruCache(35 * 1024 * 1024))
+                    .build();
+            Picasso.setSingletonInstance(p);
+        }
+        catch (Exception e){
+            Log.i("Picasso LruCache", e.getMessage());
+        }
 
     }
 
