@@ -159,23 +159,28 @@ class AgendaSection extends StatelessSection {
 
         holder.nowView.setVisibility(View.GONE);
 
-        Calendar calendar = Calendar.getInstance();
-        int hourStart = Integer.parseInt(lecture.getStartTime().substring(0,2));
-        int minutesStart = Integer.parseInt(lecture.getStartTime().substring(3,5));
-        int hourEnd = Integer.parseInt(lecture.getEndTime().substring(0,2));
-        int minutesEnd = Integer.parseInt(lecture.getEndTime().substring(3,5));
+        try {
+            Calendar calendar = Calendar.getInstance();
+            int hourStart = Integer.parseInt(lecture.getStartTime().substring(0, 2));
+            int minutesStart = Integer.parseInt(lecture.getStartTime().substring(3, 5));
+            int hourEnd = Integer.parseInt(lecture.getEndTime().substring(0, 2));
+            int minutesEnd = Integer.parseInt(lecture.getEndTime().substring(3, 5));
 
-        int monthCal = calendar.get(Calendar.MONTH);
-        int dayCal = calendar.get(Calendar.DAY_OF_MONTH);
-        int hourCal = calendar.get(Calendar.HOUR_OF_DAY);
-        int minutesCal = calendar.get(Calendar.MINUTE);
+            int monthCal = calendar.get(Calendar.MONTH);
+            int dayCal = calendar.get(Calendar.DAY_OF_MONTH);
+            int hourCal = calendar.get(Calendar.HOUR_OF_DAY);
+            int minutesCal = calendar.get(Calendar.MINUTE);
 
-        if(dayCal == lecture.getDay() + 10 && monthCal == 7){
-            if(hourStart *100 + minutesStart <= hourCal *100 + minutesCal){
-                if (hourEnd *100 + minutesEnd > hourCal *100 + minutesCal){
-                    holder.nowView.setVisibility(View.VISIBLE);
+            if (dayCal == lecture.getDay() + 10 && monthCal == 7) {
+                if (hourStart * 100 + minutesStart <= hourCal * 100 + minutesCal) {
+                    if (hourEnd * 100 + minutesEnd > hourCal * 100 + minutesCal) {
+                        holder.nowView.setVisibility(View.VISIBLE);
+                    }
                 }
             }
+        }
+        catch (Exception e){
+            Log.i("wrong time format", e.getMessage());
         }
     }
     static class HeaderHolder extends RecyclerView.ViewHolder {
